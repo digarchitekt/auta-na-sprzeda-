@@ -57,61 +57,118 @@ export default function VehiclePage({ params }: { params: { slug: string } }) {
         </div>
       </header>
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_380px]">
-        <div className="space-y-10">
+      {/* Galeria + dane po prawej */}
+      <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_440px]">
+        <div className="lg:sticky lg:top-24 lg:self-start">
           <Gallery images={v.images} alt={label} />
+        </div>
 
+        <div className="space-y-8">
+          {/* Quick specs grid */}
           <section>
-            <h2 className="section-title text-2xl">Najwazniejsze cechy</h2>
-            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-accent">
+              Najwazniejsze parametry
+            </h2>
+            <dl className="mt-3 grid grid-cols-2 gap-3">
+              {[
+                { label: 'Rok', value: String(v.year) },
+                { label: 'Przebieg', value: formatMileage(v.mileage) },
+                { label: 'Paliwo', value: v.fuel },
+                { label: 'Skrzynia', value: v.transmission },
+                { label: 'Moc', value: `${v.power} KM` },
+                { label: 'Silnik', value: v.engine },
+              ].map((s) => (
+                <div key={s.label} className="border border-bg-border bg-bg-elevated p-3">
+                  <div className="text-[11px] uppercase tracking-wider text-text-muted">
+                    {s.label}
+                  </div>
+                  <div className="mt-0.5 text-sm font-medium text-text-primary">{s.value}</div>
+                </div>
+              ))}
+            </dl>
+          </section>
+
+          {/* Highlights */}
+          <section>
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-accent">
+              Wyposazenie i atuty
+            </h2>
+            <ul className="mt-3 space-y-2">
               {v.highlights.map((h) => (
                 <li
                   key={h}
                   className="flex items-center gap-3 border border-bg-border bg-bg-elevated px-4 py-3 text-sm"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                   {h}
                 </li>
               ))}
             </ul>
           </section>
 
+          {/* Specs table */}
           <section>
-            <h2 className="section-title text-2xl">Dane techniczne</h2>
-            <dl className="mt-4 overflow-hidden border border-bg-border">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-accent">
+              Dane techniczne
+            </h2>
+            <dl className="mt-3 overflow-hidden border border-bg-border">
               {v.specs.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`flex items-center justify-between gap-4 px-5 py-3 text-sm ${
+                  className={`flex items-center justify-between gap-4 px-4 py-2.5 text-sm ${
                     i % 2 === 0 ? 'bg-bg-elevated' : 'bg-bg-card'
                   }`}
                 >
                   <dt className="text-text-muted">{s.label}</dt>
-                  <dd className="font-medium text-text-primary">{s.value}</dd>
+                  <dd className="text-right font-medium text-text-primary">{s.value}</dd>
                 </div>
               ))}
-              <div className="flex items-center justify-between gap-4 bg-bg-elevated px-5 py-3 text-sm">
-                <dt className="text-text-muted">Przebieg</dt>
-                <dd className="font-medium text-text-primary">{formatMileage(v.mileage)}</dd>
-              </div>
             </dl>
           </section>
 
+          {/* Description */}
           <section>
-            <h2 className="section-title text-2xl">Opis</h2>
-            <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-text-secondary">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-accent">
+              Opis
+            </h2>
+            <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-text-secondary">
               {v.description}
             </p>
           </section>
-        </div>
 
-        <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-          <VehicleInquiryForm
-            vehicleSlug={v.slug}
-            vehicleLabel={`${label} ${v.year}`}
-          />
-        </aside>
+          {/* Anchor CTA */}
+          <a
+            href="#zapytaj"
+            className="btn-primary w-full"
+          >
+            Zapytaj o to auto
+          </a>
+        </div>
       </div>
+
+      {/* Formularz na dole, pelna szerokosc */}
+      <section id="zapytaj" className="mt-20 border-t border-bg-border pt-16 scroll-mt-24">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center">
+            <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+              Kontakt
+            </span>
+            <h2 className="mt-2 font-display text-3xl uppercase tracking-tight md:text-4xl">
+              Zainteresowany tym autem?
+            </h2>
+            <p className="mt-3 text-text-secondary">
+              Zostaw kontakt - oddzwonimy lub odpiszemy najszybciej jak to mozliwe.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <VehicleInquiryForm
+              vehicleSlug={v.slug}
+              vehicleLabel={`${label} ${v.year}`}
+            />
+          </div>
+        </div>
+      </section>
     </article>
   );
 }

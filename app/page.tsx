@@ -64,8 +64,8 @@ export default function HomePage() {
               Masz auto na sprzedaz?
             </h2>
             <p className="mt-2 max-w-xl text-text-secondary">
-              Skupujemy auta marek Opel i Audi. Wycena tego samego dnia, gotowka albo przelew na
-              koncie w 24h.
+              Zglos swoje auto, a my zweryfikujemy zgloszenie i wystawimy je w naszej ofercie.
+              Reszta jest po naszej stronie.
             </p>
           </div>
           <Link href="/sprzedaj-auto" className="btn-primary">

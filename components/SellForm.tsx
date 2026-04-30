@@ -105,7 +105,7 @@ export default function SellForm() {
 
       {status === 'ok' && (
         <p className="border border-green-700/40 bg-green-900/20 px-4 py-3 text-sm text-green-300">
-          Dziekujemy. Skontaktujemy sie w ciagu 24h z wstepna wycena.
+          Dziekujemy za zgloszenie. Odezwiemy sie po weryfikacji w ciagu 24h.
         </p>
       )}
       {status === 'error' && (
