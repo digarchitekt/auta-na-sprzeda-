@@ -38,13 +38,13 @@ export default function HomePage() {
               kicker: '01',
             },
             {
-              title: 'Transparentnosc',
-              text: 'Pelne raporty VIN, dokumenty serwisowe, czytelna umowa. Sprawdzasz, dotykasz, jezdzisz, decydujesz.',
+              title: 'Przygotowanie',
+              text: 'Kazde auto przygotowujemy tak, by bylo bezpieczne i gotowe do jazdy. Czyscimy, polerujemy lakier, naprawiamy odpryski i drobne defekty. Jak nowe.',
               kicker: '02',
             },
             {
               title: 'Wsparcie',
-              text: 'Pomagamy zorganizowac transport, finansowanie i ubezpieczenie. Po zakupie nie znikamy.',
+              text: 'Pomagamy wybrac auto dopasowane do Twoich potrzeb. Doradzamy szczerze - wskazujemy plusy i minusy. Po zakupie zostajemy w kontakcie.',
               kicker: '03',
             },
           ].map((f) => (

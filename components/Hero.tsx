@@ -24,7 +24,7 @@ export default function Hero() {
         <div>
           <span className="inline-flex items-center gap-2 border border-bg-border bg-bg-elevated px-3 py-1 text-xs font-semibold uppercase tracking-widest text-text-secondary">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Opel &middot; Audi &middot; Selekcja
+            3 miesiace gwarancji
           </span>
           <h1 className="mt-6 font-display text-5xl uppercase leading-[0.95] tracking-tight text-text-primary md:text-7xl">
             Sprawdzone auta.
@@ -40,35 +40,62 @@ export default function Hero() {
             <Link href="#oferta" className="btn-primary">
               Zobacz oferte
             </Link>
-            <Link href="/sprzedaj-auto" className="btn-outline">
-              Sprzedaj swoje auto
+            <Link href="/kontakt" className="btn-outline">
+              Zapytaj o auto
             </Link>
           </div>
 
           <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-bg-border pt-8">
             <div>
-              <dt className="text-xs uppercase tracking-wider text-text-muted">Auta w ofercie</dt>
-              <dd className="mt-1 font-display text-3xl text-text-primary">5+</dd>
+              <dt className="text-xs uppercase tracking-wider text-text-muted">W ofercie</dt>
+              <dd className="mt-1 font-display text-3xl text-text-primary">6+</dd>
             </div>
             <div>
-              <dt className="text-xs uppercase tracking-wider text-text-muted">Lat na rynku</dt>
-              <dd className="mt-1 font-display text-3xl text-text-primary">10</dd>
+              <dt className="text-xs uppercase tracking-wider text-text-muted">Sprzedanych aut</dt>
+              <dd className="mt-1 font-display text-3xl text-text-primary">50+</dd>
             </div>
             <div>
-              <dt className="text-xs uppercase tracking-wider text-text-muted">Zadowolonych</dt>
-              <dd className="mt-1 font-display text-3xl text-text-primary">500+</dd>
+              <dt className="text-xs uppercase tracking-wider text-text-muted">Zadowolonych klientow</dt>
+              <dd className="mt-1 font-display text-3xl text-text-primary">50+</dd>
             </div>
           </dl>
         </div>
 
         <div className="relative hidden md:block">
           <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-accent/10 via-transparent to-transparent blur-2xl" />
-          <div className="relative aspect-[5/4] border border-bg-border bg-bg-elevated">
-            <div className="absolute inset-0 grid place-items-center font-display text-[10rem] leading-none tracking-widest text-bg-border">
-              A8
-            </div>
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between border-t border-bg-border pt-4 text-xs uppercase tracking-widest text-text-secondary">
-              <span>Edycja Kolekcjonerska</span>
+          <div className="relative border border-bg-border bg-bg-elevated p-10">
+            <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+              Komis aut uzywanych
+            </span>
+            <h2 className="mt-4 font-display text-4xl uppercase leading-[0.95] tracking-tight md:text-5xl">
+              Auta na sprzedaz.
+              <br />
+              <span className="text-text-secondary">Gotowe do jazdy.</span>
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-text-secondary">
+              Auta sprowadzone z zagranicy, sprawdzone mechanicznie i
+              przygotowane do jazdy. Czysta historia, gotowe dokumenty, mozesz
+              odjechac od reki.
+            </p>
+
+            <ul className="mt-8 space-y-3 text-sm">
+              {[
+                'Sprowadzone i odprawione',
+                'Mechanicznie sprawdzone',
+                'Detailing przed wydaniem',
+                '3 miesiace gwarancji w cenie',
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 text-text-primary">
+                  <span className="grid h-5 w-5 place-items-center bg-accent text-[10px] font-bold text-white">
+                    +
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 flex items-center justify-between border-t border-bg-border pt-5 text-xs uppercase tracking-widest text-text-secondary">
+              <span>Selekcja Opel &middot; Audi</span>
               <span className="text-accent">- 2026 -</span>
             </div>
           </div>
