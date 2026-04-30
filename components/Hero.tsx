@@ -25,14 +25,16 @@ export default function Hero() {
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           3 miesiace gwarancji
         </span>
-        <h1 className="mt-6 max-w-4xl font-display text-5xl uppercase leading-[0.95] tracking-tight text-text-primary md:text-7xl">
-          Auta na sprzedaz
+        <h1 className="mt-6 max-w-5xl font-display text-5xl uppercase leading-[0.95] tracking-tight text-text-primary md:text-7xl">
+          Auta na sprzedaz,
           <br />
-          <span className="text-accent">z zagranicy</span>
+          sprawdzone,{' '}
+          <span className="text-accent">gotowe do jazdy</span>
         </h1>
-        <p className="mt-6 max-w-2xl text-base text-text-secondary md:text-xl">
-          Sprawdzone. Gotowe do jazdy. Sprowadzone i przygotowane przez
-          fachowca z 30-letnim doswiadczeniem.
+        <p className="mt-6 max-w-2xl text-base text-text-secondary md:text-lg">
+          Znajdziesz tu uzywane samochody w roznych segmentach cenowych - dla
+          rodziny, do miasta i bardziej wymagajacych. Kazdy znajdzie cos dla
+          siebie. Rozejrzyj sie po ofercie.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="#oferta" className="btn-primary">
