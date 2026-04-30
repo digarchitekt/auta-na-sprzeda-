@@ -62,16 +62,16 @@ export default function HomePage() {
       <section id="o-nas" className="relative overflow-hidden py-20">
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 opacity-40"
+          className="absolute inset-0"
           style={{
             backgroundImage: 'url(/images/texture-dark.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
-        <div aria-hidden className="absolute inset-0 -z-10 bg-bg/85" />
+        <div aria-hidden className="absolute inset-0 bg-bg/70" />
 
-        <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+        <div className="container-x relative z-10 grid gap-12 lg:grid-cols-[1fr_1.2fr]">
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
               O nas
@@ -197,10 +197,10 @@ export default function HomePage() {
           alt=""
           fill
           sizes="100vw"
-          className="-z-20 object-cover object-center opacity-50"
+          className="object-cover object-center"
         />
-        <div aria-hidden className="absolute inset-0 -z-10 bg-bg/70" />
-        <div className="container-x flex flex-col items-start justify-between gap-6 border border-bg-border bg-bg-card/85 p-10 backdrop-blur md:flex-row md:items-center">
+        <div aria-hidden className="absolute inset-0 bg-bg/70" />
+        <div className="container-x relative z-10 flex flex-col items-start justify-between gap-6 border border-bg-border bg-bg-card/85 p-10 backdrop-blur md:flex-row md:items-center">
           <div>
             <h2 className="font-display text-3xl uppercase tracking-tight md:text-4xl">
               Masz auto na sprzedaz?

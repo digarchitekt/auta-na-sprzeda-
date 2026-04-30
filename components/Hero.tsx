@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-bg-border bg-bg">
+    <section className="relative overflow-hidden border-b border-bg-border">
       {/* Background image */}
       <Image
         src="/images/hero-bg.jpg"
@@ -11,12 +11,12 @@ export default function Hero() {
         fill
         priority
         sizes="100vw"
-        className="-z-20 object-cover object-center"
+        className="object-cover object-center"
       />
       {/* Dark overlay so text is readable */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0"
         style={{
           background:
             'linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.75) 60%, rgba(10,10,10,0.95) 100%)',
@@ -25,14 +25,14 @@ export default function Hero() {
       {/* Subtle accent glow */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 opacity-40"
+        className="absolute inset-0 opacity-40"
         style={{
           backgroundImage:
-            'radial-gradient(circle at 80% 30%, rgba(225,29,46,0.18), transparent 45%)',
+            'radial-gradient(circle at 80% 30%, rgba(225,29,46,0.25), transparent 50%)',
         }}
       />
 
-      <div className="container-x relative flex flex-col items-center py-28 text-center md:py-36 lg:py-44">
+      <div className="container-x relative z-10 flex flex-col items-center py-28 text-center md:py-36 lg:py-44">
         <span className="inline-flex items-center gap-2 border border-bg-border bg-bg-elevated/80 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-text-secondary backdrop-blur">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           3 miesiace gwarancji
