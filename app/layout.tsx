@@ -20,7 +20,10 @@ export const metadata: Metadata = {
     locale: 'pl_PL',
     type: 'website',
   },
-  robots: { index: true, follow: true },
+  robots:
+    process.env.NEXT_PUBLIC_ENV === 'production'
+      ? { index: true, follow: true }
+      : { index: false, follow: false, noarchive: true, nosnippet: true },
 };
 
 export default function RootLayout({
