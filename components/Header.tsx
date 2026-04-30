@@ -4,6 +4,7 @@ import { company } from '@/data/company';
 const nav = [
   { href: '/', label: 'Start' },
   { href: '/#oferta', label: 'Oferta' },
+  { href: '/#o-nas', label: 'O nas' },
   { href: '/sprzedaj-auto', label: 'Sprzedaj Auto' },
   { href: '/kontakt', label: 'Kontakt' },
 ];
