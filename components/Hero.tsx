@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import Counter from '@/components/Counter';
 import Reveal from '@/components/Reveal';
@@ -6,17 +5,19 @@ import Reveal from '@/components/Reveal';
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* Background image with slow Ken Burns */}
-      <div className="ken-burns absolute inset-0">
-        <Image
-          src="/images/hero-bg.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-      </div>
+      {/* Background video with poster fallback */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover object-center"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/images/hero-bg.jpg"
+        aria-hidden
+      >
+        <source src="/videos/hero.mp4" type="video/mp4" />
+      </video>
       {/* Dark overlay so text is readable */}
       <div
         aria-hidden
