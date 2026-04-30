@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
 import VehicleCard from '@/components/VehicleCard';
@@ -58,8 +59,19 @@ export default function HomePage() {
       </section>
 
       {/* O nas / Dlaczego my */}
-      <section id="o-nas" className="container-x py-20">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+      <section id="o-nas" className="relative overflow-hidden py-20">
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 opacity-40"
+          style={{
+            backgroundImage: 'url(/images/texture-dark.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-bg/85" />
+
+        <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.2fr]">
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
               O nas
@@ -108,7 +120,25 @@ export default function HomePage() {
           </div>
 
           {/* Wlasciciel / fachowiec */}
-          <div className="card p-8">
+          <div className="card overflow-hidden">
+            <div className="relative h-48 w-full overflow-hidden border-b border-bg-border bg-bg-elevated md:h-56">
+              <Image
+                src="/images/key-handover.jpg"
+                alt="Wlasciciel wreczajacy klucze"
+                fill
+                sizes="(max-width: 1024px) 100vw, 700px"
+                className="object-cover object-center"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'linear-gradient(180deg, transparent 50%, rgba(22,22,22,0.7) 100%)',
+                }}
+              />
+            </div>
+            <div className="p-8">
             <span className="text-xs font-semibold uppercase tracking-widest text-text-secondary">
               Kto za tym stoi
             </span>
@@ -156,12 +186,21 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="container-x py-20">
-        <div className="flex flex-col items-start justify-between gap-6 border border-bg-border bg-bg-card p-10 md:flex-row md:items-center">
+      <section className="relative overflow-hidden py-20">
+        <Image
+          src="/images/audi-front.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="-z-20 object-cover object-center opacity-50"
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-bg/70" />
+        <div className="container-x flex flex-col items-start justify-between gap-6 border border-bg-border bg-bg-card/85 p-10 backdrop-blur md:flex-row md:items-center">
           <div>
             <h2 className="font-display text-3xl uppercase tracking-tight md:text-4xl">
               Masz auto na sprzedaz?
