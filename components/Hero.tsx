@@ -32,7 +32,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="container-x relative z-10 flex flex-col items-center py-28 text-center md:py-36 lg:py-44">
+      <div className="container-x relative z-10 flex flex-col items-center pb-28 pt-20 text-center md:pb-36 md:pt-24 lg:pb-44 lg:pt-28">
         <span className="inline-flex items-center gap-2 border border-bg-border bg-bg-elevated/80 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-text-secondary backdrop-blur">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           3 miesiace gwarancji
