@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import ContactForm from '@/components/ContactForm';
 import { company } from '@/data/company';
 
@@ -9,8 +10,27 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="container-x py-16">
-      <div className="border-b border-bg-border pb-8">
+    <section className="relative min-h-[calc(100vh-4rem)] overflow-hidden">
+      {/* Fixed full-page background */}
+      <Image
+        src="/images/hero-bg.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.85) 100%)',
+        }}
+      />
+
+      <div className="container-x relative z-10 py-16">
+        <div className="border-b border-bg-border pb-8">
         <span className="text-xs font-semibold uppercase tracking-widest text-accent">
           Kontakt
         </span>
@@ -69,6 +89,7 @@ export default function ContactPage() {
             </ul>
           </div>
         </aside>
+        </div>
       </div>
     </section>
   );
