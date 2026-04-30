@@ -203,8 +203,10 @@ export const vehicles: Vehicle[] = [
     images: [
       '/images/vehicles/astra-h-2022/01.jpg',
       '/images/vehicles/astra-h-2022/02.jpg',
-      '/images/vehicles/astra-h-2022/03.jpg',
+      '/images/vehicles/astra-h-2022/03.HEIC',
       '/images/vehicles/astra-h-2022/04.jpg',
+      '/images/vehicles/astra-h-2022/05.jpg',
+      '/images/vehicles/astra-h-2022/06.jpg',
     ],
   },
   {
