@@ -2,21 +2,42 @@
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 
+type Variant =
+  | 'fade-up'
+  | 'fade-down'
+  | 'slide-left'
+  | 'slide-right'
+  | 'scale'
+  | 'blur';
+
 type Props = {
   children: ReactNode;
   delay?: number;
   className?: string;
-  /** translateY in px while hidden. Default 24. */
-  offset?: number;
-  /** Disable animation entirely (for SSR-safe wrappers). */
+  variant?: Variant;
+  /** Distance for translate variants */
+  distance?: number;
+  /** Duration in ms */
+  duration?: number;
   as?: 'div' | 'section' | 'article' | 'li';
+};
+
+const hidden: Record<Variant, (d: number) => string> = {
+  'fade-up': (d) => `translateY(${d}px)`,
+  'fade-down': (d) => `translateY(-${d}px)`,
+  'slide-left': (d) => `translateX(${d}px)`,
+  'slide-right': (d) => `translateX(-${d}px)`,
+  scale: () => `scale(0.92)`,
+  blur: () => `translateY(8px)`,
 };
 
 export default function Reveal({
   children,
   delay = 0,
   className = '',
-  offset = 24,
+  variant = 'fade-up',
+  distance = 32,
+  duration = 800,
   as: Tag = 'div',
 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
@@ -24,16 +45,12 @@ export default function Reveal({
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
-    // Respect prefers-reduced-motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setVisible(true);
       return;
     }
-
     const el = ref.current;
     if (!el) return;
-
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -45,10 +62,12 @@ export default function Reveal({
       },
       { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
     );
-
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
+
+  const transformHidden = hidden[variant](distance);
+  const filterHidden = variant === 'blur' ? 'blur(8px)' : 'none';
 
   // @ts-expect-error - polymorphic ref
   return (
@@ -56,11 +75,11 @@ export default function Reveal({
       ref={ref}
       style={{
         transitionDelay: `${delay}ms`,
-        transform: visible ? 'translateY(0)' : `translateY(${offset}px)`,
+        transform: visible ? 'none' : transformHidden,
         opacity: visible ? 1 : 0,
-        transition:
-          'transform 700ms cubic-bezier(0.22, 1, 0.36, 1), opacity 700ms ease-out',
-        willChange: visible ? 'auto' : 'transform, opacity',
+        filter: visible ? 'none' : filterHidden,
+        transition: `transform ${duration}ms cubic-bezier(0.22, 1, 0.36, 1), opacity ${duration}ms ease-out, filter ${duration}ms ease-out`,
+        willChange: visible ? 'auto' : 'transform, opacity, filter',
       }}
       className={className}
     >

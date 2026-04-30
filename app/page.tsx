@@ -3,12 +3,26 @@ import Link from 'next/link';
 import Hero from '@/components/Hero';
 import VehicleCard from '@/components/VehicleCard';
 import Reveal from '@/components/Reveal';
+import Counter from '@/components/Counter';
+import Marquee from '@/components/Marquee';
 import { vehicles } from '@/data/vehicles';
 
 export default function HomePage() {
   return (
     <>
       <Hero />
+
+      <Marquee
+        items={[
+          'OPEL',
+          'AUDI',
+          'SELEKCJA',
+          'GWARANCJA 3 MC',
+          'GOTOWE DO JAZDY',
+          'SPROWADZANE Z ZAGRANICY',
+          '500+ AUT',
+        ]}
+      />
 
       <section id="oferta" className="relative overflow-hidden py-20">
         <div
@@ -31,7 +45,7 @@ export default function HomePage() {
           }}
         />
 
-        <Reveal className="container-x relative z-10 flex flex-wrap items-end justify-between gap-4 border-b border-bg-border pb-6">
+        <Reveal variant="slide-right" duration={900} className="container-x relative z-10 flex flex-wrap items-end justify-between gap-4 border-b border-bg-border pb-6">
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
               Aktualna oferta
@@ -46,7 +60,7 @@ export default function HomePage() {
 
         <div className="container-x relative z-10 mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {vehicles.map((v, i) => (
-            <Reveal key={v.slug} delay={i * 80}>
+            <Reveal key={v.slug} variant="scale" delay={i * 100} duration={700}>
               <VehicleCard vehicle={v} />
             </Reveal>
           ))}
@@ -71,15 +85,18 @@ export default function HomePage() {
               text: 'Pomagamy wybrac auto dopasowane do Twoich potrzeb. Doradzamy szczerze - wskazujemy plusy i minusy. Po zakupie zostajemy w kontakcie.',
               kicker: '03',
             },
-          ].map((f, i) => (
-            <Reveal key={f.kicker} delay={i * 120}>
-              <div className="card p-8">
-                <span className="font-display text-5xl text-accent">{f.kicker}</span>
-                <h3 className="mt-4 text-xl font-semibold uppercase tracking-wider">{f.title}</h3>
-                <p className="mt-3 text-sm text-text-secondary">{f.text}</p>
-              </div>
-            </Reveal>
-          ))}
+          ].map((f, i) => {
+            const variant = i === 0 ? 'slide-right' : i === 1 ? 'fade-up' : 'slide-left';
+            return (
+              <Reveal key={f.kicker} variant={variant} delay={i * 150} duration={800}>
+                <div className="card p-8">
+                  <span className="font-display text-5xl text-accent">{f.kicker}</span>
+                  <h3 className="mt-4 text-xl font-semibold uppercase tracking-wider">{f.title}</h3>
+                  <p className="mt-3 text-sm text-text-secondary">{f.text}</p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -97,7 +114,7 @@ export default function HomePage() {
         <div aria-hidden className="absolute inset-0 bg-bg/70" />
 
         <div className="container-x relative z-10 grid gap-12 lg:grid-cols-[1fr_1.2fr]">
-          <Reveal>
+          <Reveal variant="slide-right" duration={900}>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
               O nas
             </span>
@@ -130,22 +147,26 @@ export default function HomePage() {
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinejoin="round"
+                    className="star-pop"
+                    style={{ animationDelay: `${500 + i * 120}ms` }}
                   >
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                   </svg>
                 ))}
               </div>
               <div className="leading-tight">
-                <div className="font-display text-2xl text-text-primary">4,7 / 5</div>
+                <div className="font-display text-2xl text-text-primary">
+                  <Counter to={4.7} decimals={1} /> / 5
+                </div>
                 <div className="text-xs uppercase tracking-wider text-text-muted">
-                  50+ pozytywnych opinii
+                  <Counter to={50} suffix="+" /> pozytywnych opinii
                 </div>
               </div>
             </div>
           </Reveal>
 
           {/* Wlasciciel / fachowiec */}
-          <Reveal delay={150} className="card overflow-hidden">
+          <Reveal variant="slide-left" delay={150} duration={900} className="card overflow-hidden">
             <div className="relative h-48 w-full overflow-hidden border-b border-bg-border bg-bg-elevated md:h-56">
               <Image
                 src="/images/key-handover.jpg"
@@ -180,11 +201,15 @@ export default function HomePage() {
             <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-bg-border pt-6">
               <div>
                 <dt className="text-[11px] uppercase tracking-wider text-text-muted">Lat w branzy</dt>
-                <dd className="mt-1 font-display text-3xl text-text-primary">30</dd>
+                <dd className="mt-1 font-display text-3xl text-text-primary">
+                  <Counter to={30} duration={1800} />
+                </dd>
               </div>
               <div>
                 <dt className="text-[11px] uppercase tracking-wider text-text-muted">Sprowadzonych aut</dt>
-                <dd className="mt-1 font-display text-3xl text-text-primary">500+</dd>
+                <dd className="mt-1 font-display text-3xl text-text-primary">
+                  <Counter to={500} suffix="+" duration={2000} />
+                </dd>
               </div>
               <div>
                 <dt className="text-[11px] uppercase tracking-wider text-text-muted">Specjalizacje</dt>
@@ -225,7 +250,7 @@ export default function HomePage() {
           className="object-cover object-center"
         />
         <div aria-hidden className="absolute inset-0 bg-bg/70" />
-        <div className="container-x relative z-10 flex flex-col items-start justify-between gap-6 border border-bg-border bg-bg-card/85 p-10 backdrop-blur md:flex-row md:items-center">
+        <Reveal variant="scale" duration={800} className="container-x relative z-10 flex flex-col items-start justify-between gap-6 border border-bg-border bg-bg-card/85 p-10 backdrop-blur md:flex-row md:items-center">
           <div>
             <h2 className="font-display text-3xl uppercase tracking-tight md:text-4xl">
               Masz auto na sprzedaz?
@@ -235,10 +260,10 @@ export default function HomePage() {
               Reszta jest po naszej stronie.
             </p>
           </div>
-          <Link href="/sprzedaj-auto" className="btn-primary">
+          <Link href="/sprzedaj-auto" className="btn-primary btn-shimmer">
             Wystaw swoje auto
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );
