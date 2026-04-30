@@ -9,8 +9,19 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <section id="oferta" className="container-x py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-bg-border pb-6">
+      <section id="oferta" className="relative overflow-hidden py-20">
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(/images/texture-dark.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div aria-hidden className="absolute inset-0 bg-bg/75" />
+
+        <div className="container-x relative z-10 flex flex-wrap items-end justify-between gap-4 border-b border-bg-border pb-6">
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
               Aktualna oferta
@@ -23,7 +34,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="container-x relative z-10 mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {vehicles.map((v) => (
             <VehicleCard key={v.slug} vehicle={v} />
           ))}
