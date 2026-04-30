@@ -6,7 +6,7 @@ export default function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
   return (
     <Link
       href={`/auta/${vehicle.slug}`}
-      className="card group overflow-hidden hover:border-accent"
+      className="card card-lift group overflow-hidden hover:border-accent"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-bg-elevated">
         {/* eslint-disable-next-line @next/next/no-img-element */}

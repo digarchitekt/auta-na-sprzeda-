@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
 import VehicleCard from '@/components/VehicleCard';
+import Reveal from '@/components/Reveal';
 import { vehicles } from '@/data/vehicles';
 
 export default function HomePage() {
@@ -20,8 +21,17 @@ export default function HomePage() {
           }}
         />
         <div aria-hidden className="absolute inset-0 bg-bg/75" />
+        {/* Top fade - smooth transition from Hero */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-40"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          }}
+        />
 
-        <div className="container-x relative z-10 flex flex-wrap items-end justify-between gap-4 border-b border-bg-border pb-6">
+        <Reveal className="container-x relative z-10 flex flex-wrap items-end justify-between gap-4 border-b border-bg-border pb-6">
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
               Aktualna oferta
@@ -32,11 +42,13 @@ export default function HomePage() {
             Kazde auto przed sprzedaza przechodzi pelna inspekcje techniczna i weryfikacje
             historii. Zero niespodzianek.
           </p>
-        </div>
+        </Reveal>
 
         <div className="container-x relative z-10 mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {vehicles.map((v) => (
-            <VehicleCard key={v.slug} vehicle={v} />
+          {vehicles.map((v, i) => (
+            <Reveal key={v.slug} delay={i * 80}>
+              <VehicleCard vehicle={v} />
+            </Reveal>
           ))}
         </div>
       </section>
@@ -59,12 +71,14 @@ export default function HomePage() {
               text: 'Pomagamy wybrac auto dopasowane do Twoich potrzeb. Doradzamy szczerze - wskazujemy plusy i minusy. Po zakupie zostajemy w kontakcie.',
               kicker: '03',
             },
-          ].map((f) => (
-            <div key={f.kicker} className="card p-8">
-              <span className="font-display text-5xl text-accent">{f.kicker}</span>
-              <h3 className="mt-4 text-xl font-semibold uppercase tracking-wider">{f.title}</h3>
-              <p className="mt-3 text-sm text-text-secondary">{f.text}</p>
-            </div>
+          ].map((f, i) => (
+            <Reveal key={f.kicker} delay={i * 120}>
+              <div className="card p-8">
+                <span className="font-display text-5xl text-accent">{f.kicker}</span>
+                <h3 className="mt-4 text-xl font-semibold uppercase tracking-wider">{f.title}</h3>
+                <p className="mt-3 text-sm text-text-secondary">{f.text}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -83,7 +97,7 @@ export default function HomePage() {
         <div aria-hidden className="absolute inset-0 bg-bg/70" />
 
         <div className="container-x relative z-10 grid gap-12 lg:grid-cols-[1fr_1.2fr]">
-          <div>
+          <Reveal>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
               O nas
             </span>
@@ -104,7 +118,7 @@ export default function HomePage() {
             </p>
 
             {/* Recenzje */}
-            <div className="mt-8 inline-flex items-center gap-4 border border-bg-border bg-bg-elevated px-5 py-4">
+            <div className="card-lift mt-8 inline-flex items-center gap-4 border border-bg-border bg-bg-elevated px-5 py-4">
               <div className="flex items-center gap-0.5 text-accent" aria-label="Ocena 4,7 na 5">
                 {[0, 1, 2, 3, 4].map((i) => (
                   <svg
@@ -128,10 +142,10 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Wlasciciel / fachowiec */}
-          <div className="card overflow-hidden">
+          <Reveal delay={150} className="card overflow-hidden">
             <div className="relative h-48 w-full overflow-hidden border-b border-bg-border bg-bg-elevated md:h-56">
               <Image
                 src="/images/key-handover.jpg"
@@ -198,7 +212,7 @@ export default function HomePage() {
               ))}
             </ul>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 

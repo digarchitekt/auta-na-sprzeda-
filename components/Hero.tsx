@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-bg-border">
+    <section className="relative overflow-hidden">
       {/* Background image */}
       <Image
         src="/images/hero-bg.jpg"
@@ -19,7 +19,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.75) 60%, rgba(10,10,10,0.95) 100%)',
+            'linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.75) 55%, rgba(10,10,10,1) 100%)',
         }}
       />
       {/* Subtle accent glow */}
@@ -34,7 +34,7 @@ export default function Hero() {
 
       <div className="container-x relative z-10 flex flex-col items-center pb-28 pt-20 text-center md:pb-36 md:pt-24 lg:pb-44 lg:pt-28">
         <span className="inline-flex items-center gap-2 border border-bg-border bg-bg-elevated/80 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-text-secondary backdrop-blur">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-accent" />
           3 miesiace gwarancji
         </span>
         <h1 className="mt-6 max-w-5xl font-display text-5xl uppercase leading-[0.95] tracking-tight text-text-primary md:text-7xl">

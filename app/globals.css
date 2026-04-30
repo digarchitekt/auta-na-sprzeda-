@@ -56,3 +56,48 @@ body {
     @apply rounded-sm border border-bg-border bg-bg-card transition-colors duration-150;
   }
 }
+
+/* Pulsujaca kropka akcentowa */
+@keyframes pulse-dot {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(225, 29, 46, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(225, 29, 46, 0);
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Lekki hover lift na kartach aut */
+.card-lift {
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 200ms ease-out,
+              box-shadow 250ms ease-out;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(225, 29, 46, 0.15);
+}
+
+/* Subtelny float dla badge'a w hero */
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot,
+  .float-badge,
+  .card-lift {
+    animation: none;
+    transition: none;
+  }
+  .card-lift:hover {
+    transform: none;
+  }
+}
