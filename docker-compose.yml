@@ -7,18 +7,10 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    networks:
-      - traefik
     expose:
       - "3000"
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=traefik"
-
-      # HTTP -> HTTPS redirect
-      - "traefik.http.routers.autanasprzedaz-http.rule=Host(`autanasprzedaz.com`) || Host(`www.autanasprzedaz.com`)"
-      - "traefik.http.routers.autanasprzedaz-http.entrypoints=web"
-      - "traefik.http.routers.autanasprzedaz-http.middlewares=https-redirect"
 
       # HTTPS router with Let's Encrypt
       - "traefik.http.routers.autanasprzedaz.rule=Host(`autanasprzedaz.com`) || Host(`www.autanasprzedaz.com`)"
@@ -32,13 +24,5 @@ services:
       - "traefik.http.middlewares.www-redirect.redirectregex.replacement=https://autanasprzedaz.com/$${1}"
       - "traefik.http.middlewares.www-redirect.redirectregex.permanent=true"
 
-      # https-redirect middleware (used by HTTP router)
-      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
-
-      # Backend service
+      # Backend service port
       - "traefik.http.services.autanasprzedaz.loadbalancer.server.port=3000"
-
-networks:
-  traefik:
-    external: true
