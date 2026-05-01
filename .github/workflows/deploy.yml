@@ -1,0 +1,36 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy via SSH
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull, build & restart on VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            set -e
+            cd ~/apps/autanasprzedaz
+            echo "==> Pulling latest from origin/main"
+            git fetch origin main
+            git reset --hard origin/main
+            echo "==> Building & restarting container"
+            docker compose pull || true
+            docker compose up -d --build
+            echo "==> Cleaning unused images"
+            docker image prune -f
+            echo "==> Done. Container status:"
+            docker compose ps

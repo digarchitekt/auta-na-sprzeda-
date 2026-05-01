@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.github
+.env
+.env.local
+.env.*.local
+npm-debug.log*
+.DS_Store
+.vscode
+.idea
+README.md
+BRIEFING.md
+AI_PROMPTS.md
+*.md
+!data/**/*.md
