@@ -69,9 +69,10 @@ export default function Reveal({
   const transformHidden = hidden[variant](distance);
   const filterHidden = variant === 'blur' ? 'blur(8px)' : 'none';
 
-  // @ts-expect-error - polymorphic ref
+  const Component = Tag as React.ElementType;
+
   return (
-    <Tag
+    <Component
       ref={ref}
       style={{
         transitionDelay: `${delay}ms`,
@@ -84,6 +85,6 @@ export default function Reveal({
       className={className}
     >
       {children}
-    </Tag>
+    </Component>
   );
 }
