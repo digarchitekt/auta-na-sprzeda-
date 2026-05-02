@@ -49,10 +49,19 @@ export default function MobileNav() {
         </svg>
       </button>
 
-      {/* Fullscreen overlay menu */}
+      {/* Fullscreen overlay menu — solid dark with subtle glass feel */}
       <div
-        style={{ backgroundColor: 'rgba(10, 10, 10, 0.7)' }}
-        className={`fixed inset-0 z-50 flex flex-col transition-opacity duration-300 md:hidden ${
+        style={{
+          backgroundColor: '#0a0a0a',
+          backgroundImage:
+            'linear-gradient(180deg, rgba(20,20,20,0.98) 0%, rgba(10,10,10,1) 100%)',
+          backdropFilter: 'blur(40px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+          WebkitTransform: 'translateZ(0)',
+          transform: 'translateZ(0)',
+          isolation: 'isolate',
+        }}
+        className={`fixed inset-0 z-[60] flex flex-col transition-opacity duration-300 md:hidden ${
           open ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
         aria-hidden={!open}
