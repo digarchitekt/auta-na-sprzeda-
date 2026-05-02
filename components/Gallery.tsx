@@ -130,54 +130,60 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
       {/* Zoom overlay */}
       {zoomed && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
-          onClick={() => setZoomed(false)}
+          className="fixed inset-0 z-[100]"
           role="dialog"
           aria-modal="true"
           aria-label="Powiekszone zdjecie"
         >
+          {/* Backdrop - click to close */}
+          <div
+            className="absolute inset-0 bg-black/95"
+            onClick={() => setZoomed(false)}
+          />
+
+          {/* Image - centered, no click capture */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={images[active]}
+              alt={alt}
+              className="max-h-[90vh] max-w-[95vw] object-contain"
+            />
+          </div>
+
+          {/* Close X */}
           <button
             type="button"
             aria-label="Zamknij"
             onClick={() => setZoomed(false)}
-            className="absolute right-4 top-4 grid h-11 w-11 place-items-center border border-bg-border bg-bg/80 text-xl text-text-primary backdrop-blur hover:border-accent hover:text-accent"
+            className="absolute right-4 top-4 z-10 grid h-12 w-12 place-items-center border border-bg-border bg-bg-elevated text-2xl text-text-primary hover:border-accent hover:text-accent"
           >
             ✕
           </button>
 
+          {/* Prev */}
           <button
             type="button"
             aria-label="Poprzednie zdjecie"
-            onClick={(e) => {
-              e.stopPropagation();
-              prev();
-            }}
-            className="absolute left-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center border border-bg-border bg-bg/80 text-3xl text-text-primary backdrop-blur hover:border-accent hover:text-accent"
+            onClick={prev}
+            className="absolute left-4 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center border border-bg-border bg-bg-elevated text-3xl text-text-primary hover:border-accent hover:text-accent"
           >
             ‹
           </button>
+
+          {/* Next */}
           <button
             type="button"
             aria-label="Nastepne zdjecie"
-            onClick={(e) => {
-              e.stopPropagation();
-              next();
-            }}
-            className="absolute right-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center border border-bg-border bg-bg/80 text-3xl text-text-primary backdrop-blur hover:border-accent hover:text-accent"
+            onClick={next}
+            className="absolute right-4 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center border border-bg-border bg-bg-elevated text-3xl text-text-primary hover:border-accent hover:text-accent"
           >
             ›
           </button>
 
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={images[active]}
-            alt={alt}
-            onClick={(e) => e.stopPropagation()}
-            className="max-h-[90vh] max-w-[95vw] object-contain"
-          />
-
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-bg/80 px-3 py-1.5 text-sm text-text-secondary backdrop-blur">
-            {active + 1} / {images.length} &middot; ESC aby zamknac &middot; ‹ ›
+          {/* Counter */}
+          <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 bg-bg-elevated px-3 py-1.5 text-sm text-text-secondary">
+            {active + 1} / {images.length} &middot; ESC aby zamknac
           </div>
         </div>
       )}
