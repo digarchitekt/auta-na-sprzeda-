@@ -93,11 +93,11 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
             style={{ transform: `translate3d(-${translateX}px, 0, 0)` }}
           >
             {items.map((child, i) => (
-              <div key={i} className="shrink-0 w-[400px] xl:w-[440px]">
+              <div key={i} className="shrink-0 w-[44vw] max-w-[640px]">
                 {child}
               </div>
             ))}
-            <div className="shrink-0 w-12" aria-hidden />
+            <div className="shrink-0 w-16" aria-hidden />
           </div>
         </div>
       </section>
