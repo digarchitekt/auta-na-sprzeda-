@@ -66,6 +66,16 @@ export default function HomePage() {
             ))}
           </VehicleCarousel>
         </div>
+
+        <div className="container-x relative z-10 mt-12 flex justify-center">
+          <Link
+            href="/auta"
+            className="group inline-flex items-center gap-3 border border-bg-border bg-bg-elevated px-8 py-4 text-sm font-bold uppercase tracking-wider text-text-primary transition-colors hover:border-accent hover:text-accent"
+          >
+            Zobacz wszystkie auta
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
+        </div>
       </section>
 
       <section className="border-y border-bg-border bg-bg-elevated py-20">

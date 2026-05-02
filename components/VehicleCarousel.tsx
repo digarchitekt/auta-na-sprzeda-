@@ -6,8 +6,11 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
   const items = Children.toArray(children);
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const mobileScrollerRef = useRef<HTMLDivElement>(null);
   const [translateX, setTranslateX] = useState(0);
   const [sectionHeight, setSectionHeight] = useState<string>('100vh');
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -71,13 +74,75 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
     };
   }, [items.length]);
 
+  // Track mobile scroller arrows enabled state
+  useEffect(() => {
+    const el = mobileScrollerRef.current;
+    if (!el) return;
+    const update = () => {
+      setCanPrev(el.scrollLeft > 4);
+      setCanNext(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+    };
+    update();
+    el.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      el.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, [items.length]);
+
+  const scrollMobile = (dir: 1 | -1) => {
+    const el = mobileScrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>('[data-card]');
+    const step = card ? card.offsetWidth + 16 : el.clientWidth * 0.85;
+    el.scrollBy({ left: dir * step, behavior: 'smooth' });
+  };
+
   return (
     <>
-      {/* Mobile: simple vertical grid (no swipe, no scroll-jack) */}
-      <div className="container-x grid gap-6 sm:grid-cols-2 lg:hidden">
-        {items.map((child, i) => (
-          <div key={i}>{child}</div>
-        ))}
+      {/* Mobile / tablet: horizontal snap scroller with arrow buttons */}
+      <div className="relative lg:hidden">
+        <div
+          ref={mobileScrollerRef}
+          className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-5 pb-2"
+          style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
+        >
+          <style jsx>{`
+            div::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
+          {items.map((child, i) => (
+            <div
+              key={i}
+              data-card
+              className="shrink-0 snap-start basis-[82%] sm:basis-[60%] md:basis-[44%]"
+            >
+              {child}
+            </div>
+          ))}
+        </div>
+
+        {/* Arrows */}
+        <button
+          type="button"
+          aria-label="Poprzednie"
+          onClick={() => scrollMobile(-1)}
+          disabled={!canPrev}
+          className="absolute left-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center border border-bg-border bg-bg/85 text-2xl text-text-primary backdrop-blur transition disabled:opacity-30 hover:border-accent hover:text-accent"
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          aria-label="Nastepne"
+          onClick={() => scrollMobile(1)}
+          disabled={!canNext}
+          className="absolute right-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center border border-bg-border bg-bg/85 text-2xl text-text-primary backdrop-blur transition disabled:opacity-30 hover:border-accent hover:text-accent"
+        >
+          ›
+        </button>
       </div>
 
       {/* Desktop: scroll-jacked horizontal pin */}
