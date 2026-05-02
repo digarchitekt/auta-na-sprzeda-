@@ -44,7 +44,7 @@ export default function Hero() {
               gotowe do jazdy
               <span
                 aria-hidden
-                className="glow-line absolute -bottom-1 left-0 h-[3px] w-full bg-accent"
+                className="draw-line absolute -bottom-1 left-0 h-[3px] w-full bg-accent"
               />
             </span>
           </h1>

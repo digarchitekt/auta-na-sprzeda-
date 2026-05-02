@@ -198,14 +198,16 @@ body {
   animation: star-pop 600ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* Glow underline pod nagłówkiem hero */
-@keyframes glow-line {
-  0%, 100% { box-shadow: 0 0 12px 0 rgba(225,29,46,0.5); }
-  50%      { box-shadow: 0 0 24px 2px rgba(225,29,46,0.85); }
+/* Underline pod nagłówkiem hero — wjeżdża z lewej raz na wejscie strony */
+@keyframes draw-line {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
-.glow-line {
-  animation: glow-line 3s ease-in-out infinite;
+.draw-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: draw-line 900ms cubic-bezier(0.22, 1, 0.36, 1) 800ms forwards;
 }
 
 /* Shimmer sweep dla CTA */

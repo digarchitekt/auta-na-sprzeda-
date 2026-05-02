@@ -4,7 +4,6 @@ export default function HeroVideo() {
       className="absolute inset-0 h-full w-full object-cover object-center"
       autoPlay
       muted
-      loop
       playsInline
       preload="metadata"
       poster="/images/hero-bg.jpg"
