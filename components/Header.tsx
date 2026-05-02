@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { company } from '@/data/company';
-import MobileNav from '@/components/MobileNav';
 
 const nav = [
   { href: '/', label: 'Start' },
@@ -12,7 +11,7 @@ const nav = [
 
 export default function Header() {
   return (
-    <div className="sticky top-0 z-40">
+    <div className="sticky top-0 z-40 hidden md:block">
       <header className="liquid-glass mx-auto flex h-14 w-full max-w-container items-center justify-between px-4 md:h-16 md:px-6">
         <Link
           href="/"
@@ -43,7 +42,6 @@ export default function Header() {
             <span className="pulse-dot h-2 w-2 rounded-full bg-accent" aria-hidden />
             {company.phone}
           </a>
-          <MobileNav />
         </div>
       </header>
     </div>
