@@ -19,6 +19,13 @@ body {
   font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
+/* Reserve space at bottom on mobile for fixed bottom nav */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 ::selection {
   background: #e11d2e;
   color: #ffffff;
@@ -208,7 +215,7 @@ body {
 .draw-line {
   transform: scaleX(0);
   transform-origin: left center;
-  animation: draw-line 900ms cubic-bezier(0.22, 1, 0.36, 1) 800ms forwards;
+  animation: draw-line 2200ms cubic-bezier(0.22, 1, 0.36, 1) 600ms forwards;
 }
 
 /* Shimmer sweep dla CTA */
