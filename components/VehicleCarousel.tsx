@@ -128,39 +128,41 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
           ))}
         </div>
 
-        {/* Pagination dots */}
+        {/* Controls — arrows + dots below the card, never covering it */}
         {items.length > 1 && (
-          <div className="mt-4 flex justify-center gap-2">
-            {items.map((_, i) => (
-              <span
-                key={i}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === currentIdx ? 'w-6 bg-accent' : 'w-1.5 bg-bg-border'
-                }`}
-              />
-            ))}
+          <div className="mt-5 flex items-center justify-center gap-4">
+            <button
+              type="button"
+              aria-label="Poprzednie"
+              onClick={() => scrollMobile(-1)}
+              disabled={!canPrev}
+              className="grid h-11 w-11 place-items-center border border-bg-border bg-bg-elevated text-2xl text-text-primary transition disabled:opacity-30 hover:border-accent hover:text-accent"
+            >
+              ‹
+            </button>
+
+            <div className="flex items-center gap-2">
+              {items.map((_, i) => (
+                <span
+                  key={i}
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === currentIdx ? 'w-6 bg-accent' : 'w-1.5 bg-bg-border'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              aria-label="Nastepne"
+              onClick={() => scrollMobile(1)}
+              disabled={!canNext}
+              className="grid h-11 w-11 place-items-center border border-bg-border bg-bg-elevated text-2xl text-text-primary transition disabled:opacity-30 hover:border-accent hover:text-accent"
+            >
+              ›
+            </button>
           </div>
         )}
-
-        {/* Arrows */}
-        <button
-          type="button"
-          aria-label="Poprzednie"
-          onClick={() => scrollMobile(-1)}
-          disabled={!canPrev}
-          className="absolute left-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center border border-bg-border bg-bg/85 text-2xl text-text-primary backdrop-blur transition disabled:opacity-30 hover:border-accent hover:text-accent"
-        >
-          ‹
-        </button>
-        <button
-          type="button"
-          aria-label="Nastepne"
-          onClick={() => scrollMobile(1)}
-          disabled={!canNext}
-          className="absolute right-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center border border-bg-border bg-bg/85 text-2xl text-text-primary backdrop-blur transition disabled:opacity-30 hover:border-accent hover:text-accent"
-        >
-          ›
-        </button>
       </div>
 
       {/* Desktop: scroll-jacked horizontal pin */}
