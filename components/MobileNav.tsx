@@ -51,59 +51,60 @@ export default function MobileNav() {
         </svg>
       </button>
 
+      {/* Backdrop */}
       <div
-        className={`fixed inset-0 z-50 md:hidden ${
-          open ? '' : 'pointer-events-none'
+        onClick={() => setOpen(false)}
+        className={`fixed inset-0 z-50 bg-black/80 transition-opacity duration-300 md:hidden ${
+          open ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        aria-hidden
+      />
+
+      {/* Drawer */}
+      <nav
+        className={`fixed right-0 top-0 z-50 flex h-full w-80 max-w-[85vw] flex-col bg-bg-elevated transition-transform duration-300 ease-out md:hidden ${
+          open ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-hidden={!open}
       >
-        <div
-          className={`absolute inset-0 bg-black/85 backdrop-blur-sm transition-opacity duration-300 ${
-            open ? 'opacity-100' : 'opacity-0'
-          }`}
-          onClick={() => setOpen(false)}
-        />
-
-        <nav
-          className={`liquid-glass absolute right-0 top-0 flex h-full w-80 max-w-[85%] flex-col gap-1 p-6 pt-20 transition-transform duration-300 ease-out ${
-            open ? 'translate-x-0' : 'translate-x-full'
-          }`}
-        >
+        <div className="flex h-14 items-center justify-between border-b border-bg-border px-5">
+          <span className="font-display text-lg tracking-wider text-text-primary">
+            <span className="text-accent">/</span> MENU
+          </span>
           <button
             type="button"
             aria-label="Zamknij menu"
             onClick={() => setOpen(false)}
-            className="absolute right-4 top-4 grid h-10 w-10 place-items-center text-2xl text-text-primary hover:text-accent"
+            className="grid h-10 w-10 place-items-center text-2xl text-text-secondary hover:text-accent"
           >
             ×
           </button>
+        </div>
 
-          {items.map((item, i) => (
+        <div className="flex flex-1 flex-col px-5 pt-4">
+          {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="border-b border-bg-border/50 py-4 text-lg font-semibold uppercase tracking-wider text-text-primary transition-colors hover:text-accent"
-              style={{
-                opacity: open ? 1 : 0,
-                transform: open ? 'translateX(0)' : 'translateX(20px)',
-                transition: `opacity 400ms ease ${100 + i * 60}ms, transform 400ms ease ${100 + i * 60}ms`,
-              }}
+              className="border-b border-bg-border py-4 text-base font-semibold uppercase tracking-wider text-text-primary transition-colors hover:text-accent"
             >
               {item.label}
             </Link>
           ))}
+        </div>
 
+        <div className="border-t border-bg-border p-5">
           <a
             href={`tel:${company.phone.replace(/\s/g, '')}`}
             onClick={() => setOpen(false)}
-            className="mt-6 inline-flex items-center justify-center gap-2 border border-accent bg-accent px-4 py-3 text-sm font-bold uppercase tracking-wider text-white"
+            className="flex w-full items-center justify-center gap-2 bg-accent px-4 py-3 text-sm font-bold uppercase tracking-wider text-white"
           >
             <span className="pulse-dot h-2 w-2 rounded-full bg-white" />
-            {company.phone}
+            Zadzwon
           </a>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </>
   );
 }

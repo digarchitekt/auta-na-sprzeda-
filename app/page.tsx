@@ -60,24 +60,13 @@ export default function HomePage() {
         </Reveal>
 
         <div className="relative z-10 mt-10">
-          <div className="container-x lg:hidden">
-            <VehicleCarousel>
-              {vehicles.map((v) => (
-                <VehicleCard key={v.slug} vehicle={v} />
-              ))}
-            </VehicleCarousel>
-          </div>
+          <VehicleCarousel>
+            {vehicles.map((v) => (
+              <VehicleCard key={v.slug} vehicle={v} />
+            ))}
+          </VehicleCarousel>
         </div>
       </section>
-
-      {/* Desktop only — scroll-jack horizontal pin (outside #oferta to escape its bg/clipping) */}
-      <div className="hidden lg:block">
-        <VehicleCarousel>
-          {vehicles.map((v) => (
-            <VehicleCard key={v.slug} vehicle={v} />
-          ))}
-        </VehicleCarousel>
-      </div>
 
       <section className="border-y border-bg-border bg-bg-elevated py-20">
         <div className="container-x grid gap-10 md:grid-cols-3">

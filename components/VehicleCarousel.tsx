@@ -73,27 +73,11 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
 
   return (
     <>
-      {/* Mobile: native horizontal scroll-snap */}
-      <div className="relative z-10 lg:hidden">
-        <div className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-6 sm:-mx-6 sm:px-6">
-          {items.map((child, i) => (
-            <div
-              key={i}
-              className="snap-center shrink-0 w-[85%] sm:w-[55%]"
-            >
-              {child}
-            </div>
-          ))}
-        </div>
-        <div className="mt-2 flex justify-center gap-1.5">
-          {items.map((_, i) => (
-            <span
-              key={i}
-              className="h-1 w-6 rounded-full bg-bg-border"
-              aria-hidden
-            />
-          ))}
-        </div>
+      {/* Mobile: simple vertical grid (no swipe, no scroll-jack) */}
+      <div className="container-x grid gap-6 sm:grid-cols-2 lg:hidden">
+        {items.map((child, i) => (
+          <div key={i}>{child}</div>
+        ))}
       </div>
 
       {/* Desktop: scroll-jacked horizontal pin */}
