@@ -11,6 +11,7 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
   const [sectionHeight, setSectionHeight] = useState<string>('100vh');
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
+  const [currentIdx, setCurrentIdx] = useState(0);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -81,6 +82,9 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
     const update = () => {
       setCanPrev(el.scrollLeft > 4);
       setCanNext(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+      const card = el.querySelector<HTMLElement>('[data-card]');
+      const w = card?.offsetWidth ?? el.clientWidth;
+      if (w > 0) setCurrentIdx(Math.round(el.scrollLeft / w));
     };
     update();
     el.addEventListener('scroll', update, { passive: true });
@@ -101,11 +105,11 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
 
   return (
     <>
-      {/* Mobile / tablet: horizontal snap scroller with arrow buttons */}
+      {/* Mobile / tablet: horizontal snap scroller — one card centered per view */}
       <div className="relative lg:hidden">
         <div
           ref={mobileScrollerRef}
-          className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-5 pb-2"
+          className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth pb-2"
           style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
         >
           <style jsx>{`
@@ -117,12 +121,26 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
             <div
               key={i}
               data-card
-              className="shrink-0 snap-start basis-[82%] sm:basis-[60%] md:basis-[44%]"
+              className="shrink-0 basis-full snap-center px-5"
             >
               {child}
             </div>
           ))}
         </div>
+
+        {/* Pagination dots */}
+        {items.length > 1 && (
+          <div className="mt-4 flex justify-center gap-2">
+            {items.map((_, i) => (
+              <span
+                key={i}
+                className={`h-1.5 rounded-full transition-all ${
+                  i === currentIdx ? 'w-6 bg-accent' : 'w-1.5 bg-bg-border'
+                }`}
+              />
+            ))}
+          </div>
+        )}
 
         {/* Arrows */}
         <button

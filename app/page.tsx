@@ -252,26 +252,57 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-20">
+      <section className="relative overflow-hidden py-24 md:py-32">
+        {/* Background image — full coverage */}
         <Image
           src="/images/audi-front.jpg"
           alt=""
           fill
           sizes="100vw"
           className="object-cover object-center"
+          priority={false}
         />
-        <div aria-hidden className="absolute inset-0 bg-bg/70" />
-        <Reveal variant="scale" duration={800} className="container-x relative z-10 flex flex-col items-start justify-between gap-6 border border-bg-border bg-bg-card/85 p-10 backdrop-blur md:flex-row md:items-center">
-          <div>
-            <h2 className="font-display text-3xl uppercase tracking-tight md:text-4xl">
+
+        {/* Smooth top + bottom fade to page bg, plus side darken for legibility */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.55) 18%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.55) 82%, rgba(10,10,10,1) 100%)',
+          }}
+        />
+        {/* Accent glow */}
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-60"
+          style={{
+            background:
+              'radial-gradient(ellipse at 80% 50%, rgba(225,29,46,0.18), transparent 55%)',
+          }}
+        />
+
+        <Reveal
+          variant="scale"
+          duration={800}
+          className="container-x relative z-10 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"
+        >
+          <div className="max-w-2xl">
+            <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+              Skup aut
+            </span>
+            <h2 className="mt-2 font-display text-3xl uppercase tracking-tight md:text-5xl">
               Masz auto na sprzedaz?
             </h2>
-            <p className="mt-2 max-w-xl text-text-secondary">
-              Zglos swoje auto, a my zweryfikujemy zgloszenie i wystawimy je w naszej ofercie.
-              Reszta jest po naszej stronie.
+            <p className="mt-4 max-w-xl text-text-secondary md:text-lg">
+              Zglos swoje auto, a my zweryfikujemy zgloszenie i wystawimy je w naszej
+              ofercie. Reszta jest po naszej stronie.
             </p>
           </div>
-          <Link href="/sprzedaj-auto" className="btn-primary btn-shimmer">
+          <Link
+            href="/sprzedaj-auto"
+            className="btn-primary btn-shimmer shrink-0 px-8 py-4"
+          >
             Wystaw swoje auto
           </Link>
         </Reveal>
