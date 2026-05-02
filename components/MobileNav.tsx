@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const items = [
   {
     href: '/',
+    section: 'start',
     label: 'Start',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -16,6 +18,7 @@ const items = [
   },
   {
     href: '/#oferta',
+    section: 'oferta',
     label: 'Oferta',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -27,6 +30,7 @@ const items = [
   },
   {
     href: '/#o-nas',
+    section: 'o-nas',
     label: 'O nas',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -38,6 +42,7 @@ const items = [
   },
   {
     href: '/sprzedaj-auto',
+    section: 'sprzedaj-auto',
     label: 'Sprzedaj',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -48,6 +53,7 @@ const items = [
   },
   {
     href: '/kontakt',
+    section: 'kontakt',
     label: 'Kontakt',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -57,36 +63,85 @@ const items = [
   },
 ];
 
-function isActive(pathname: string, href: string) {
-  if (href === '/') return pathname === '/';
-  if (href.startsWith('/#')) return pathname === '/';
-  return pathname.startsWith(href);
-}
-
 export default function MobileNav() {
   const pathname = usePathname();
+  const [activeHash, setActiveHash] = useState<string>('start');
+
+  // On homepage, track which section is currently in view
+  useEffect(() => {
+    if (pathname !== '/') return;
+
+    const sectionIds = ['oferta', 'o-nas'];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) {
+      setActiveHash('start');
+      return;
+    }
+
+    const onScroll = () => {
+      const y = window.scrollY + window.innerHeight * 0.4;
+      let current = 'start';
+      for (const sec of sections) {
+        if (sec.offsetTop <= y) current = sec.id;
+      }
+      setActiveHash(current);
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [pathname]);
+
+  const isActive = (section: string, href: string) => {
+    if (pathname === '/') return section === activeHash;
+    if (href === '/') return false;
+    return pathname.startsWith(href);
+  };
 
   return (
     <nav
       style={{
+        position: 'fixed',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 60,
         paddingBottom: 'env(safe-area-inset-bottom, 0px)',
         backgroundColor: '#0a0a0a',
         backgroundImage:
-          'linear-gradient(180deg, rgba(15,15,15,0.98) 0%, rgba(10,10,10,1) 100%)',
+          'linear-gradient(180deg, rgba(20,20,20,0.98) 0%, rgba(10,10,10,1) 100%)',
+        boxShadow: '0 -4px 20px rgba(0,0,0,0.6)',
       }}
-      className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-5 border-t border-bg-border md:hidden"
+      className="grid grid-cols-5 border-t border-bg-border md:hidden"
       aria-label="Menu mobilne"
     >
       {items.map((item) => {
-        const active = isActive(pathname, item.href);
+        const active = isActive(item.section, item.href);
         return (
           <Link
             key={item.href}
             href={item.href}
-            className={`flex flex-col items-center justify-center gap-1 py-2.5 text-[10px] font-semibold uppercase tracking-wider transition-colors ${
-              active ? 'text-accent' : 'text-text-secondary hover:text-text-primary'
-            }`}
+            className="relative flex flex-col items-center justify-center gap-1 py-2.5 text-[10px] font-semibold uppercase tracking-wider transition-colors"
+            style={{ color: active ? '#e11d2e' : 'rgba(245,245,245,0.65)' }}
           >
+            {/* Top accent bar on active */}
+            {active && (
+              <span
+                aria-hidden
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: '20%',
+                  right: '20%',
+                  height: '2px',
+                  backgroundColor: '#e11d2e',
+                  boxShadow: '0 0 8px rgba(225,29,46,0.7)',
+                }}
+              />
+            )}
             {item.icon}
             <span>{item.label}</span>
           </Link>
