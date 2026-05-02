@@ -11,8 +11,8 @@ const nav = [
 
 export default function Header() {
   return (
-    <div className="sticky top-0 z-40 px-3 pt-3 md:px-6 md:pt-4">
-      <header className="liquid-glass mx-auto flex h-14 w-full max-w-container items-center justify-between rounded-full px-4 md:h-16 md:px-6">
+    <div className="sticky top-0 z-40">
+      <header className="liquid-glass mx-auto flex h-14 w-full max-w-container items-center justify-between px-4 md:h-16 md:px-6">
         <Link
           href="/"
           className="flex items-center gap-2 font-display text-lg tracking-wider md:text-2xl"
