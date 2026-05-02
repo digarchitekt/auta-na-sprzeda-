@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { company } from '@/data/company';
+import MobileNav from '@/components/MobileNav';
 
 const nav = [
   { href: '/', label: 'Start' },
@@ -34,14 +35,16 @@ export default function Header() {
           ))}
         </nav>
 
-        <a
-          href={`tel:${company.phone.replace(/\s/g, '')}`}
-          className="flex items-center gap-2 text-xs font-semibold text-text-primary md:text-sm"
-        >
-          <span className="pulse-dot h-2 w-2 rounded-full bg-accent" aria-hidden />
-          <span className="hidden sm:inline">{company.phone}</span>
-          <span className="sm:hidden">Zadzwon</span>
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href={`tel:${company.phone.replace(/\s/g, '')}`}
+            className="hidden items-center gap-2 text-xs font-semibold text-text-primary md:flex md:text-sm"
+          >
+            <span className="pulse-dot h-2 w-2 rounded-full bg-accent" aria-hidden />
+            {company.phone}
+          </a>
+          <MobileNav />
+        </div>
       </header>
     </div>
   );

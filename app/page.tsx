@@ -5,6 +5,7 @@ import VehicleCard from '@/components/VehicleCard';
 import Reveal from '@/components/Reveal';
 import Counter from '@/components/Counter';
 import Marquee from '@/components/Marquee';
+import VehicleCarousel from '@/components/VehicleCarousel';
 import { vehicles } from '@/data/vehicles';
 
 export default function HomePage() {
@@ -24,7 +25,7 @@ export default function HomePage() {
         ]}
       />
 
-      <section id="oferta" className="relative overflow-hidden py-20">
+      <section id="oferta" className="relative py-20">
         <div
           aria-hidden
           className="absolute inset-0"
@@ -58,14 +59,25 @@ export default function HomePage() {
           </p>
         </Reveal>
 
-        <div className="container-x relative z-10 mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {vehicles.map((v, i) => (
-            <Reveal key={v.slug} variant="scale" delay={i * 100} duration={700}>
-              <VehicleCard vehicle={v} />
-            </Reveal>
-          ))}
+        <div className="relative z-10 mt-10">
+          <div className="container-x lg:hidden">
+            <VehicleCarousel>
+              {vehicles.map((v) => (
+                <VehicleCard key={v.slug} vehicle={v} />
+              ))}
+            </VehicleCarousel>
+          </div>
         </div>
       </section>
+
+      {/* Desktop only — scroll-jack horizontal pin (outside #oferta to escape its bg/clipping) */}
+      <div className="hidden lg:block">
+        <VehicleCarousel>
+          {vehicles.map((v) => (
+            <VehicleCard key={v.slug} vehicle={v} />
+          ))}
+        </VehicleCarousel>
+      </div>
 
       <section className="border-y border-bg-border bg-bg-elevated py-20">
         <div className="container-x grid gap-10 md:grid-cols-3">
