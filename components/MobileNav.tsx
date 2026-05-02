@@ -2,14 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { company } from '@/data/company';
 
 const items = [
   { href: '/', label: 'Start' },
   { href: '/#oferta', label: 'Oferta' },
   { href: '/#o-nas', label: 'O nas' },
   { href: '/sprzedaj-auto', label: 'Sprzedaj Auto' },
-  { href: '/kontakt', label: 'Kontakt' },
 ];
 
 export default function MobileNav() {
@@ -51,67 +49,51 @@ export default function MobileNav() {
         </svg>
       </button>
 
-      {/* Backdrop */}
+      {/* Fullscreen overlay menu */}
       <div
-        onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-50 bg-black/80 transition-opacity duration-300 md:hidden ${
+        style={{ backgroundColor: 'rgba(10, 10, 10, 0.7)' }}
+        className={`fixed inset-0 z-50 flex flex-col transition-opacity duration-300 md:hidden ${
           open ? 'opacity-100' : 'pointer-events-none opacity-0'
-        }`}
-        aria-hidden
-      />
-
-      {/* Drawer */}
-      <nav
-        style={{
-          background: '#0a0a0a',
-          backgroundImage: 'linear-gradient(#0a0a0a, #0a0a0a)',
-          backdropFilter: 'none',
-          WebkitBackdropFilter: 'none',
-          isolation: 'isolate',
-        }}
-        className={`fixed right-0 top-0 z-50 flex h-full w-80 max-w-[85vw] flex-col border-l border-bg-border bg-black shadow-2xl transition-transform duration-300 ease-out md:hidden ${
-          open ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-hidden={!open}
       >
-        <div className="flex h-14 items-center justify-between border-b border-bg-border px-5">
-          <span className="font-display text-lg tracking-wider text-text-primary">
-            <span className="text-accent">/</span> MENU
-          </span>
+        {/* Close button */}
+        <div className="flex h-14 items-center justify-end px-5">
           <button
             type="button"
             aria-label="Zamknij menu"
             onClick={() => setOpen(false)}
-            className="grid h-10 w-10 place-items-center text-2xl text-text-secondary hover:text-accent"
+            className="grid h-11 w-11 place-items-center text-3xl text-text-primary hover:text-accent"
           >
             ×
           </button>
         </div>
 
-        <div className="flex flex-1 flex-col px-5 pt-4">
+        {/* Categories — centered */}
+        <nav className="flex flex-1 flex-col items-center justify-center gap-2 px-6">
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="border-b border-bg-border py-4 text-base font-semibold uppercase tracking-wider text-text-primary transition-colors hover:text-accent"
+              className="py-3 text-2xl font-bold uppercase tracking-wider text-text-primary transition-colors hover:text-accent"
             >
               {item.label}
             </Link>
           ))}
-        </div>
+        </nav>
 
-        <div className="border-t border-bg-border p-5">
-          <a
-            href={`tel:${company.phone.replace(/\s/g, '')}`}
+        {/* Skontaktuj się button */}
+        <div className="px-6 pb-10">
+          <Link
+            href="/kontakt"
             onClick={() => setOpen(false)}
-            className="flex w-full items-center justify-center gap-2 bg-accent px-4 py-3 text-sm font-bold uppercase tracking-wider text-white"
+            className="flex w-full items-center justify-center gap-2 bg-accent px-4 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-accent-hover"
           >
-            <span className="pulse-dot h-2 w-2 rounded-full bg-white" />
-            Zadzwon
-          </a>
+            Skontaktuj się
+          </Link>
         </div>
-      </nav>
+      </div>
     </>
   );
 }

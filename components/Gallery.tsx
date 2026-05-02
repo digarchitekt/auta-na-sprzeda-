@@ -26,16 +26,30 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
     return () => window.removeEventListener('keydown', handler);
   }, [prev, next, zoomed]);
 
-  // Lock scroll when zoomed
+  // Lock scroll when zoomed + map wheel scroll to prev/next
   useEffect(() => {
-    if (zoomed) {
-      const original = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = original;
-      };
-    }
-  }, [zoomed]);
+    if (!zoomed) return;
+    const original = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    let lastWheel = 0;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const now = Date.now();
+      if (now - lastWheel < 350) return;
+      const delta = e.deltaY || e.deltaX;
+      if (Math.abs(delta) < 10) return;
+      lastWheel = now;
+      if (delta > 0) next();
+      else prev();
+    };
+    window.addEventListener('wheel', onWheel, { passive: false });
+
+    return () => {
+      document.body.style.overflow = original;
+      window.removeEventListener('wheel', onWheel);
+    };
+  }, [zoomed, prev, next]);
 
   // Touch swipe
   const [touchStartX, setTouchStartX] = useState<number | null>(null);

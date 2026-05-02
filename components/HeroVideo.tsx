@@ -7,7 +7,25 @@ export default function HeroVideo() {
 
   return (
     <>
-      {/* Audi image — fades in when video ends */}
+      {/* Solid black base — covers any momentary gap before video paints */}
+      <div className="absolute inset-0 bg-bg" aria-hidden />
+
+      {/* Video — autoplays first, fades out when finished */}
+      <video
+        onEnded={() => setEnded(true)}
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        aria-hidden
+        className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1500ms] ease-in-out ${
+          ended ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
+        <source src="/videos/hero.mp4" type="video/mp4" />
+      </video>
+
+      {/* Audi image — fades in only after video ends */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/images/hero-bg.jpg"
@@ -17,22 +35,6 @@ export default function HeroVideo() {
           ended ? 'opacity-100' : 'opacity-0'
         }`}
       />
-
-      {/* Video — fades out when finished */}
-      <video
-        onEnded={() => setEnded(true)}
-        autoPlay
-        muted
-        playsInline
-        preload="metadata"
-        poster="/images/hero-bg.jpg"
-        aria-hidden
-        className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1500ms] ease-in-out ${
-          ended ? 'opacity-0' : 'opacity-100'
-        }`}
-      >
-        <source src="/videos/hero.mp4" type="video/mp4" />
-      </video>
     </>
   );
 }
