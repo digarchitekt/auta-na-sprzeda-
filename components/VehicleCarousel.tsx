@@ -6,12 +6,14 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
   const items = Children.toArray(children);
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const mobileScrollerRef = useRef<HTMLDivElement>(null);
   const [translateX, setTranslateX] = useState(0);
   const [sectionHeight, setSectionHeight] = useState<string>('100vh');
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(true);
-  const [currentIdx, setCurrentIdx] = useState(0);
+
+  // Mobile carousel state — JS-controlled, no native snap glitches
+  const [idx, setIdx] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const isHorizontalSwipe = useRef<boolean | null>(null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -75,67 +77,73 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
     };
   }, [items.length]);
 
-  // Track mobile scroller arrows enabled state
-  useEffect(() => {
-    const el = mobileScrollerRef.current;
-    if (!el) return;
-    const update = () => {
-      setCanPrev(el.scrollLeft > 4);
-      setCanNext(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
-      const card = el.querySelector<HTMLElement>('[data-card]');
-      const w = card?.offsetWidth ?? el.clientWidth;
-      if (w > 0) setCurrentIdx(Math.round(el.scrollLeft / w));
-    };
-    update();
-    el.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    return () => {
-      el.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
-    };
-  }, [items.length]);
+  const goPrev = () => setIdx((i) => Math.max(0, i - 1));
+  const goNext = () => setIdx((i) => Math.min(items.length - 1, i + 1));
 
-  const scrollMobile = (dir: 1 | -1) => {
-    const el = mobileScrollerRef.current;
-    if (!el) return;
-    const card = el.querySelector<HTMLElement>('[data-card]');
-    const step = card ? card.offsetWidth + 16 : el.clientWidth * 0.85;
-    el.scrollBy({ left: dir * step, behavior: 'smooth' });
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    isHorizontalSwipe.current = null;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    if (isHorizontalSwipe.current === null) {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY.current);
+      if (dx > 8 || dy > 8) {
+        isHorizontalSwipe.current = dx > dy;
+      }
+    }
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    if (isHorizontalSwipe.current === true) {
+      const dx = e.changedTouches[0].clientX - touchStartX.current;
+      if (Math.abs(dx) > 50) {
+        if (dx < 0) goNext();
+        else goPrev();
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+    isHorizontalSwipe.current = null;
   };
 
   return (
     <>
-      {/* Mobile / tablet: horizontal snap scroller — one card centered per view */}
-      <div className="relative lg:hidden">
+      {/* Mobile / tablet: JS-controlled carousel — always perfectly centered */}
+      <div className="overflow-hidden lg:hidden">
         <div
-          ref={mobileScrollerRef}
-          className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth pb-2"
-          style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
+          className="flex"
+          style={{
+            transform: `translate3d(-${idx * 100}%, 0, 0)`,
+            transition: 'transform 350ms cubic-bezier(0.22, 1, 0.36, 1)',
+          }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
-          <style jsx>{`
-            div::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
           {items.map((child, i) => (
             <div
               key={i}
-              data-card
-              className="shrink-0 basis-full snap-center px-5"
+              className="shrink-0 basis-full px-5"
+              aria-hidden={i !== idx}
             >
               {child}
             </div>
           ))}
         </div>
 
-        {/* Controls — arrows + dots below the card, never covering it */}
+        {/* Controls — arrows + dots below the card */}
         {items.length > 1 && (
           <div className="mt-5 flex items-center justify-center gap-4">
             <button
               type="button"
               aria-label="Poprzednie"
-              onClick={() => scrollMobile(-1)}
-              disabled={!canPrev}
+              onClick={goPrev}
+              disabled={idx === 0}
               className="grid h-11 w-11 place-items-center border border-bg-border bg-bg-elevated text-2xl text-text-primary transition disabled:opacity-30 hover:border-accent hover:text-accent"
             >
               ‹
@@ -143,10 +151,13 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
 
             <div className="flex items-center gap-2">
               {items.map((_, i) => (
-                <span
+                <button
                   key={i}
+                  type="button"
+                  aria-label={`Auto ${i + 1}`}
+                  onClick={() => setIdx(i)}
                   className={`h-1.5 rounded-full transition-all ${
-                    i === currentIdx ? 'w-6 bg-accent' : 'w-1.5 bg-bg-border'
+                    i === idx ? 'w-6 bg-accent' : 'w-1.5 bg-bg-border'
                   }`}
                 />
               ))}
@@ -155,8 +166,8 @@ export default function VehicleCarousel({ children }: { children: ReactNode }) {
             <button
               type="button"
               aria-label="Nastepne"
-              onClick={() => scrollMobile(1)}
-              disabled={!canNext}
+              onClick={goNext}
+              disabled={idx === items.length - 1}
               className="grid h-11 w-11 place-items-center border border-bg-border bg-bg-elevated text-2xl text-text-primary transition disabled:opacity-30 hover:border-accent hover:text-accent"
             >
               ›
