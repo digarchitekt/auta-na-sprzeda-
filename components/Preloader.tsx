@@ -1,6 +1,5 @@
-'use client';
-
-import { useEffect, useState } from 'react';
+// Server component — pure CSS animation, no JS, no hydration delay.
+// Renders at first paint, hides itself via CSS at ~1.4s.
 
 const TICK_COUNT = 11;
 const ARC_START_ANGLE = 135;
@@ -8,7 +7,6 @@ const ARC_SWEEP = 270;
 const INNER_R = 52;
 const OUTER_R = 60;
 
-// Pre-compute tick coordinates once
 const ticks = Array.from({ length: TICK_COUNT }, (_, i) => {
   const angle = ARC_START_ANGLE + (ARC_SWEEP / (TICK_COUNT - 1)) * i;
   const rad = (angle * Math.PI) / 180;
@@ -24,15 +22,6 @@ const ticks = Array.from({ length: TICK_COUNT }, (_, i) => {
 });
 
 export default function Preloader() {
-  const [removed, setRemoved] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setRemoved(true), 1300);
-    return () => clearTimeout(t);
-  }, []);
-
-  if (removed) return null;
-
   return (
     <div id="preloader" aria-hidden="true">
       <div className="preloader-bg-flash" />
@@ -47,7 +36,7 @@ export default function Preloader() {
                 y1={t.y1}
                 x2={t.x2}
                 y2={t.y2}
-                stroke={t.isRedzone ? 'var(--preloader-red)' : '#444'}
+                stroke={t.isRedzone ? '#e11d2e' : '#444'}
                 strokeWidth={t.isRedzone ? 2.5 : 1.5}
                 className={`preloader-tick${t.isRedzone ? ' redzone' : ''}`}
                 style={{ animationDelay: `${0.15 + t.i * 0.025}s` }}

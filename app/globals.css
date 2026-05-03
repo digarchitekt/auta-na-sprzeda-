@@ -306,7 +306,8 @@ body {
   align-items: center;
   justify-content: center;
   contain: strict;
-  animation: preloaderFadeOut 0.25s 1.05s ease-out forwards;
+  pointer-events: none;
+  animation: preloaderFadeOut 0.3s 1.1s ease-out forwards;
   will-change: opacity;
 }
 .preloader-bg-flash {
