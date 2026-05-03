@@ -322,18 +322,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ — rich results in Google */}
-      <section className="relative py-20">
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'url(/images/texture-dark.webp)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <div aria-hidden className="absolute inset-0 bg-bg/85" />
-
+      <section className="relative bg-bg py-20">
         <div className="container-x relative z-10 max-w-3xl">
           <Reveal variant="fade-up" duration={700}>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">

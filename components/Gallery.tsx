@@ -232,6 +232,10 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
         <img
           src={images[active]}
           alt={alt}
+          width={1600}
+          height={1000}
+          decoding="async"
+          fetchPriority="high"
           className="h-full w-full object-cover"
         />
 
@@ -289,6 +293,9 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
             <img
               src={src}
               alt=""
+              width={400}
+              height={300}
+              decoding="async"
               className="h-full w-full object-cover"
               loading="lazy"
             />

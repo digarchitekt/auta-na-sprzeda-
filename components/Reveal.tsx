@@ -75,12 +75,11 @@ export default function Reveal({
     <Component
       ref={ref}
       style={{
-        transitionDelay: `${delay}ms`,
+        transitionDelay: visible ? `${delay}ms` : '0ms',
         transform: visible ? 'none' : transformHidden,
         opacity: visible ? 1 : 0,
         filter: visible ? 'none' : filterHidden,
         transition: `transform ${duration}ms cubic-bezier(0.22, 1, 0.36, 1), opacity ${duration}ms ease-out, filter ${duration}ms ease-out`,
-        willChange: visible ? 'auto' : 'transform, opacity, filter',
       }}
       className={className}
     >
