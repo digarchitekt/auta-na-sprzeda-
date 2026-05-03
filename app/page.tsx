@@ -7,6 +7,41 @@ import Counter from '@/components/Counter';
 import Marquee from '@/components/Marquee';
 import VehicleCarousel from '@/components/VehicleCarousel';
 import { vehicles } from '@/data/vehicles';
+import { company } from '@/data/company';
+
+// FAQ schema for rich results
+const faqs = [
+  {
+    q: 'Gdzie kupie tanie uzywane auta na sprzedaz?',
+    a: 'Oferujemy uzywane auta marek Opel i Audi sprowadzane z zagranicy. Bazujemy w Brzozowie na Podkarpaciu, ale dojezdzamy do klientow w promieniu 500 km - Krosno, Rzeszow, Sanok, Krakow, Lublin, Tarnow i okolice.',
+  },
+  {
+    q: 'Czy auta sa z gwarancja?',
+    a: 'Tak. Kazde auto sprzedajemy z 3-miesieczna gwarancja. Wczesniej kazdy egzemplarz przechodzi pelna inspekcje techniczna i przygotowanie w naszym warsztacie.',
+  },
+  {
+    q: 'Jakimi miastami obejmujemy obsluga?',
+    a: 'Brzozow, Krosno, Rzeszow, Sanok, Jaslo, Przemysl, Tarnow, Krakow, Lublin, Mielec, Stalowa Wola, Debica, Nowy Sacz - i caly obszar Podkarpacia oraz Malopolski. W razie potrzeby dojezdzamy dalej, do 500 km.',
+  },
+  {
+    q: 'Czy mozna sprzedac wam swoje auto?',
+    a: 'Tak. Wystaw zgloszenie przez formularz "Sprzedaj Auto" - zweryfikujemy auto i wystawimy je w naszej ofercie. Reszta po naszej stronie.',
+  },
+  {
+    q: 'Skad sprowadzane sa auta?',
+    a: 'Glownie z Niemiec, Belgii, Holandii i Francji. Wlasciciel z 30-letnim doswiadczeniem osobiscie sprawdza kazdy egzemplarz przed sprowadzeniem.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 
 export default function HomePage() {
   return (
@@ -250,6 +285,94 @@ export default function HomePage() {
             </div>
           </Reveal>
         </div>
+      </section>
+
+      {/* Obslugiwane miasta — local SEO */}
+      <section id="obslugujemy" className="border-y border-bg-border bg-bg-elevated py-16">
+        <div className="container-x">
+          <div className="max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+              Obslugujemy
+            </span>
+            <h2 className="section-title mt-2">
+              Tanie uzywane auta na Podkarpaciu i okolicach
+            </h2>
+            <p className="mt-4 text-text-secondary">
+              Bazujemy w Brzozowie i obslugujemy klientow z calego Podkarpacia,
+              Malopolski oraz wojewodztw oscienych. Auta dostarczamy w promieniu
+              500 km - dojezdzamy do najwiekszych miast poludniowej Polski.
+            </p>
+          </div>
+
+          <ul className="mt-8 flex flex-wrap gap-2">
+            {company.servicedCities.map((c) => (
+              <li
+                key={c}
+                className="border border-bg-border bg-bg-card px-4 py-2 text-sm font-medium text-text-primary"
+              >
+                Auta uzywane {c}
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-8 max-w-3xl text-sm text-text-muted">
+            Szukasz <strong className="text-text-secondary">tanich uzywanych aut na sprzedaz</strong> w Twojej okolicy? Sprawdz nasza oferte sprawdzonych Opli i Audi - kazde auto przygotowane do jazdy z 3-miesieczna gwarancja.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ — rich results in Google */}
+      <section className="relative py-20">
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(/images/texture-dark.webp)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div aria-hidden className="absolute inset-0 bg-bg/85" />
+
+        <div className="container-x relative z-10 max-w-3xl">
+          <Reveal variant="fade-up" duration={700}>
+            <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+              Czesto zadawane pytania
+            </span>
+            <h2 className="section-title mt-2">FAQ - uzywane auta na sprzedaz</h2>
+          </Reveal>
+
+          <div className="mt-8 space-y-3">
+            {faqs.map((f, i) => (
+              <Reveal
+                key={f.q}
+                variant="fade-up"
+                delay={i * 80}
+                duration={600}
+              >
+                <details className="group border border-bg-border bg-bg-elevated">
+                  <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-sm font-semibold text-text-primary">
+                    <span>{f.q}</span>
+                    <span
+                      aria-hidden
+                      className="text-xl text-accent transition-transform group-open:rotate-45"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <div className="border-t border-bg-border px-5 py-4 text-sm leading-relaxed text-text-secondary">
+                    {f.a}
+                  </div>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
       </section>
 
       <section className="relative overflow-hidden py-24 md:py-32">

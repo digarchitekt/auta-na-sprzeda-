@@ -23,20 +23,38 @@ const bebas = Bebas_Neue({
 export const metadata: Metadata = {
   metadataBase: new URL('https://autanasprzedaz.com'),
   title: {
-    default: 'Auta Na Sprzedaz | Wyselekcjonowane Opel i Audi',
+    default: 'Tanie uzywane auta na sprzedaz - Opel i Audi | Podkarpacie, Krosno, Rzeszow',
     template: '%s | Auta Na Sprzedaz',
   },
   description:
-    'Sprawdzone, wyselekcjonowane samochody marki Opel i Audi. Sprowadzane z zagranicy, przygotowane do jazdy, 3 miesiace gwarancji.',
-  keywords: ['skup aut', 'komis Opel', 'komis Audi', 'sprzedaz aut', 'Astra OPC', 'Audi A8', 'auta uzywane'],
+    'Uzywane auta na sprzedaz - Opel i Audi. Sprawdzone egzemplarze sprowadzane z zagranicy, gotowe do jazdy. 30 lat doswiadczenia, 500+ przygotowanych aut. Brzozow, Krosno, Rzeszow, Sanok, Krakow, Lublin - dojezdzamy do 500 km.',
+  keywords: [
+    'uzywane auta na sprzedaz',
+    'auta na sprzedaz',
+    'tanie auta na sprzedaz',
+    'tanie uzywane auta',
+    'auta uzywane Podkarpacie',
+    'komis aut Krosno',
+    'komis aut Rzeszow',
+    'komis aut Brzozow',
+    'auta uzywane Krakow',
+    'samochody na sprzedaz',
+    'komis Opel',
+    'komis Audi',
+    'Opel Astra na sprzedaz',
+    'Audi A8 na sprzedaz',
+    'auto z gwarancja',
+    'sprowadzanie aut z zagranicy',
+    'tanie samochody Podkarpacie',
+  ],
   authors: [{ name: company.name }],
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Auta Na Sprzedaz | Wyselekcjonowane Opel i Audi',
+    title: 'Tanie uzywane auta na sprzedaz - Opel i Audi | Podkarpacie',
     description:
-      'Sprawdzone, wyselekcjonowane samochody marki Opel i Audi. 30 lat doswiadczenia, 500+ aut.',
+      'Sprawdzone uzywane auta na sprzedaz. Opel i Audi sprowadzane z zagranicy, gotowe do jazdy. Brzozow, Krosno, Rzeszow, Krakow.',
     url: 'https://autanasprzedaz.com',
     siteName: 'Auta Na Sprzedaz',
     locale: 'pl_PL',
@@ -46,15 +64,15 @@ export const metadata: Metadata = {
         url: '/images/audi-front.webp',
         width: 1920,
         height: 1080,
-        alt: 'Auta Na Sprzedaz - Opel i Audi',
+        alt: 'Tanie uzywane auta na sprzedaz - Opel i Audi',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Auta Na Sprzedaz | Wyselekcjonowane Opel i Audi',
+    title: 'Tanie uzywane auta na sprzedaz - Opel i Audi | Podkarpacie',
     description:
-      'Sprawdzone, wyselekcjonowane samochody marki Opel i Audi. 30 lat doswiadczenia.',
+      'Sprawdzone uzywane auta na sprzedaz. Opel i Audi z gwarancja. Krosno, Rzeszow, Krakow.',
     images: ['/images/audi-front.webp'],
   },
   robots:
@@ -75,6 +93,7 @@ export const viewport: Viewport = {
 const autoDealerSchema = {
   '@context': 'https://schema.org',
   '@type': 'AutoDealer',
+  '@id': `https://${company.domain}/#dealer`,
   name: company.name,
   url: `https://${company.domain}`,
   telephone: company.phone,
@@ -83,7 +102,13 @@ const autoDealerSchema = {
     '@type': 'PostalAddress',
     streetAddress: company.address.street,
     addressLocality: company.address.city,
+    addressRegion: company.address.region,
     addressCountry: 'PL',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: company.geo.latitude,
+    longitude: company.geo.longitude,
   },
   priceRange: '$$',
   openingHoursSpecification: company.hours.map((h) => ({
@@ -92,9 +117,36 @@ const autoDealerSchema = {
     description: h.value,
   })),
   image: `https://${company.domain}/images/audi-front.webp`,
-  areaServed: 'PL',
+  // Service area: Podkarpacie + 500km radius (covering most of Poland)
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'wojewodztwo podkarpackie' },
+    { '@type': 'AdministrativeArea', name: 'wojewodztwo malopolskie' },
+    { '@type': 'AdministrativeArea', name: 'wojewodztwo lubelskie' },
+    { '@type': 'AdministrativeArea', name: 'wojewodztwo swietokrzyskie' },
+    ...company.servicedCities.map((c) => ({ '@type': 'City', name: c })),
+  ],
+  serviceArea: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: company.geo.latitude,
+      longitude: company.geo.longitude,
+    },
+    geoRadius: '500000', // meters = 500km
+  },
   description:
-    'Komis aut. Wyselekcjonowane Opel i Audi sprowadzane z zagranicy. 30 lat doswiadczenia, 500+ przygotowanych aut, gwarancja 3 miesiace.',
+    'Tanie uzywane auta na sprzedaz - Opel i Audi. Komis aut sprowadzajacy egzemplarze z zagranicy. Brzozow, Krosno, Rzeszow, Sanok, Krakow, Tarnow, Lublin. 30 lat doswiadczenia, 500+ przygotowanych aut, 3 miesiace gwarancji.',
+  knowsLanguage: ['pl', 'Polish'],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `https://${company.domain}/#website`,
+  url: `https://${company.domain}`,
+  name: company.name,
+  inLanguage: 'pl-PL',
+  publisher: { '@id': `https://${company.domain}/#dealer` },
 };
 
 export default function RootLayout({
@@ -119,6 +171,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(autoDealerSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </body>
     </html>

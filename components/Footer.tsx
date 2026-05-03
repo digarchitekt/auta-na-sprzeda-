@@ -11,25 +11,40 @@ export default function Footer() {
             <span className="text-accent">/</span> AUTA NA SPRZEDAZ
           </div>
           <p className="mt-4 max-w-md text-sm text-text-secondary">
-            Wyselekcjonowane samochody marek Opel i Audi. Stawiamy na sprawdzone egzemplarze,
-            uczciwa cene i pelna historie pojazdu.
+            Tanie uzywane auta na sprzedaz - wyselekcjonowane Opel i Audi
+            sprowadzane z zagranicy. Komis aut na Podkarpaciu - obslugujemy
+            cala poludniowa Polske w promieniu 500 km.
           </p>
+          <div className="mt-5 flex flex-wrap gap-1.5 text-[11px] text-text-muted">
+            {company.servicedCities.slice(0, 8).map((c) => (
+              <span key={c} className="border border-bg-border px-2 py-1">
+                {c}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div>
           <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-text-secondary">
             Kontakt
           </h4>
-          <ul className="space-y-2 text-sm text-text-primary">
-            <li>{company.address.street}</li>
-            <li>{company.address.city}</li>
-            <li>
-              <a href={`tel:${company.phone.replace(/\s/g, '')}`}>{company.phone}</a>
-            </li>
-            <li>
-              <a href={`mailto:${company.email}`}>{company.email}</a>
-            </li>
-          </ul>
+          <address className="not-italic">
+            <ul className="space-y-2 text-sm text-text-primary">
+              <li>{company.address.street}</li>
+              <li>{company.address.city}</li>
+              <li>woj. {company.address.region}</li>
+              <li>
+                <a href={`tel:${company.phone.replace(/\s/g, '')}`} className="hover:text-accent">
+                  {company.phone}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${company.email}`} className="hover:text-accent">
+                  {company.email}
+                </a>
+              </li>
+            </ul>
+          </address>
         </div>
 
         <div>
@@ -37,9 +52,10 @@ export default function Footer() {
             Nawigacja
           </h4>
           <ul className="space-y-2 text-sm text-text-primary">
-            <li><Link href="/">Start</Link></li>
-            <li><Link href="/sprzedaj-auto">Sprzedaj Auto</Link></li>
-            <li><Link href="/kontakt">Kontakt</Link></li>
+            <li><Link href="/" className="hover:text-accent">Start</Link></li>
+            <li><Link href="/auta" className="hover:text-accent">Auta na sprzedaz</Link></li>
+            <li><Link href="/sprzedaj-auto" className="hover:text-accent">Sprzedaj Auto</Link></li>
+            <li><Link href="/kontakt" className="hover:text-accent">Kontakt</Link></li>
           </ul>
         </div>
       </div>

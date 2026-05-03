@@ -5,9 +5,10 @@ import Reveal from '@/components/Reveal';
 import { vehicles } from '@/data/vehicles';
 
 export const metadata: Metadata = {
-  title: 'Wszystkie auta — Pelna oferta',
+  title: 'Uzywane auta na sprzedaz - Opel i Audi | Krosno, Rzeszow, Krakow',
   description:
-    'Pelna oferta sprawdzonych aut Opel i Audi. Sprowadzane z zagranicy, gotowe do jazdy, gwarancja 3 miesiace.',
+    'Pelna oferta tanich uzywanych aut na sprzedaz - Opel i Audi. Sprawdzone egzemplarze sprowadzone z zagranicy, 3 miesiace gwarancji. Brzozow, Krosno, Rzeszow, Sanok, Krakow, Lublin.',
+  alternates: { canonical: '/auta' },
 };
 
 export default function AutaPage() {
@@ -44,13 +45,12 @@ export default function AutaPage() {
           </Reveal>
           <Reveal variant="blur" delay={100} duration={900}>
             <h1 className="mt-3 max-w-4xl font-display text-4xl uppercase leading-[0.95] tracking-tight text-text-primary md:text-6xl">
-              Wszystkie auta dostepne <span className="text-accent">od reki</span>
+              Uzywane auta na sprzedaz - <span className="text-accent">Opel i Audi</span>
             </h1>
           </Reveal>
           <Reveal variant="fade-up" delay={300} duration={700}>
             <p className="mt-6 max-w-2xl text-base text-text-secondary md:text-lg">
-              {vehicles.length} {vehicles.length === 1 ? 'auto' : 'aut'} w ofercie. Kazde
-              sprawdzone osobiscie, sprowadzone z zagranicy i przygotowane do jazdy.
+              {vehicles.length} {vehicles.length === 1 ? 'auto' : 'aut'} w ofercie. Tanie uzywane auta na sprzedaz - kazde sprawdzone osobiscie, sprowadzone z zagranicy i przygotowane do jazdy. Dostarczamy na Podkarpacie, do Malopolski i woj. oscienych.
             </p>
           </Reveal>
 

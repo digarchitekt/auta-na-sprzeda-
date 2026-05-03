@@ -37,7 +37,7 @@ export default function Hero() {
 
         <Reveal variant="blur" delay={150} duration={900}>
           <h1 className="mt-6 max-w-5xl font-display text-5xl uppercase leading-[0.95] tracking-tight text-text-primary md:text-7xl">
-            Auta na sprzedaz,
+            Tanie uzywane auta na sprzedaz,
             <br />
             sprawdzone,{' '}
             <span className="relative inline-block text-accent">
@@ -52,9 +52,10 @@ export default function Hero() {
 
         <Reveal variant="fade-up" delay={400} duration={700}>
           <p className="mt-6 max-w-2xl text-base text-text-secondary md:text-lg">
-            Znajdziesz tu uzywane samochody w roznych segmentach cenowych - dla
-            rodziny, do miasta i bardziej wymagajacych. Kazdy znajdzie cos dla
-            siebie. Rozejrzyj sie po ofercie.
+            Sprawdzone uzywane auta na sprzedaz - Opel i Audi w roznych
+            segmentach cenowych. Sprowadzamy z zagranicy, przygotowujemy w
+            naszym warsztacie i dostarczamy gotowe do jazdy. Brzozow, Krosno,
+            Rzeszow, Krakow - dojezdzamy w promieniu 500 km.
           </p>
         </Reveal>
 
