@@ -12,22 +12,10 @@ const WORD = 'AUTA NA SPRZEDAŻ';
 const WORD_START_TIME = 0.7;
 
 export default function Preloader() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [removed, setRemoved] = useState(false);
   const ticksRef = useRef<SVGGElement | null>(null);
   const wordRef = useRef<HTMLDivElement | null>(null);
-
-  // Decide on mount whether to show (once per session)
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    try {
-      if (sessionStorage.getItem('preloaderShown') === '1') return;
-      sessionStorage.setItem('preloaderShown', '1');
-    } catch {
-      // ignore — show anyway
-    }
-    setShow(true);
-  }, []);
 
   // Build ticks + characters when shown
   useEffect(() => {
