@@ -291,11 +291,11 @@ body {
   .marquee-track { animation: none; }
 }
 
-/* ===== Preloader (tachometer ignition) ===== */
+
+/* ===== Preloader (tachometer ignition) — performance-tuned ===== */
 :root {
   --preloader-red: #e11d2e;
   --preloader-red-flash: #ff3344;
-  --preloader-glow: rgba(225, 29, 46, 0.35);
 }
 #preloader {
   position: fixed;
@@ -303,37 +303,19 @@ body {
   background-color: #0a0a0a;
   z-index: 2147483647;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
-  animation:
-    preloaderShake 0.2s 0.5s ease-in-out,
-    preloaderFadeOut 0.2s 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-#preloader::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-  pointer-events: none;
-  opacity: 0.5;
-  z-index: 10;
-}
-#preloader::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.6) 100%);
-  pointer-events: none;
-  z-index: 10;
+  contain: strict;
+  animation: preloaderFadeOut 0.25s 1.05s ease-out forwards;
+  will-change: opacity;
 }
 .preloader-bg-flash {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 50% 50%, var(--preloader-red-flash), transparent 70%);
   opacity: 0;
-  animation: preloaderFlashPulse 0.2s 0.5s ease-out;
+  animation: preloaderFlashPulse 0.18s 0.55s ease-out;
+  will-change: opacity;
 }
 .preloader-tachometer {
   position: absolute;
@@ -341,8 +323,7 @@ body {
   height: 320px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -55%);
-  animation: preloaderTachoGlow 0.5s 0.2s ease-in forwards;
+  transform: translate3d(-50%, -55%, 0);
 }
 .preloader-tachometer svg {
   width: 100%;
@@ -361,10 +342,12 @@ body {
 .preloader-tick {
   stroke-linecap: round;
   opacity: 0.15;
+  animation: preloaderTickOn 0.2s ease-out forwards;
+  will-change: opacity;
 }
-.preloader-tick.active { opacity: 0.5; }
-.preloader-tick.redzone { stroke: var(--preloader-red); stroke-width: 2.5; }
-.preloader-tick.redzone.active { opacity: 0.9; }
+.preloader-tick.redzone {
+  stroke: var(--preloader-red);
+}
 .preloader-arc-progress {
   fill: none;
   stroke: var(--preloader-red);
@@ -373,8 +356,9 @@ body {
   stroke-dashoffset: 282;
   transform-origin: 100px 100px;
   transform: rotate(135deg);
-  opacity: 0.4;
-  animation: preloaderProgressSweep 0.3s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0.55;
+  animation: preloaderProgressSweep 0.35s 0.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: stroke-dashoffset;
 }
 .preloader-redline {
   fill: none;
@@ -382,16 +366,8 @@ body {
   stroke-width: 3;
   stroke-linecap: round;
   opacity: 0.6;
-  animation: preloaderRedlineHit 0.2s 0.5s ease-out;
-}
-.preloader-needle-glow {
-  stroke: var(--preloader-glow);
-  stroke-width: 8;
-  stroke-linecap: round;
-  transform-origin: 100px 100px;
-  transform: rotate(-135deg);
-  opacity: 0;
-  animation: preloaderNeedleTrail 0.3s 0.2s ease-out forwards;
+  animation: preloaderRedlineHit 0.22s 0.55s ease-out;
+  will-change: opacity, stroke-width;
 }
 .preloader-needle {
   stroke: var(--preloader-red);
@@ -399,102 +375,65 @@ body {
   stroke-linecap: round;
   transform-origin: 100px 100px;
   transform: rotate(-135deg);
-  animation:
-    preloaderNeedleSweep 0.3s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
-    preloaderNeedleFlash 0.2s 0.5s ease-out;
+  animation: preloaderNeedleSweep 0.4s 0.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform;
 }
 .preloader-center-dot {
   fill: var(--preloader-red);
-  opacity: 0.3;
-  transform-origin: 100px 100px;
-  animation: preloaderDotPulse 0.2s ease-in-out forwards;
+  opacity: 0.6;
 }
 .preloader-center-dot-inner {
   fill: #fff;
-  opacity: 0.2;
-  animation: preloaderDotInnerPulse 0.2s ease-in-out forwards;
+  opacity: 0.4;
 }
 .preloader-wordmark {
   position: absolute;
-  bottom: 28%;
+  bottom: 26%;
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 36px;
-  letter-spacing: 8px;
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: 0.12em;
   color: #f5f5f5;
   user-select: none;
   z-index: 5;
-}
-.preloader-char {
-  display: inline-block;
   opacity: 0;
-  transform: translateY(12px);
+  transform: translate3d(0, 8px, 0);
+  animation: preloaderWordIn 0.45s 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: opacity, transform;
 }
 
-@keyframes preloaderDotPulse {
-  0% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.3); }
-  100% { opacity: 0.3; transform: scale(1); }
-}
-@keyframes preloaderDotInnerPulse {
-  0% { opacity: 0.21; }
-  50% { opacity: 0.63; }
-  100% { opacity: 0.21; }
+@keyframes preloaderTickOn {
+  to { opacity: 0.6; }
 }
 @keyframes preloaderNeedleSweep {
-  0% { transform: rotate(-135deg); }
-  100% { transform: rotate(135deg); }
+  from { transform: rotate(-135deg); }
+  to   { transform: rotate(135deg); }
 }
 @keyframes preloaderProgressSweep {
-  0% { stroke-dashoffset: 282; }
-  100% { stroke-dashoffset: 70; }
-}
-@keyframes preloaderTachoGlow {
-  0% { filter: drop-shadow(0 0 0px var(--preloader-glow)); }
-  50% { filter: drop-shadow(0 0 7px var(--preloader-glow)); }
-  100% { filter: drop-shadow(0 0 1px var(--preloader-glow)); }
-}
-@keyframes preloaderNeedleTrail {
-  0% { transform: rotate(-135deg); opacity: 0; }
-  50% { opacity: 0.5; }
-  100% { transform: rotate(135deg); opacity: 0.15; }
+  from { stroke-dashoffset: 282; }
+  to   { stroke-dashoffset: 70; }
 }
 @keyframes preloaderFlashPulse {
-  0% { opacity: 0; }
-  50% { opacity: 0.12; }
+  0%   { opacity: 0; }
+  50%  { opacity: 0.18; }
   100% { opacity: 0; }
 }
-@keyframes preloaderShake {
-  0% { transform: translate(3px, 2px); }
-  20% { transform: translate(-3px, -2px); }
-  40% { transform: translate(2px, -1px); }
-  60% { transform: translate(-2px, 1px); }
-  80% { transform: translate(1px, -1px); }
-  100% { transform: translate(0, 0); }
-}
 @keyframes preloaderRedlineHit {
-  0% { stroke: var(--preloader-red); stroke-width: 3; opacity: 0.6; }
-  50% { stroke: var(--preloader-red-flash); stroke-width: 5; opacity: 1; }
+  0%   { stroke: var(--preloader-red); stroke-width: 3; opacity: 0.6; }
+  50%  { stroke: var(--preloader-red-flash); stroke-width: 5; opacity: 1; }
   100% { stroke: var(--preloader-red); stroke-width: 3; opacity: 0.6; }
 }
-@keyframes preloaderNeedleFlash {
-  0% { filter: none; }
-  50% { filter: drop-shadow(0 0 6px var(--preloader-red-flash)); }
-  100% { filter: none; }
-}
-@keyframes preloaderCharReveal {
-  0% { opacity: 0; transform: translateY(12px); text-shadow: none; }
-  20% { text-shadow: 0 0 20px rgba(225, 29, 46, 0.6); }
-  100% { opacity: 1; transform: translateY(0); text-shadow: none; }
+@keyframes preloaderWordIn {
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 @keyframes preloaderFadeOut {
-  0% { opacity: 1; visibility: visible; }
-  100% { opacity: 0; visibility: hidden; }
+  to { opacity: 0; visibility: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   #preloader { animation: preloaderFadeOut 0.2s 0.1s forwards; }
   .preloader-tachometer, .preloader-needle, .preloader-arc-progress,
-  .preloader-bg-flash, .preloader-redline, .preloader-needle-glow { animation: none; }
+  .preloader-bg-flash, .preloader-redline, .preloader-tick,
+  .preloader-wordmark { animation: none; opacity: 1; transform: none; }
 }
