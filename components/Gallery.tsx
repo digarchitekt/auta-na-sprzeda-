@@ -1,40 +1,85 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function Gallery({ images, alt }: { images: string[]; alt: string }) {
   const [active, setActive] = useState(0);
   const [zoomed, setZoomed] = useState(false);
 
-  const prev = useCallback(
-    () => setActive((i) => (i - 1 + images.length) % images.length),
-    [images.length],
-  );
-  const next = useCallback(
-    () => setActive((i) => (i + 1) % images.length),
-    [images.length],
-  );
+  // Pinch-zoom transform state
+  const [scale, setScale] = useState(1);
+  const [tx, setTx] = useState(0);
+  const [ty, setTy] = useState(0);
 
-  // Keyboard navigation (active also when not zoomed)
+  const modalRef = useRef<HTMLDivElement>(null);
+  const touchStateRef = useRef({
+    mode: 'none' as 'none' | 'swipe' | 'pinch' | 'pan',
+    startX: 0,
+    startY: 0,
+    startDist: 0,
+    startScale: 1,
+    startTx: 0,
+    startTy: 0,
+    lastTap: 0,
+  });
+
+  const resetZoom = useCallback(() => {
+    setScale(1);
+    setTx(0);
+    setTy(0);
+  }, []);
+
+  const prev = useCallback(() => {
+    setActive((i) => (i - 1 + images.length) % images.length);
+    resetZoom();
+  }, [images.length, resetZoom]);
+
+  const next = useCallback(() => {
+    setActive((i) => (i + 1) % images.length);
+    resetZoom();
+  }, [images.length, resetZoom]);
+
+  const close = useCallback(() => {
+    setZoomed(false);
+    resetZoom();
+  }, [resetZoom]);
+
+  // Reset zoom when changing image programmatically
+  useEffect(() => {
+    resetZoom();
+  }, [active, resetZoom]);
+
+  // Keyboard navigation
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') prev();
       else if (e.key === 'ArrowRight') next();
-      else if (e.key === 'Escape' && zoomed) setZoomed(false);
+      else if (e.key === 'Escape' && zoomed) close();
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [prev, next, zoomed]);
+  }, [prev, next, close, zoomed]);
 
-  // Lock scroll when zoomed + map wheel scroll to prev/next
+  // Lock body scroll when zoomed
   useEffect(() => {
     if (!zoomed) return;
-    const original = document.body.style.overflow;
+    const originalOverflow = document.body.style.overflow;
+    const originalTouchAction = document.body.style.touchAction;
     document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.touchAction = originalTouchAction;
+    };
+  }, [zoomed]);
 
+  // Wheel scroll → navigate
+  useEffect(() => {
+    if (!zoomed) return;
     let lastWheel = 0;
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
+      if (scale > 1.05) return;
       const now = Date.now();
       if (now - lastWheel < 350) return;
       const delta = e.deltaY || e.deltaX;
@@ -44,24 +89,118 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
       else prev();
     };
     window.addEventListener('wheel', onWheel, { passive: false });
+    return () => window.removeEventListener('wheel', onWheel);
+  }, [zoomed, prev, next, scale]);
+
+  // Native touch handlers (need passive: false to preventDefault)
+  useEffect(() => {
+    if (!zoomed) return;
+    const el = modalRef.current;
+    if (!el) return;
+
+    const state = touchStateRef.current;
+
+    const onStart = (e: TouchEvent) => {
+      if (e.touches.length === 2) {
+        const t1 = e.touches[0];
+        const t2 = e.touches[1];
+        state.mode = 'pinch';
+        state.startDist = Math.hypot(
+          t2.clientX - t1.clientX,
+          t2.clientY - t1.clientY,
+        );
+        state.startScale = scale;
+        state.startTx = tx;
+        state.startTy = ty;
+        return;
+      }
+      if (e.touches.length === 1) {
+        const t = e.touches[0];
+        const now = Date.now();
+        // Double-tap to toggle zoom
+        if (now - state.lastTap < 280) {
+          if (scale > 1.05) {
+            resetZoom();
+          } else {
+            setScale(2);
+          }
+          state.lastTap = 0;
+          state.mode = 'none';
+          return;
+        }
+        state.lastTap = now;
+        state.startX = t.clientX;
+        state.startY = t.clientY;
+        state.startTx = tx;
+        state.startTy = ty;
+        state.mode = scale > 1.05 ? 'pan' : 'swipe';
+      }
+    };
+
+    const onMove = (e: TouchEvent) => {
+      e.preventDefault();
+      if (state.mode === 'pinch' && e.touches.length === 2) {
+        const t1 = e.touches[0];
+        const t2 = e.touches[1];
+        const dist = Math.hypot(
+          t2.clientX - t1.clientX,
+          t2.clientY - t1.clientY,
+        );
+        const ratio = dist / state.startDist;
+        const newScale = Math.max(1, Math.min(4, state.startScale * ratio));
+        setScale(newScale);
+        if (newScale <= 1.01) {
+          setTx(0);
+          setTy(0);
+        }
+      } else if (state.mode === 'pan' && e.touches.length === 1) {
+        const t = e.touches[0];
+        const dx = t.clientX - state.startX;
+        const dy = t.clientY - state.startY;
+        const maxPan = (scale - 1) * 200;
+        setTx(Math.max(-maxPan, Math.min(maxPan, state.startTx + dx)));
+        setTy(Math.max(-maxPan, Math.min(maxPan, state.startTy + dy)));
+      }
+    };
+
+    const onEnd = (e: TouchEvent) => {
+      if (state.mode === 'swipe' && e.changedTouches.length > 0) {
+        const t = e.changedTouches[0];
+        const dx = t.clientX - state.startX;
+        const dy = t.clientY - state.startY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) next();
+          else prev();
+        }
+      }
+      state.mode = 'none';
+    };
+
+    el.addEventListener('touchstart', onStart, { passive: false });
+    el.addEventListener('touchmove', onMove, { passive: false });
+    el.addEventListener('touchend', onEnd);
+    el.addEventListener('touchcancel', onEnd);
 
     return () => {
-      document.body.style.overflow = original;
-      window.removeEventListener('wheel', onWheel);
+      el.removeEventListener('touchstart', onStart);
+      el.removeEventListener('touchmove', onMove);
+      el.removeEventListener('touchend', onEnd);
+      el.removeEventListener('touchcancel', onEnd);
     };
-  }, [zoomed, prev, next]);
+  }, [zoomed, scale, tx, ty, prev, next, resetZoom]);
 
-  // Touch swipe
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const onTouchStart = (e: React.TouchEvent) => setTouchStartX(e.touches[0].clientX);
-  const onTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX === null) return;
-    const dx = e.changedTouches[0].clientX - touchStartX;
+  // Main (non-zoomed) image swipe
+  const [mainTouchX, setMainTouchX] = useState<number | null>(null);
+  const onMainTouchStart = (e: React.TouchEvent) =>
+    setMainTouchX(e.touches[0].clientX);
+  const onMainTouchEnd = (e: React.TouchEvent) => {
+    if (mainTouchX === null) return;
+    const dx = e.changedTouches[0].clientX - mainTouchX;
     if (Math.abs(dx) > 50) {
       if (dx < 0) next();
       else prev();
     }
-    setTouchStartX(null);
+    setMainTouchX(null);
   };
 
   return (
@@ -70,8 +209,8 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
       <div
         className="group relative aspect-[16/10] cursor-zoom-in select-none overflow-hidden border border-bg-border bg-bg-elevated"
         onClick={() => setZoomed(true)}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
+        onTouchStart={onMainTouchStart}
+        onTouchEnd={onMainTouchEnd}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -144,24 +283,36 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
       {/* Zoom overlay */}
       {zoomed && (
         <div
+          ref={modalRef}
           className="fixed inset-0 z-[100]"
           role="dialog"
           aria-modal="true"
           aria-label="Powiekszone zdjecie"
+          style={{ touchAction: 'none', overscrollBehavior: 'contain' }}
         >
           {/* Backdrop - click to close */}
           <div
             className="absolute inset-0 bg-black/95"
-            onClick={() => setZoomed(false)}
+            onClick={close}
           />
 
-          {/* Image - centered, no click capture */}
+          {/* Image container - centered */}
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={images[active]}
               alt={alt}
-              className="max-h-[90vh] max-w-[95vw] object-contain"
+              draggable={false}
+              className="max-h-[90vh] max-w-[95vw] object-contain select-none"
+              style={{
+                transform: `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`,
+                transformOrigin: 'center center',
+                transition:
+                  touchStateRef.current.mode === 'none'
+                    ? 'transform 220ms ease-out'
+                    : 'none',
+                willChange: 'transform',
+              }}
             />
           </div>
 
@@ -169,13 +320,13 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
           <button
             type="button"
             aria-label="Zamknij"
-            onClick={() => setZoomed(false)}
+            onClick={close}
             className="absolute right-4 top-4 z-10 grid h-12 w-12 place-items-center border border-bg-border bg-bg-elevated text-2xl text-text-primary hover:border-accent hover:text-accent"
           >
             ✕
           </button>
 
-          {/* Prev */}
+          {/* Prev — hidden on mobile when zoomed in (use swipe instead) */}
           <button
             type="button"
             aria-label="Poprzednie zdjecie"
@@ -197,7 +348,7 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
 
           {/* Counter */}
           <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 bg-bg-elevated px-3 py-1.5 text-sm text-text-secondary">
-            {active + 1} / {images.length} &middot; ESC aby zamknac
+            {active + 1} / {images.length}
           </div>
         </div>
       )}
