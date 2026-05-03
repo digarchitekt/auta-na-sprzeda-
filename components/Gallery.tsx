@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function Gallery({ images, alt }: { images: string[]; alt: string }) {
   const [active, setActive] = useState(0);
@@ -60,18 +61,33 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
     return () => window.removeEventListener('keydown', handler);
   }, [prev, next, close, zoomed]);
 
-  // Lock body scroll when zoomed
+  // Lock body + html scroll when zoomed; compensate for scrollbar to avoid jump
   useEffect(() => {
     if (!zoomed) return;
-    const originalOverflow = document.body.style.overflow;
-    const originalTouchAction = document.body.style.touchAction;
-    document.body.style.overflow = 'hidden';
-    document.body.style.touchAction = 'none';
+    const html = document.documentElement;
+    const body = document.body;
+    const scrollbarW = window.innerWidth - html.clientWidth;
+    const orig = {
+      htmlOverflow: html.style.overflow,
+      bodyOverflow: body.style.overflow,
+      bodyPaddingRight: body.style.paddingRight,
+      bodyTouchAction: body.style.touchAction,
+    };
+    html.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+    body.style.touchAction = 'none';
+    if (scrollbarW > 0) body.style.paddingRight = `${scrollbarW}px`;
     return () => {
-      document.body.style.overflow = originalOverflow;
-      document.body.style.touchAction = originalTouchAction;
+      html.style.overflow = orig.htmlOverflow;
+      body.style.overflow = orig.bodyOverflow;
+      body.style.paddingRight = orig.bodyPaddingRight;
+      body.style.touchAction = orig.bodyTouchAction;
     };
   }, [zoomed]);
+
+  // Track if we're mounted client-side (for portal)
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   // Wheel scroll → navigate
   useEffect(() => {
@@ -280,15 +296,15 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
         ))}
       </div>
 
-      {/* Zoom overlay */}
-      {zoomed && (
+      {/* Zoom overlay — rendered via portal to body to escape any stacking context */}
+      {zoomed && mounted && createPortal(
         <div
           ref={modalRef}
-          className="fixed inset-0 z-[100]"
+          className="fixed inset-0"
           role="dialog"
           aria-modal="true"
           aria-label="Powiekszone zdjecie"
-          style={{ touchAction: 'none', overscrollBehavior: 'contain' }}
+          style={{ touchAction: 'none', overscrollBehavior: 'contain', zIndex: 2147483646 }}
         >
           {/* Backdrop - click to close */}
           <div
@@ -350,7 +366,8 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
           <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 bg-bg-elevated px-3 py-1.5 text-sm text-text-secondary">
             {active + 1} / {images.length}
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </div>
   );
