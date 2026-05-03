@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MobileNav from '@/components/MobileNav';
+import Preloader from '@/components/Preloader';
 import { company } from '@/data/company';
 
 const inter = Inter({
@@ -157,6 +158,7 @@ export default function RootLayout({
   return (
     <html lang="pl" className={`dark ${inter.variable} ${bebas.variable}`}>
       <body className="min-h-screen bg-bg font-sans text-text-primary">
+        <Preloader />
         {/* Skip to content for keyboard users */}
         <a
           href="#main"
