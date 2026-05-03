@@ -304,16 +304,23 @@ export default function HomePage() {
             </p>
           </div>
 
-          <ul className="mt-8 flex flex-wrap gap-2">
-            {company.servicedCities.map((c) => (
+        </div>
+
+        <div className="marquee mt-8" aria-label="Obslugiwane miasta">
+          <ul className="marquee-track">
+            {[...company.servicedCities, ...company.servicedCities].map((c, i) => (
               <li
-                key={c}
-                className="border border-bg-border bg-bg-card px-4 py-2 text-sm font-medium text-text-primary"
+                key={`${c}-${i}`}
+                className="shrink-0 border border-bg-border bg-bg-card px-4 py-2 text-sm font-medium text-text-primary"
+                aria-hidden={i >= company.servicedCities.length ? 'true' : undefined}
               >
                 Auta uzywane {c}
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="container-x">
 
           <p className="mt-8 max-w-3xl text-sm text-text-muted">
             Szukasz <strong className="text-text-secondary">tanich uzywanych aut na sprzedaz</strong> w Twojej okolicy? Sprawdz nasza oferte sprawdzonych Opli i Audi - kazde auto przygotowane do jazdy z 3-miesieczna gwarancja.
