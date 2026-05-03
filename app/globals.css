@@ -16,7 +16,7 @@ body {
 }
 
 body {
-  font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 /* Reserve space at bottom on mobile for fixed bottom nav */

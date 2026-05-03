@@ -16,7 +16,7 @@ export default function HeroVideo() {
         autoPlay
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         aria-hidden
         className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1500ms] ease-in-out ${
           ended ? 'opacity-0' : 'opacity-100'
@@ -28,7 +28,7 @@ export default function HeroVideo() {
       {/* Audi image — fades in only after video ends */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/hero-bg.jpg"
+        src="/images/hero-bg.webp"
         alt=""
         aria-hidden
         className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1500ms] ease-in-out ${

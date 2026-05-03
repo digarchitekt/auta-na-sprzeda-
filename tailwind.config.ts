@@ -27,8 +27,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-        display: ['"Bebas Neue"', 'Inter', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        display: ['var(--font-bebas)', 'var(--font-inter)', 'sans-serif'],
       },
       maxWidth: {
         container: '1280px',

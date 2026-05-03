@@ -30,7 +30,7 @@ export default function HomePage() {
           aria-hidden
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(/images/texture-dark.jpg)',
+            backgroundImage: 'url(/images/texture-dark.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -117,7 +117,7 @@ export default function HomePage() {
           aria-hidden
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(/images/texture-dark.jpg)',
+            backgroundImage: 'url(/images/texture-dark.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -180,7 +180,7 @@ export default function HomePage() {
           <Reveal variant="slide-left" delay={150} duration={900} className="card overflow-hidden">
             <div className="relative h-48 w-full overflow-hidden border-b border-bg-border bg-bg-elevated md:h-56">
               <Image
-                src="/images/key-handover.jpg"
+                src="/images/key-handover.webp"
                 alt="Wlasciciel wreczajacy klucze"
                 fill
                 sizes="(max-width: 1024px) 100vw, 700px"
@@ -255,7 +255,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden py-24 md:py-32">
         {/* Background image — full coverage */}
         <Image
-          src="/images/audi-front.jpg"
+          src="/images/audi-front.webp"
           alt=""
           fill
           sizes="100vw"

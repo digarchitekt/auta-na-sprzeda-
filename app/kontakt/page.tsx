@@ -13,7 +13,7 @@ export default function ContactPage() {
     <section className="relative min-h-[calc(100vh-4rem)] overflow-hidden">
       {/* Fixed full-page background */}
       <Image
-        src="/images/hero-bg.jpg"
+        src="/images/hero-bg.webp"
         alt=""
         fill
         priority

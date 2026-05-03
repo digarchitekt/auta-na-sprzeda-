@@ -21,7 +21,7 @@ export default function AutaPage() {
           aria-hidden
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(/images/texture-dark.jpg)',
+            backgroundImage: 'url(/images/texture-dark.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

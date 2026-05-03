@@ -18,9 +18,25 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const v = getVehicleBySlug(params.slug);
   if (!v) return { title: 'Nie znaleziono pojazdu' };
   const label = `${v.brand} ${v.model} ${v.variant ?? ''} ${v.year}`.trim();
+  const title = `${label} - ${formatPrice(v.price)}`;
+  const cover = v.images[0] ?? '/images/audi-front.webp';
   return {
-    title: `${label} - ${formatPrice(v.price)}`,
+    title,
     description: v.shortDescription,
+    alternates: { canonical: `/auta/${v.slug}` },
+    openGraph: {
+      title,
+      description: v.shortDescription,
+      url: `https://autanasprzedaz.com/auta/${v.slug}`,
+      type: 'website',
+      images: [{ url: cover, alt: label }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: v.shortDescription,
+      images: [cover],
+    },
   };
 }
 
@@ -30,8 +46,37 @@ export default function VehiclePage({ params }: { params: { slug: string } }) {
 
   const label = `${v.brand} ${v.model} ${v.variant ?? ''}`.trim();
 
+  // JSON-LD: Vehicle/Product schema for rich results
+  const vehicleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Vehicle',
+    name: `${label} ${v.year}`,
+    brand: { '@type': 'Brand', name: v.brand },
+    model: v.model,
+    vehicleModelDate: String(v.year),
+    bodyType: v.bodyType,
+    color: v.color,
+    fuelType: v.fuel,
+    vehicleTransmission: v.transmission,
+    mileageFromOdometer: { '@type': 'QuantitativeValue', value: v.mileage, unitCode: 'KMT' },
+    vehicleEngine: { '@type': 'EngineSpecification', name: v.engine, enginePower: { '@type': 'QuantitativeValue', value: v.power, unitCode: 'BHP' } },
+    image: v.images.map((img) => `https://autanasprzedaz.com${img}`),
+    description: v.description,
+    offers: {
+      '@type': 'Offer',
+      price: v.price,
+      priceCurrency: 'PLN',
+      availability: 'https://schema.org/InStock',
+      url: `https://autanasprzedaz.com/auta/${v.slug}`,
+    },
+  };
+
   return (
     <article className="container-x py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(vehicleSchema) }}
+      />
       <nav className="text-xs uppercase tracking-wider text-text-muted">
         <Link href="/" className="hover:text-text-primary">Start</Link>
         <span className="mx-2">/</span>

@@ -21,6 +21,13 @@ const nextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         ],
       },
+      // Long-cache static assets (images, videos, fonts)
+      {
+        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico|mp4|webm|woff2|woff)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
     ];
   },
 };
