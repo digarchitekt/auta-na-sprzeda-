@@ -474,3 +474,18 @@ body {
   .preloader-bg-flash, .preloader-redline, .preloader-tick,
   .preloader-wordmark { animation: none; opacity: 1; transform: none; }
 }
+
+/* Legal pages — readable typography */
+.prose-page {
+  max-width: 820px;
+}
+.prose-page h2 {
+  letter-spacing: -0.01em;
+}
+.prose-page p,
+.prose-page li {
+  font-size: 0.95rem;
+}
+.prose-page a {
+  word-break: break-word;
+}

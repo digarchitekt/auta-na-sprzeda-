@@ -8,8 +8,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticUrls: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified: now, changeFrequency: 'weekly', priority: 1 },
     { url: `${base}/auta`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
-    { url: `${base}/sprzedaj-auto`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/kontakt`, lastModified: now, changeFrequency: 'yearly', priority: 0.5 },
+    { url: `${base}/regulamin`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${base}/polityka-prywatnosci`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${base}/polityka-cookies`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
   ];
 
   const vehicleUrls: MetadataRoute.Sitemap = vehicles.map((v) => ({

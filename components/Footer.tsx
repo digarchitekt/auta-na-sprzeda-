@@ -5,7 +5,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-24 border-t border-bg-border bg-bg-elevated">
-      <div className="container-x grid gap-10 py-14 md:grid-cols-4">
+      <div className="container-x grid gap-10 py-14 md:grid-cols-5">
         <div className="md:col-span-2">
           <div className="font-display text-2xl tracking-wider">
             <span className="text-accent">/</span> AUTA NA SPRZEDAZ
@@ -39,7 +39,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`mailto:${company.email}`} className="hover:text-accent">
+                <a href={`mailto:${company.email}`} className="break-all hover:text-accent">
                   {company.email}
                 </a>
               </li>
@@ -57,11 +57,39 @@ export default function Footer() {
             <li><Link href="/kontakt" className="hover:text-accent">Kontakt</Link></li>
           </ul>
         </div>
+
+        <div>
+          <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-text-secondary">
+            Informacje prawne
+          </h4>
+          <ul className="space-y-2 text-sm text-text-primary">
+            <li>
+              <Link href="/polityka-prywatnosci" className="hover:text-accent">
+                Polityka prywatnosci
+              </Link>
+            </li>
+            <li>
+              <Link href="/polityka-cookies" className="hover:text-accent">
+                Polityka cookies
+              </Link>
+            </li>
+            <li>
+              <Link href="/regulamin" className="hover:text-accent">
+                Regulamin
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="border-t border-bg-border">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-text-muted md:flex-row">
           <span>(c) {year} {company.name}. Wszystkie prawa zastrzezone.</span>
           <span>{company.domain}</span>
+        </div>
+        <div className="container-x pb-4">
+          <p className="text-center text-[9px] leading-none text-text-muted/40 md:text-right">
+            Strona stworzona przez Gracjana Preisnera
+          </p>
         </div>
       </div>
     </footer>

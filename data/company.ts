@@ -1,18 +1,18 @@
 export const company = {
   name: 'Auta Na Sprzedaz',
   domain: 'autanasprzedaz.com',
-  phone: '+48 600 000 000',
-  email: 'biuro@autanasprzedaz.com',
+  phone: '+48 782 035 878',
+  email: 'gracjan.preisner@gmail.com',
   address: {
-    street: 'ul. Przykladowa 1',
-    city: '36-200 Brzozow',
+    street: 'Jasienica Rosielna 292',
+    city: '36-220 Jasienica Rosielna',
     region: 'podkarpackie',
     country: 'Polska',
   },
-  // Geographic coords (Brzozow, Podkarpacie) - update with actual location
+  // Geographic coords (Jasienica Rosielna, Podkarpacie)
   geo: {
-    latitude: 49.7018,
-    longitude: 22.0177,
+    latitude: 49.7589,
+    longitude: 21.9486,
   },
   // Cities/areas we deliver to (used in copy + LocalBusiness areaServed schema)
   servicedCities: [
