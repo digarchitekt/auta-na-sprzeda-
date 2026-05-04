@@ -232,45 +232,6 @@ export const vehicles: Vehicle[] = [
     images: seq('audi-a8-2016', 3),
     featured: true,
   },
-  {
-    slug: 'audi-q3-2017',
-    brand: 'Audi',
-    model: 'Q3',
-    variant: '2.0 TFSI Quattro',
-    year: 2017,
-    price: 89900,
-    currency: 'PLN',
-    mileage: 120000,
-    fuel: 'Benzyna',
-    transmission: 'Automatyczna',
-    power: 180,
-    engine: '2.0 TFSI',
-    bodyType: 'SUV',
-    color: 'Srebrny metalik',
-    shortDescription:
-      'Audi Q3 z napedem Quattro. Mocny silnik 2.0 TFSI 180 KM, automat S-Tronic.',
-    description:
-      '[OPIS PLACEHOLDER] Kompaktowy SUV z napedem 4x4. Doskonale wyposazenie, niski przebieg jak na rocznik.',
-    highlights: [
-      'Naped Quattro 4x4',
-      'Skrzynia S-Tronic',
-      'Panoramiczny dach',
-      'Skorzana tapicerka',
-    ],
-    specs: [
-      { label: 'Rok produkcji', value: '2017' },
-      { label: 'Przebieg', value: '120 000 km' },
-      { label: 'Pojemnosc silnika', value: '1984 cm3' },
-      { label: 'Moc', value: '180 KM' },
-      { label: 'Rodzaj paliwa', value: 'Benzyna' },
-      { label: 'Skrzynia biegow', value: 'Automatyczna S-Tronic 7-bieg.' },
-      { label: 'Naped', value: 'Quattro 4x4' },
-      { label: 'Liczba drzwi', value: '5' },
-      { label: 'Kolor', value: 'Srebrny metalik' },
-      { label: 'Kraj pochodzenia', value: 'Niemcy' },
-    ],
-    images: seq('audi-q3-2017', 1),
-  },
 ];
 
 export const getVehicleBySlug = (slug: string): Vehicle | undefined =>

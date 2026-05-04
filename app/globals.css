@@ -307,15 +307,17 @@ body {
   justify-content: center;
   contain: strict;
   pointer-events: none;
-  animation: preloaderFadeOut 0.3s 1.1s ease-out forwards;
-  will-change: opacity;
+  animation:
+    preloaderShake 0.25s 0.5s cubic-bezier(0.36, 0, 0.66, -0.56),
+    preloaderFadeOut 0.4s 1.6s ease-out forwards;
+  will-change: opacity, transform;
 }
 .preloader-bg-flash {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, var(--preloader-red-flash), transparent 70%);
+  background: radial-gradient(circle at 50% 50%, var(--preloader-red-flash), transparent 60%);
   opacity: 0;
-  animation: preloaderFlashPulse 0.18s 0.55s ease-out;
+  animation: preloaderFlashPulse 0.35s 0.5s ease-out;
   will-change: opacity;
 }
 .preloader-tachometer {
@@ -367,8 +369,8 @@ body {
   stroke-width: 3;
   stroke-linecap: round;
   opacity: 0.6;
-  animation: preloaderRedlineHit 0.22s 0.55s ease-out;
-  will-change: opacity, stroke-width;
+  animation: preloaderRedlineHit 0.32s 0.5s ease-out;
+  will-change: opacity, stroke-width, filter;
 }
 .preloader-needle {
   stroke: var(--preloader-red);
@@ -376,8 +378,10 @@ body {
   stroke-linecap: round;
   transform-origin: 100px 100px;
   transform: rotate(-135deg);
-  animation: preloaderNeedleSweep 0.4s 0.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  will-change: transform;
+  animation:
+    preloaderNeedleSweep 0.4s 0.15s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    preloaderNeedleImpact 0.3s 0.5s ease-out;
+  will-change: transform, filter;
 }
 .preloader-center-dot {
   fill: var(--preloader-red);
@@ -398,10 +402,14 @@ body {
   color: #f5f5f5;
   user-select: none;
   z-index: 5;
+}
+.preloader-char {
+  display: inline-block;
   opacity: 0;
-  transform: translate3d(0, 8px, 0);
-  animation: preloaderWordIn 0.45s 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  will-change: opacity, transform;
+  transform: scale(2.4) translate3d(0, 0, 0);
+  filter: blur(6px);
+  animation: preloaderCharFly 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform, filter;
 }
 
 @keyframes preloaderTickOn {
@@ -417,16 +425,44 @@ body {
 }
 @keyframes preloaderFlashPulse {
   0%   { opacity: 0; }
-  50%  { opacity: 0.18; }
+  20%  { opacity: 0.55; }
+  60%  { opacity: 0.2; }
   100% { opacity: 0; }
 }
 @keyframes preloaderRedlineHit {
-  0%   { stroke: var(--preloader-red); stroke-width: 3; opacity: 0.6; }
-  50%  { stroke: var(--preloader-red-flash); stroke-width: 5; opacity: 1; }
-  100% { stroke: var(--preloader-red); stroke-width: 3; opacity: 0.6; }
+  0%   { stroke: var(--preloader-red); stroke-width: 3; opacity: 0.6; filter: none; }
+  40%  { stroke: var(--preloader-red-flash); stroke-width: 7; opacity: 1; filter: drop-shadow(0 0 10px var(--preloader-red-flash)); }
+  100% { stroke: var(--preloader-red); stroke-width: 3; opacity: 0.6; filter: none; }
 }
-@keyframes preloaderWordIn {
-  to { opacity: 1; transform: translate3d(0, 0, 0); }
+@keyframes preloaderNeedleImpact {
+  0%   { filter: none; }
+  40%  { filter: drop-shadow(0 0 8px var(--preloader-red-flash)); }
+  100% { filter: none; }
+}
+@keyframes preloaderShake {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  20% { transform: translate3d(4px, -3px, 0); }
+  40% { transform: translate3d(-4px, 2px, 0); }
+  60% { transform: translate3d(3px, 3px, 0); }
+  80% { transform: translate3d(-2px, -1px, 0); }
+}
+@keyframes preloaderCharFly {
+  0% {
+    opacity: 0;
+    transform: scale(2.4) translate3d(0, 0, 0);
+    filter: blur(6px);
+    text-shadow: 0 0 24px rgba(225, 29, 46, 0.8);
+  }
+  60% {
+    opacity: 1;
+    text-shadow: 0 0 16px rgba(225, 29, 46, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+    filter: blur(0);
+    text-shadow: none;
+  }
 }
 @keyframes preloaderFadeOut {
   to { opacity: 0; visibility: hidden; }

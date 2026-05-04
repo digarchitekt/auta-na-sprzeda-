@@ -50,7 +50,17 @@ export default function Preloader() {
           <circle className="preloader-center-dot-inner" cx="100" cy="100" r="2" />
         </svg>
       </div>
-      <div className="preloader-wordmark font-display">AUTA NA SPRZEDAŻ</div>
+      <div className="preloader-wordmark font-display">
+        {Array.from('AUTA NA SPRZEDAŻ').map((ch, i) => (
+          <span
+            key={i}
+            className="preloader-char"
+            style={{ animationDelay: `${0.4 + i * 0.035}s` }}
+          >
+            {ch === ' ' ? ' ' : ch}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

@@ -5,9 +5,9 @@ import Reveal from '@/components/Reveal';
 import { vehicles } from '@/data/vehicles';
 
 export const metadata: Metadata = {
-  title: 'Uzywane auta na sprzedaz - Opel i Audi | Krosno, Rzeszow, Krakow',
+  title: 'Uzywane auta na sprzedaz - Opel i Audi | Krosno, Rzeszow, Brzozow',
   description:
-    'Pelna oferta tanich uzywanych aut na sprzedaz - Opel i Audi. Sprawdzone egzemplarze sprowadzone z zagranicy, 3 miesiace gwarancji. Brzozow, Krosno, Rzeszow, Sanok, Krakow, Lublin.',
+    'Pelna oferta tanich uzywanych aut na sprzedaz - Opel i Audi. Sprawdzone egzemplarze sprowadzone z zagranicy oraz z kraju, gotowe do jazdy. Brzozow, Krosno, Rzeszow - klienci z calej Polski.',
   alternates: { canonical: '/auta' },
 };
 
@@ -50,7 +50,7 @@ export default function AutaPage() {
           </Reveal>
           <Reveal variant="fade-up" delay={300} duration={700}>
             <p className="mt-6 max-w-2xl text-base text-text-secondary md:text-lg">
-              {vehicles.length} {vehicles.length === 1 ? 'auto' : 'aut'} w ofercie. Tanie uzywane auta na sprzedaz - kazde sprawdzone osobiscie, sprowadzone z zagranicy i przygotowane do jazdy. Dostarczamy na Podkarpacie, do Malopolski i woj. oscienych.
+              {vehicles.length} {vehicles.length === 1 ? 'auto' : 'aut'} w ofercie. Tanie uzywane auta na sprzedaz - kazde sprawdzone osobiscie, sprowadzone z zagranicy lub z kraju i przygotowane w naszym warsztacie. Sprzedaz dla klientow z calej Polski - glownie Podkarpacie i Malopolska.
             </p>
           </Reveal>
 
@@ -75,10 +75,10 @@ export default function AutaPage() {
               </div>
               <div>
                 <dt className="text-[11px] uppercase tracking-wider text-text-muted">
-                  Gwarancja
+                  Stan
                 </dt>
-                <dd className="mt-1 font-display text-3xl text-text-primary md:text-4xl">
-                  3 mc
+                <dd className="mt-1 font-display text-2xl text-text-primary md:text-3xl">
+                  Gotowe
                 </dd>
               </div>
             </dl>
@@ -102,7 +102,7 @@ export default function AutaPage() {
         </div>
       </section>
 
-      {/* CTA - sprzedaj swoje */}
+      {/* CTA */}
       <section className="border-t border-bg-border bg-bg-elevated py-16">
         <div className="container-x flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <div>
@@ -117,9 +117,6 @@ export default function AutaPage() {
           <div className="flex flex-wrap gap-3">
             <Link href="/kontakt" className="btn-primary btn-shimmer">
               Skontaktuj sie
-            </Link>
-            <Link href="/sprzedaj-auto" className="btn-outline">
-              Sprzedaj swoje auto
             </Link>
           </div>
         </div>

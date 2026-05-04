@@ -13,23 +13,19 @@ import { company } from '@/data/company';
 const faqs = [
   {
     q: 'Gdzie kupie tanie uzywane auta na sprzedaz?',
-    a: 'Oferujemy uzywane auta marek Opel i Audi sprowadzane z zagranicy. Bazujemy w Brzozowie na Podkarpaciu, ale dojezdzamy do klientow w promieniu 500 km - Krosno, Rzeszow, Sanok, Krakow, Lublin, Tarnow i okolice.',
+    a: 'Oferujemy uzywane auta marek Opel i Audi sprowadzane z zagranicy oraz z kraju. Bazujemy w Brzozowie na Podkarpaciu i sprzedajemy klientom z calej Polski - glownie Podkarpacie, Malopolska i wojewodztwa oscienne.',
   },
   {
     q: 'Czy auta sa z gwarancja?',
-    a: 'Tak. Kazde auto sprzedajemy z 3-miesieczna gwarancja. Wczesniej kazdy egzemplarz przechodzi pelna inspekcje techniczna i przygotowanie w naszym warsztacie.',
+    a: 'Gwarantujemy dobra jakosc - bez zadnych usterek, w 100% przygotowane do zakupu. Kazde auto jest wypolerowane, dokladnie umyte i wyglada prawie jak z salonu. Przed sprzedaza przechodzi pelna inspekcje techniczna w naszym warsztacie.',
   },
   {
     q: 'Jakimi miastami obejmujemy obsluga?',
-    a: 'Brzozow, Krosno, Rzeszow, Sanok, Jaslo, Przemysl, Tarnow, Krakow, Lublin, Mielec, Stalowa Wola, Debica, Nowy Sacz - i caly obszar Podkarpacia oraz Malopolski. W razie potrzeby dojezdzamy dalej, do 500 km.',
-  },
-  {
-    q: 'Czy mozna sprzedac wam swoje auto?',
-    a: 'Tak. Wystaw zgloszenie przez formularz "Sprzedaj Auto" - zweryfikujemy auto i wystawimy je w naszej ofercie. Reszta po naszej stronie.',
+    a: 'Brzozow, Krosno, Rzeszow, Sanok, Jaslo, Przemysl, Tarnow, Lublin, Mielec, Stalowa Wola, Debica, Nowy Sacz - i caly obszar Podkarpacia oraz Malopolski. Sprzedajemy klientom z calej Polski, ale glownie z Podkarpacia.',
   },
   {
     q: 'Skad sprowadzane sa auta?',
-    a: 'Glownie z Niemiec, Belgii, Holandii i Francji. Wlasciciel z 30-letnim doswiadczeniem osobiscie sprawdza kazdy egzemplarz przed sprowadzeniem.',
+    a: 'Glownie z Polski, Niemiec, Belgii i Holandii. Wlasciciel z 25-letnim doswiadczeniem osobiscie sprawdza kazdy egzemplarz przed sprowadzeniem.',
   },
 ];
 
@@ -53,10 +49,10 @@ export default function HomePage() {
           'OPEL',
           'AUDI',
           'SELEKCJA',
-          'GWARANCJA 3 MC',
+          'GWARANTUJEMY UDANY ZAKUP',
           'GOTOWE DO JAZDY',
           'SPROWADZANE Z ZAGRANICY',
-          '500+ AUT',
+          'PRZYGOTOWANE W WARSZTACIE',
         ]}
       />
 
@@ -165,31 +161,25 @@ export default function HomePage() {
               O nas
             </span>
             <h2 className="section-title mt-2">
-              Auta sprawdzone <span className="text-accent">przez fachowca</span>
+              Auta sprowadzone <span className="text-accent">przez fachowca</span>
             </h2>
             <p className="mt-5 text-text-secondary">
               Nie jestesmy posrednikami. Sami sprowadzamy auta z zagranicy,
               przygotowujemy je w naszym warsztacie i dopiero potem wystawiamy
-              na sprzedaz. Klient dostaje samochod gotowy do jazdy - nie projekt
-              do dokonczenia.
-            </p>
-            <p className="mt-4 text-text-secondary">
-              Sprowadzanie aut z zagranicy oznacza nizsza cene niz na polskim
-              rynku, a nasze doswiadczenie - pewnosc, ze auto bylo wczesniej
-              sprawdzone w kazdym detalu. Mechanika, lakier, historia - nic nie
-              umyka.
+              na sprzedaz. Dostajesz samochod gotowy do jazdy - bez zadnych
+              niespodzianek.
             </p>
 
             {/* Recenzje */}
             <div className="card-lift mt-8 inline-flex items-center gap-4 border border-bg-border bg-bg-elevated px-5 py-4">
-              <div className="flex items-center gap-0.5 text-accent" aria-label="Ocena 4,7 na 5">
+              <div className="flex items-center gap-0.5 text-accent" aria-label="Ocena 5 na 5">
                 {[0, 1, 2, 3, 4].map((i) => (
                   <svg
                     key={i}
                     width="18"
                     height="18"
                     viewBox="0 0 24 24"
-                    fill={i < 4 ? 'currentColor' : 'none'}
+                    fill="currentColor"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinejoin="round"
@@ -202,7 +192,7 @@ export default function HomePage() {
               </div>
               <div className="leading-tight">
                 <div className="font-display text-2xl text-text-primary">
-                  <Counter to={4.7} decimals={1} /> / 5
+                  <Counter to={5} /> / 5
                 </div>
                 <div className="text-xs uppercase tracking-wider text-text-muted">
                   <Counter to={50} suffix="+" /> pozytywnych opinii
@@ -235,26 +225,27 @@ export default function HomePage() {
               Kto za tym stoi
             </span>
             <h3 className="mt-2 font-display text-3xl uppercase tracking-tight md:text-4xl">
-              30 lat doswiadczenia. <span className="text-accent">500+ aut.</span>
+              25 lat doswiadczenia. <span className="text-accent">250+ aut.</span>
             </h3>
             <p className="mt-4 text-text-secondary">
               Wlasciciel firmy to wykwalifikowany <strong className="text-text-primary">mechanik i lakiernik</strong> z
-              30-letnim doswiadczeniem. W ciagu kariery sprowadzil i przygotowal
-              ponad 500 samochodow. Wie dokladnie gdzie szukac wad, co sprawdzic
-              i jak ocenic czy auto jest warte uwagi.
+              25-letnim doswiadczeniem. W ciagu kariery sprowadzil i przygotowal
+              ponad 250 samochodow. Wie dokladnie gdzie szukac wad, co sprawdzic
+              i jak ocenic czy auto jest warte uwagi - i czy uda sie kupic je
+              taniej.
             </p>
 
             <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-bg-border pt-6">
               <div>
                 <dt className="text-[11px] uppercase tracking-wider text-text-muted">Lat w branzy</dt>
                 <dd className="mt-1 font-display text-3xl text-text-primary">
-                  <Counter to={30} duration={1800} />
+                  <Counter to={25} duration={1800} />
                 </dd>
               </div>
               <div>
                 <dt className="text-[11px] uppercase tracking-wider text-text-muted">Sprowadzonych aut</dt>
                 <dd className="mt-1 font-display text-3xl text-text-primary">
-                  <Counter to={500} suffix="+" duration={2000} />
+                  <Counter to={250} suffix="+" duration={2000} />
                 </dd>
               </div>
               <div>
@@ -298,9 +289,8 @@ export default function HomePage() {
               Tanie uzywane auta na Podkarpaciu i okolicach
             </h2>
             <p className="mt-4 text-text-secondary">
-              Bazujemy w Brzozowie i obslugujemy klientow z calego Podkarpacia,
-              Malopolski oraz wojewodztw oscienych. Auta dostarczamy w promieniu
-              500 km - dojezdzamy do najwiekszych miast poludniowej Polski.
+              Bazujemy w Brzozowie i sprzedajemy klientom z calej Polski -
+              glownie Podkarpacie, Malopolska i wojewodztwa oscienne.
             </p>
           </div>
 
@@ -323,13 +313,39 @@ export default function HomePage() {
         <div className="container-x">
 
           <p className="mt-8 max-w-3xl text-sm text-text-muted">
-            Szukasz <strong className="text-text-secondary">tanich uzywanych aut na sprzedaz</strong> w Twojej okolicy? Sprawdz nasza oferte sprawdzonych Opli i Audi - kazde auto przygotowane do jazdy z 3-miesieczna gwarancja.
+            Szukasz <strong className="text-text-secondary">tanich uzywanych aut na sprzedaz</strong> w Twojej okolicy? Sprawdz nasza oferte sprawdzonych Opli i Audi - kazde auto przygotowane w warsztacie i gotowe do jazdy.
           </p>
         </div>
       </section>
 
       {/* FAQ — rich results in Google */}
-      <section className="relative bg-bg py-20">
+      <section className="relative overflow-hidden bg-bg py-20">
+        <Image
+          src="/images/audi-front.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority={false}
+        />
+        {/* Top + bottom fade + side darken so the FAQ list stays legible */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.7) 16%, rgba(10,10,10,0.78) 50%, rgba(10,10,10,0.85) 84%, rgba(10,10,10,1) 100%)',
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-50"
+          style={{
+            background:
+              'radial-gradient(ellipse at 80% 30%, rgba(225,29,46,0.18), transparent 55%)',
+          }}
+        />
+
         <div className="container-x relative z-10 max-w-3xl">
           <Reveal variant="fade-up" duration={700}>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
@@ -371,8 +387,12 @@ export default function HomePage() {
         />
       </section>
 
+      {/*
+        SKUP AUT SECTION — temporarily disabled per owner request.
+        Files /sprzedaj-auto/page.tsx and /api/sell/route.ts remain in repo.
+        To re-enable: uncomment this block.
+
       <section className="relative overflow-hidden py-24 md:py-32">
-        {/* Background image — full coverage */}
         <Image
           src="/images/audi-front.webp"
           alt=""
@@ -381,8 +401,6 @@ export default function HomePage() {
           className="object-cover object-center"
           priority={false}
         />
-
-        {/* Smooth top + bottom fade to page bg, plus side darken for legibility */}
         <div
           aria-hidden
           className="absolute inset-0"
@@ -391,7 +409,6 @@ export default function HomePage() {
               'linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.55) 18%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.55) 82%, rgba(10,10,10,1) 100%)',
           }}
         />
-        {/* Accent glow */}
         <div
           aria-hidden
           className="absolute inset-0 opacity-60"
@@ -400,7 +417,6 @@ export default function HomePage() {
               'radial-gradient(ellipse at 80% 50%, rgba(225,29,46,0.18), transparent 55%)',
           }}
         />
-
         <Reveal
           variant="scale"
           duration={800}
@@ -426,6 +442,7 @@ export default function HomePage() {
           </Link>
         </Reveal>
       </section>
+      */}
     </>
   );
 }

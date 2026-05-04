@@ -12,8 +12,8 @@ export default function Footer() {
           </div>
           <p className="mt-4 max-w-md text-sm text-text-secondary">
             Tanie uzywane auta na sprzedaz - wyselekcjonowane Opel i Audi
-            sprowadzane z zagranicy. Komis aut na Podkarpaciu - obslugujemy
-            cala poludniowa Polske w promieniu 500 km.
+            sprowadzane z zagranicy oraz z kraju. Komis aut na Podkarpaciu -
+            sprzedaz dla klientow z calej Polski.
           </p>
           <div className="mt-5 flex flex-wrap gap-1.5 text-[11px] text-text-muted">
             {company.servicedCities.slice(0, 8).map((c) => (
@@ -54,7 +54,6 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-text-primary">
             <li><Link href="/" className="hover:text-accent">Start</Link></li>
             <li><Link href="/auta" className="hover:text-accent">Auta na sprzedaz</Link></li>
-            <li><Link href="/sprzedaj-auto" className="hover:text-accent">Sprzedaj Auto</Link></li>
             <li><Link href="/kontakt" className="hover:text-accent">Kontakt</Link></li>
           </ul>
         </div>

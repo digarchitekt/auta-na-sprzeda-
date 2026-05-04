@@ -41,17 +41,6 @@ const items = [
     ),
   },
   {
-    href: '/sprzedaj-auto',
-    section: 'sprzedaj-auto',
-    label: 'Sprzedaj',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
-        <line x1="7" y1="7" x2="7.01" y2="7" />
-      </svg>
-    ),
-  },
-  {
     href: '/kontakt',
     section: 'kontakt',
     label: 'Kontakt',
@@ -115,7 +104,7 @@ export default function MobileNav() {
           'linear-gradient(180deg, rgba(20,20,20,0.98) 0%, rgba(10,10,10,1) 100%)',
         boxShadow: '0 -4px 20px rgba(0,0,0,0.6)',
       }}
-      className="grid grid-cols-5 border-t border-bg-border md:hidden"
+      className="grid grid-cols-4 border-t border-bg-border md:hidden"
       aria-label="Menu mobilne"
     >
       {items.map((item) => {

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: '%s | Auta Na Sprzedaz',
   },
   description:
-    'Uzywane auta na sprzedaz - Opel i Audi. Sprawdzone egzemplarze sprowadzane z zagranicy, gotowe do jazdy. 30 lat doswiadczenia, 500+ przygotowanych aut. Brzozow, Krosno, Rzeszow, Sanok, Krakow, Lublin - dojezdzamy do 500 km.',
+    'Uzywane auta na sprzedaz - Opel i Audi. Sprawdzone egzemplarze sprowadzane z zagranicy oraz z kraju, gotowe do jazdy. 25 lat doswiadczenia, 250+ przygotowanych aut. Brzozow, Krosno, Rzeszow - klienci z calej Polski.',
   keywords: [
     'uzywane auta na sprzedaz',
     'auta na sprzedaz',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Tanie uzywane auta na sprzedaz - Opel i Audi | Podkarpacie',
     description:
-      'Sprawdzone uzywane auta na sprzedaz. Opel i Audi sprowadzane z zagranicy, gotowe do jazdy. Brzozow, Krosno, Rzeszow, Krakow.',
+      'Sprawdzone uzywane auta na sprzedaz. Opel i Audi sprowadzane z zagranicy, gotowe do jazdy. Brzozow, Krosno, Rzeszow.',
     url: 'https://autanasprzedaz.com',
     siteName: 'Auta Na Sprzedaz',
     locale: 'pl_PL',
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Tanie uzywane auta na sprzedaz - Opel i Audi | Podkarpacie',
     description:
-      'Sprawdzone uzywane auta na sprzedaz. Opel i Audi z gwarancja. Krosno, Rzeszow, Krakow.',
+      'Sprawdzone uzywane auta na sprzedaz. Opel i Audi gotowe do jazdy. Brzozow, Krosno, Rzeszow.',
     images: ['/images/audi-front.webp'],
   },
   robots:
@@ -118,25 +118,17 @@ const autoDealerSchema = {
     description: h.value,
   })),
   image: `https://${company.domain}/images/audi-front.webp`,
-  // Service area: Podkarpacie + 500km radius (covering most of Poland)
+  // Service area: cala Polska, glownie Podkarpacie i okoliczne wojewodztwa
   areaServed: [
+    { '@type': 'Country', name: 'Polska' },
     { '@type': 'AdministrativeArea', name: 'wojewodztwo podkarpackie' },
     { '@type': 'AdministrativeArea', name: 'wojewodztwo malopolskie' },
     { '@type': 'AdministrativeArea', name: 'wojewodztwo lubelskie' },
     { '@type': 'AdministrativeArea', name: 'wojewodztwo swietokrzyskie' },
     ...company.servicedCities.map((c) => ({ '@type': 'City', name: c })),
   ],
-  serviceArea: {
-    '@type': 'GeoCircle',
-    geoMidpoint: {
-      '@type': 'GeoCoordinates',
-      latitude: company.geo.latitude,
-      longitude: company.geo.longitude,
-    },
-    geoRadius: '500000', // meters = 500km
-  },
   description:
-    'Tanie uzywane auta na sprzedaz - Opel i Audi. Komis aut sprowadzajacy egzemplarze z zagranicy. Brzozow, Krosno, Rzeszow, Sanok, Krakow, Tarnow, Lublin. 30 lat doswiadczenia, 500+ przygotowanych aut, 3 miesiace gwarancji.',
+    'Tanie uzywane auta na sprzedaz - Opel i Audi. Komis aut sprowadzajacy egzemplarze z zagranicy oraz z kraju. Brzozow, Krosno, Rzeszow, Sanok, Tarnow, Lublin. 25 lat doswiadczenia, 250+ przygotowanych aut. Sprzedaz dla klientow z calej Polski.',
   knowsLanguage: ['pl', 'Polish'],
 };
 
