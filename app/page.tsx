@@ -46,9 +46,6 @@ export default function HomePage() {
 
       <Marquee
         items={[
-          'OPEL',
-          'AUDI',
-          'SELEKCJA',
           'GWARANTUJEMY UDANY ZAKUP',
           'GOTOWE DO JAZDY',
           'SPROWADZANE Z ZAGRANICY',
