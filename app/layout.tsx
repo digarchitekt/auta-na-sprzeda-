@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MobileNav from '@/components/MobileNav';
 import Preloader from '@/components/Preloader';
+import CookieConsent from '@/components/CookieConsent';
 import { company } from '@/data/company';
 
 const inter = Inter({
@@ -162,6 +163,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <MobileNav />
+        <CookieConsent />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(autoDealerSchema) }}

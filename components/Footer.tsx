@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { company } from '@/data/company';
+import CookieSettingsButton from './CookieSettingsButton';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -77,6 +78,9 @@ export default function Footer() {
               <Link href="/regulamin" className="hover:text-accent">
                 Regulamin
               </Link>
+            </li>
+            <li>
+              <CookieSettingsButton />
             </li>
           </ul>
         </div>

@@ -83,9 +83,33 @@ export default function PolitykaCookiesPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text-primary">5. Zarządzanie plikami cookies</h2>
+          <h2 className="text-xl font-semibold text-text-primary">5. Podstawa prawna</h2>
           <p className="mt-3">
-            W każdej chwili możesz zmienic ustawienia dotyczące plików cookies w swojej przeglądarce.
+            Zasady wykorzystywania plików cookies oraz innych technologii przechowujących
+            informacje na urządzeniu końcowym użytkownika regulują:
+          </p>
+          <ul className="mt-3 list-disc space-y-1 pl-6">
+            <li>art. 6 ust. 1 lit. a oraz f RODO (zgoda lub uzasadniony interes administratora)</li>
+            <li>art. 173-174 ustawy Prawo telekomunikacyjne (obecnie zastępowane przez Prawo komunikacji elektronicznej - PKE)</li>
+            <li>dyrektywa 2002/58/WE (ePrivacy)</li>
+          </ul>
+          <p className="mt-3">
+            Dla cookies innych niż niezbędne (funkcjonalne, analityczne, marketingowe) wymagana
+            jest dobrowolna, świadoma i jednoznaczna zgoda - wyrażana przez aktywne zaznaczenie
+            wybranej kategorii w banerze cookies. Zgodę można w każdej chwili wycofać.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-text-primary">6. Zarządzanie plikami cookies</h2>
+          <p className="mt-3">
+            Swoje preferencje dotyczące plików cookies w naszym serwisie możesz zmienić w dowolnym
+            momencie - skorzystaj z linku <strong className="text-text-primary">&quot;Ustawienia cookies&quot;</strong>{' '}
+            w stopce strony. Otworzy się panel, w którym możesz włączyć lub wyłączyć poszczególne
+            kategorie cookies (oprócz niezbędnych, które są wymagane do działania serwisu).
+          </p>
+          <p className="mt-3">
+            Niezależnie od powyższego, w każdej chwili możesz zmienic ustawienia dotyczące plików cookies w swojej przeglądarce.
             Możliwe jest zablokowanie automatycznej obsługi cookies lub każdorazowe informowanie
             o ich umieszczaniu. Wyłączenie cookies może wpłynąć na funkcjonalność serwisu.
           </p>
@@ -115,7 +139,7 @@ export default function PolitykaCookiesPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text-primary">6. Kontakt</h2>
+          <h2 className="text-xl font-semibold text-text-primary">7. Kontakt</h2>
           <p className="mt-3">
             Pytania dotyczące polityki cookies kieruj na adres:{' '}
             <a className="text-accent hover:underline" href={`mailto:${company.email}`}>
