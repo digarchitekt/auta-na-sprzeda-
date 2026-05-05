@@ -50,16 +50,7 @@ export default function Hero() {
           </h1>
         </Reveal>
 
-        <Reveal variant="fade-up" delay={400} duration={700}>
-          <p className="mt-6 max-w-2xl text-base text-text-secondary md:text-lg">
-            Sprawdzone używane auta na sprzedaż w różnych segmentach cenowych.
-            Sprowadzane z zagranicy, jak i z kraju - przygotowujemy je w
-            naszym warsztacie i dostarczamy gotowe do jazdy. Brzozów, Krosno,
-            Rzeszów.
-          </p>
-        </Reveal>
-
-        <Reveal variant="fade-up" delay={600}>
+        <Reveal variant="fade-up" delay={400}>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="#oferta" className="btn-primary btn-shimmer">
               Zobacz ofertę
@@ -70,7 +61,7 @@ export default function Hero() {
           </div>
         </Reveal>
 
-        <Reveal variant="fade-up" delay={800} duration={800}>
+        <Reveal variant="fade-up" delay={600} duration={800}>
           <dl className="mt-14 grid w-full max-w-2xl grid-cols-3 gap-6 border-t border-bg-border/60 pt-8">
             <div>
               <dt className="text-xs uppercase tracking-wider text-text-muted">Aktualnie w ofercie</dt>
