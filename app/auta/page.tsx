@@ -5,9 +5,9 @@ import Reveal from '@/components/Reveal';
 import { vehicles } from '@/data/vehicles';
 
 export const metadata: Metadata = {
-  title: 'Uzywane auta na sprzedaz - Opel i Audi | Krosno, Rzeszow, Brzozow',
+  title: 'Używane auta na sprzedaż - Opel i Audi | Krosno, Rzeszów, Brzozów',
   description:
-    'Pelna oferta tanich uzywanych aut na sprzedaz - Opel i Audi. Sprawdzone egzemplarze sprowadzone z zagranicy oraz z kraju, gotowe do jazdy. Brzozow, Krosno, Rzeszow - klienci z calej Polski.',
+    'Pełna oferta tanich używanych aut na sprzedaż - Opel i Audi. Sprawdzone egzemplarze sprowadzone z zagranicy oraz z kraju, gotowe do jazdy. Brzozów, Krosno, Rzeszów - klienci z całej Polski.',
   alternates: { canonical: '/auta' },
 };
 
@@ -40,17 +40,17 @@ export default function AutaPage() {
         <div className="container-x relative z-10 py-16 md:py-24">
           <Reveal variant="fade-up" duration={700}>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
-              Pelna oferta
+              Pełna oferta
             </span>
           </Reveal>
           <Reveal variant="blur" delay={100} duration={900}>
             <h1 className="mt-3 max-w-4xl font-display text-4xl uppercase leading-[0.95] tracking-tight text-text-primary md:text-6xl">
-              Uzywane auta na sprzedaz - <span className="text-accent">Opel i Audi</span>
+              Używane auta na sprzedaż - <span className="text-accent">Opel i Audi</span>
             </h1>
           </Reveal>
           <Reveal variant="fade-up" delay={300} duration={700}>
             <p className="mt-6 max-w-2xl text-base text-text-secondary md:text-lg">
-              {vehicles.length} {vehicles.length === 1 ? 'auto' : 'aut'} w ofercie. Tanie uzywane auta na sprzedaz - kazde sprawdzone osobiscie, sprowadzone z zagranicy lub z kraju i przygotowane w naszym warsztacie. Sprzedaz dla klientow z calej Polski - glownie Podkarpacie i Malopolska.
+              {vehicles.length} {vehicles.length === 1 ? 'auto' : 'aut'} w ofercie. Tanie używane auta na sprzedaż - każde sprawdzone osobiście, sprowadzone z zagranicy lub z kraju i przygotowane w naszym warsztacie. Sprzedaż dla klientów z całej Polski - głównie Podkarpacie i Małopolska.
             </p>
           </Reveal>
 
@@ -107,16 +107,16 @@ export default function AutaPage() {
         <div className="container-x flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-display text-2xl uppercase tracking-tight md:text-3xl">
-              Nie znalazles tego, czego szukasz?
+              Nie znalazłeś tego, czego szukasz?
             </h2>
             <p className="mt-2 max-w-xl text-text-secondary">
-              Skontaktuj sie - regularnie sprowadzamy nowe auta. Powiedz czego szukasz,
+              Skontaktuj się - regularnie sprowadzamy nowe auta. Powiedz czego szukasz,
               znajdziemy.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Link href="/kontakt" className="btn-primary btn-shimmer">
-              Skontaktuj sie
+              Skontaktuj się
             </Link>
           </div>
         </div>

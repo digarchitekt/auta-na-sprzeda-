@@ -47,11 +47,11 @@ export const vehicles: Vehicle[] = [
     power: 122,
     engine: '1.5 CDTI',
     bodyType: 'Hatchback',
-    color: 'Bialy perlowy',
+    color: 'Biały perłowy',
     shortDescription:
       'Najnowsza generacja Astry w sportowej linii GS. Ekonomiczny diesel, automat 9-bieg.',
     description:
-      '[OPIS PLACEHOLDER] Auto z gwarancja, salon Polska, faktura VAT marza. Pelne wyposazenie pakietu GS Line.',
+      '[OPIS PLACEHOLDER] Auto z gwarancja, salon Polska, faktura VAT marża. Pełne wyposażenie pakietu GS Line.',
     highlights: [
       'Salon Polska',
       'Gwarancja producenta',
@@ -61,13 +61,13 @@ export const vehicles: Vehicle[] = [
     specs: [
       { label: 'Rok produkcji', value: '2022' },
       { label: 'Przebieg', value: '78 000 km' },
-      { label: 'Pojemnosc silnika', value: '1499 cm3' },
+      { label: 'Pojemność silnika', value: '1499 cm3' },
       { label: 'Moc', value: '122 KM' },
       { label: 'Rodzaj paliwa', value: 'Diesel' },
-      { label: 'Skrzynia biegow', value: 'Automatyczna 9-bieg.' },
-      { label: 'Naped', value: 'Na przednie kola' },
+      { label: 'Skrzynia biegów', value: 'Automatyczna 9-bieg.' },
+      { label: 'Napęd', value: 'Na przednie koła' },
       { label: 'Liczba drzwi', value: '5' },
-      { label: 'Kolor', value: 'Bialy perlowy' },
+      { label: 'Kolor', value: 'Biały perłowy' },
       { label: 'Kraj pochodzenia', value: 'Polska' },
     ],
     images: seq('astra-k-2022', 16),
@@ -91,21 +91,21 @@ export const vehicles: Vehicle[] = [
     shortDescription:
       'Najnowsza generacja Astry L. Nowoczesny silnik 1.2 Turbo, niski przebieg.',
     description:
-      '[OPIS PLACEHOLDER] Auto serwisowane w ASO, pierwszy wlasciciel, faktura VAT marza.',
+      '[OPIS PLACEHOLDER] Auto serwisowane w ASO, pierwszy właściciel, faktura VAT marża.',
     highlights: [
-      'Pierwszy wlasciciel',
+      'Pierwszy właściciel',
       'Niski przebieg',
-      'Pelna historia serwisowa',
+      'Pełna historia serwisowa',
       'Bezwypadkowy',
     ],
     specs: [
       { label: 'Rok produkcji', value: '2022' },
       { label: 'Przebieg', value: '45 000 km' },
-      { label: 'Pojemnosc silnika', value: '1199 cm3' },
+      { label: 'Pojemność silnika', value: '1199 cm3' },
       { label: 'Moc', value: '130 KM' },
       { label: 'Rodzaj paliwa', value: 'Benzyna' },
-      { label: 'Skrzynia biegow', value: 'Manualna 6-bieg.' },
-      { label: 'Naped', value: 'Na przednie kola' },
+      { label: 'Skrzynia biegów', value: 'Manualna 6-bieg.' },
+      { label: 'Napęd', value: 'Na przednie koła' },
       { label: 'Liczba drzwi', value: '5' },
       { label: 'Kolor', value: 'Srebrny metalik' },
       { label: 'Kraj pochodzenia', value: 'Polska' },
@@ -129,9 +129,9 @@ export const vehicles: Vehicle[] = [
     bodyType: 'Coupe 3d',
     color: 'Niebieski OPC',
     shortDescription:
-      'Kultowy hot-hatch Opel Astra OPC. 280 KM, dyferencjal Drexler, fotele Recaro.',
+      'Kultowy hot-hatch Opel Astra OPC. 280 KM, dyferencjał Drexler, fotele Recaro.',
     description:
-      '[OPIS PLACEHOLDER] Egzemplarz dla kolekcjonera, stan bardzo dobry. Pelna historia, bez torowych przebiegow.',
+      '[OPIS PLACEHOLDER] Egzemplarz dla kolekcjonera, stan bardzo dobry. Pełna historia, bez torowych przebiegow.',
     highlights: [
       '280 KM z fabryki',
       'Fotele Recaro Performance',
@@ -141,11 +141,11 @@ export const vehicles: Vehicle[] = [
     specs: [
       { label: 'Rok produkcji', value: '2013' },
       { label: 'Przebieg', value: '168 000 km' },
-      { label: 'Pojemnosc silnika', value: '1998 cm3' },
+      { label: 'Pojemność silnika', value: '1998 cm3' },
       { label: 'Moc', value: '280 KM' },
       { label: 'Rodzaj paliwa', value: 'Benzyna' },
-      { label: 'Skrzynia biegow', value: 'Manualna 6-bieg.' },
-      { label: 'Naped', value: 'Na przednie kola' },
+      { label: 'Skrzynia biegów', value: 'Manualna 6-bieg.' },
+      { label: 'Napęd', value: 'Na przednie koła' },
       { label: 'Liczba drzwi', value: '3' },
       { label: 'Kolor', value: 'Niebieski OPC' },
       { label: 'Kraj pochodzenia', value: 'Niemcy' },
@@ -169,9 +169,9 @@ export const vehicles: Vehicle[] = [
     bodyType: 'Hatchback 5d',
     color: 'Czarny metalik',
     shortDescription:
-      'Audi A3 w pakiecie S-Line. Ekonomiczny diesel 2.0 TDI, doskonale wyposazenie.',
+      'Audi A3 w pakiecie S-Line. Ekonomiczny diesel 2.0 TDI, doskonale wyposażenie.',
     description:
-      '[OPIS PLACEHOLDER] Auto serwisowane, pelna historia. Pakiet S-Line wewnatrz i na zewnatrz.',
+      '[OPIS PLACEHOLDER] Auto serwisowane, pełna historia. Pakiet S-Line wewnątrz i na zewnątrz.',
     highlights: [
       'Pakiet S-Line',
       'Bi-Xenon LED',
@@ -181,11 +181,11 @@ export const vehicles: Vehicle[] = [
     specs: [
       { label: 'Rok produkcji', value: '2018' },
       { label: 'Przebieg', value: '145 000 km' },
-      { label: 'Pojemnosc silnika', value: '1968 cm3' },
+      { label: 'Pojemność silnika', value: '1968 cm3' },
       { label: 'Moc', value: '150 KM' },
       { label: 'Rodzaj paliwa', value: 'Diesel' },
-      { label: 'Skrzynia biegow', value: 'Manualna 6-bieg.' },
-      { label: 'Naped', value: 'Na przednie kola' },
+      { label: 'Skrzynia biegów', value: 'Manualna 6-bieg.' },
+      { label: 'Napęd', value: 'Na przednie koła' },
       { label: 'Liczba drzwi', value: '5' },
       { label: 'Kolor', value: 'Czarny metalik' },
       { label: 'Kraj pochodzenia', value: 'Niemcy' },
@@ -210,21 +210,21 @@ export const vehicles: Vehicle[] = [
     shortDescription:
       'Flagowa limuzyna Audi A8 Long w bezkompromisowej wersji 4.2 TDI 385 KM.',
     description:
-      '[OPIS PLACEHOLDER] Auto w stanie kolekcjonerskim. Pelne wyposazenie - masaze, wentylowane fotele, B&O, night vision.',
+      '[OPIS PLACEHOLDER] Auto w stanie kolekcjonerskim. Pełne wyposażenie - masaże, wentylowane fotele, B&O, night vision.',
     highlights: [
       'Wersja Long (+13 cm)',
       'Bang & Olufsen Advanced',
-      'Wentylowane fotele z masazem',
+      'Wentylowane fotele z masażem',
       'Night Vision Assistant',
     ],
     specs: [
       { label: 'Rok produkcji', value: '2016' },
       { label: 'Przebieg', value: '184 000 km' },
-      { label: 'Pojemnosc silnika', value: '4134 cm3' },
+      { label: 'Pojemność silnika', value: '4134 cm3' },
       { label: 'Moc', value: '385 KM' },
       { label: 'Rodzaj paliwa', value: 'Diesel' },
-      { label: 'Skrzynia biegow', value: 'Automatyczna Tiptronic 8-bieg.' },
-      { label: 'Naped', value: 'Quattro 4x4' },
+      { label: 'Skrzynia biegów', value: 'Automatyczna Tiptronic 8-bieg.' },
+      { label: 'Napęd', value: 'Quattro 4x4' },
       { label: 'Liczba drzwi', value: '4' },
       { label: 'Kolor', value: 'Czarny Phantom' },
       { label: 'Kraj pochodzenia', value: 'Niemcy' },

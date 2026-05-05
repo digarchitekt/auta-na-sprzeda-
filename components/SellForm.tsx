@@ -77,7 +77,7 @@ export default function SellForm() {
           name="notes"
           rows={4}
           className="input resize-none"
-          placeholder="Stan techniczny, historia serwisowa, wyposazenie..."
+          placeholder="Stan techniczny, historią serwisowa, wyposażenie..."
         />
       </div>
 
@@ -85,7 +85,7 @@ export default function SellForm() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="label" htmlFor="s-name">Imie i nazwisko *</label>
+          <label className="label" htmlFor="s-name">Imię i nazwisko *</label>
           <input id="s-name" name="name" required className="input" placeholder="Jan Kowalski" />
         </div>
         <div>
@@ -100,17 +100,17 @@ export default function SellForm() {
       </div>
 
       <button type="submit" disabled={status === 'sending'} className="btn-primary w-full">
-        {status === 'sending' ? 'Wysylam...' : 'Wyslij zgloszenie'}
+        {status === 'sending' ? 'Wysylam...' : 'Wyślij zgłoszenie'}
       </button>
 
       {status === 'ok' && (
         <p className="border border-green-700/40 bg-green-900/20 px-4 py-3 text-sm text-green-300">
-          Dziekujemy za zgloszenie. Odezwiemy sie po weryfikacji w ciagu 24h.
+          Dziekujemy za zgłoszenie. Odezwiemy się po weryfikacji w ciagu 24h.
         </p>
       )}
       {status === 'error' && (
         <p className="border border-red-700/40 bg-red-900/20 px-4 py-3 text-sm text-red-300">
-          Nie udalo sie wyslac zgloszenia. {error}
+          Nie udało się wysłać zgłoszenia. {error}
         </p>
       )}
 

@@ -39,7 +39,7 @@ export default function Hero() {
 
         <Reveal variant="blur" delay={150} duration={900}>
           <h1 className="mt-6 max-w-5xl font-display text-5xl uppercase leading-[0.95] tracking-tight text-text-primary md:text-7xl">
-            Tanie, uzywane auta na sprzedaz, sprawdzone,{' '}
+            Tanie, używane auta na sprzedaż, sprawdzone,{' '}
             <span className="relative inline-block text-accent">
               gotowe do jazdy
               <span
@@ -52,17 +52,17 @@ export default function Hero() {
 
         <Reveal variant="fade-up" delay={400} duration={700}>
           <p className="mt-6 max-w-2xl text-base text-text-secondary md:text-lg">
-            Sprawdzone uzywane auta na sprzedaz w roznych segmentach cenowych.
+            Sprawdzone używane auta na sprzedaż w różnych segmentach cenowych.
             Sprowadzane z zagranicy, jak i z kraju - przygotowujemy je w
-            naszym warsztacie i dostarczamy gotowe do jazdy. Brzozow, Krosno,
-            Rzeszow.
+            naszym warsztacie i dostarczamy gotowe do jazdy. Brzozów, Krosno,
+            Rzeszów.
           </p>
         </Reveal>
 
         <Reveal variant="fade-up" delay={600}>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="#oferta" className="btn-primary btn-shimmer">
-              Zobacz oferte
+              Zobacz ofertę
             </Link>
             <Link href="/kontakt" className="btn-outline">
               Zapytaj o auto
@@ -85,7 +85,7 @@ export default function Hero() {
               </dd>
             </div>
             <div>
-              <dt className="text-xs uppercase tracking-wider text-text-muted">Zadowolonych klientow</dt>
+              <dt className="text-xs uppercase tracking-wider text-text-muted">Zadowolonych klientów</dt>
               <dd className="mt-1 font-display text-3xl text-text-primary md:text-4xl">
                 <Counter to={50} suffix="+" />
               </dd>

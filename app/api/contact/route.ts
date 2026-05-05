@@ -12,16 +12,16 @@ export async function POST(req: Request) {
       return new NextResponse('Brakuje wymaganych pol', { status: 400 });
     }
     if (typeof message !== 'string' || message.length > 5000) {
-      return new NextResponse('Nieprawidlowa wiadomosc', { status: 400 });
+      return new NextResponse('Nieprawidlowa wiadomość', { status: 400 });
     }
 
     await sendMail({
-      subject: `[Kontakt] ${subject || 'Wiadomosc ze strony'}`,
+      subject: `[Kontakt] ${subject || 'Wiadomość ze strony'}`,
       replyTo: String(email),
-      text: `Imie: ${name}\nE-mail: ${email}\nTelefon: ${phone || '-'}\nTemat: ${subject || '-'}\n\n${message}`,
+      text: `Imię: ${name}\nE-mail: ${email}\nTelefon: ${phone || '-'}\nTemat: ${subject || '-'}\n\n${message}`,
       html: `
-        <h2>Nowa wiadomosc z formularza kontaktowego</h2>
-        <p><strong>Imie:</strong> ${escapeHtml(name)}</p>
+        <h2>Nowa wiadomość z formularza kontaktowego</h2>
+        <p><strong>Imię:</strong> ${escapeHtml(name)}</p>
         <p><strong>E-mail:</strong> ${escapeHtml(email)}</p>
         <p><strong>Telefon:</strong> ${escapeHtml(phone || '-')}</p>
         <p><strong>Temat:</strong> ${escapeHtml(subject || '-')}</p>

@@ -33,7 +33,7 @@ export default function ContactForm() {
     <form onSubmit={onSubmit} className="card space-y-4 p-8">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="label" htmlFor="c-name">Imie i nazwisko *</label>
+          <label className="label" htmlFor="c-name">Imię i nazwisko *</label>
           <input id="c-name" name="name" required className="input" placeholder="Jan Kowalski" />
         </div>
         <div>
@@ -49,23 +49,23 @@ export default function ContactForm() {
 
       <div>
         <label className="label" htmlFor="c-subject">Temat</label>
-        <input id="c-subject" name="subject" className="input" placeholder="Pytanie o oferte" />
+        <input id="c-subject" name="subject" className="input" placeholder="Pytanie o ofertę" />
       </div>
 
       <div>
-        <label className="label" htmlFor="c-msg">Wiadomosc *</label>
+        <label className="label" htmlFor="c-msg">Wiadomość *</label>
         <textarea
           id="c-msg"
           name="message"
           required
           rows={6}
           className="input resize-none"
-          placeholder="Tresc wiadomosci..."
+          placeholder="Treść wiadomości..."
         />
       </div>
 
       <button type="submit" disabled={status === 'sending'} className="btn-primary w-full">
-        {status === 'sending' ? 'Wysylam...' : 'Wyslij wiadomosc'}
+        {status === 'sending' ? 'Wysylam...' : 'Wyślij wiadomość'}
       </button>
 
       {status === 'ok' && (
@@ -75,7 +75,7 @@ export default function ContactForm() {
       )}
       {status === 'error' && (
         <p className="border border-red-700/40 bg-red-900/20 px-4 py-3 text-sm text-red-300">
-          Nie udalo sie wyslac wiadomosci. {error}
+          Nie udało się wysłać wiadomości. {error}
         </p>
       )}
     </form>

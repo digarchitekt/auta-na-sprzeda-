@@ -4,7 +4,7 @@ import SellForm from '@/components/SellForm';
 export const metadata: Metadata = {
   title: 'Wystaw swoje auto',
   description:
-    'Zglos swoje auto do sprzedazy w naszej ofercie. Wypelnij formularz, a my odezwiemy sie po weryfikacji zgloszenia.',
+    'Zgłoś swoje auto do sprzedaży w naszej ofercie. Wypełnij formularz, a my odezwiemy się po weryfikacji zgłoszenia.',
 };
 
 export default function SellPage() {
@@ -19,7 +19,7 @@ export default function SellPage() {
             Wystaw swoje auto
           </h1>
           <p className="mt-4 text-text-secondary">
-            Wypelnij formularz, a my zweryfikujemy zgloszenie i odezwiemy sie z
+            Wypełnij formularz, a my zweryfikujemy zgłoszenie i odezwiemy się z
             decyzja. Po akceptacji wystawiamy Twoje auto w naszej ofercie i
             prowadzimy rozmowy z kupujacymi.
           </p>
@@ -27,12 +27,12 @@ export default function SellPage() {
           <ol className="mt-10 space-y-6 border-l border-bg-border pl-6">
             {[
               {
-                t: 'Zglos auto',
-                d: 'Wypelnij krotki formularz - zajmie Ci to 2 minuty.',
+                t: 'Zgłoś auto',
+                d: 'Wypełnij krótki formularz - zajmie Ci to 2 minuty.',
               },
               {
                 t: 'Weryfikacja',
-                d: 'Sprawdzamy zgloszenie i odzywamy sie z decyzja.',
+                d: 'Sprawdzamy zgłoszenie i odzywamy się z decyzja.',
               },
               {
                 t: 'Wystawiamy auto',
@@ -40,7 +40,7 @@ export default function SellPage() {
               },
               {
                 t: 'Prowadzimy rozmowy',
-                d: 'Zajmujemy sie kontaktem z zainteresowanymi kupujacymi.',
+                d: 'Zajmujemy się kontaktem z zainteresowanymi kupujacymi.',
               },
             ].map((step, i) => (
               <li key={step.t} className="relative">

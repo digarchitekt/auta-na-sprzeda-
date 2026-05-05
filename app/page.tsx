@@ -12,20 +12,20 @@ import { company } from '@/data/company';
 // FAQ schema for rich results
 const faqs = [
   {
-    q: 'Gdzie kupie tanie uzywane auta na sprzedaz?',
-    a: 'Oferujemy uzywane auta marek Opel i Audi sprowadzane z zagranicy oraz z kraju. Bazujemy w Brzozowie na Podkarpaciu i sprzedajemy klientom z calej Polski - glownie Podkarpacie, Malopolska i wojewodztwa oscienne.',
+    q: 'Gdzie kupie tanie używane auta na sprzedaż?',
+    a: 'Oferujemy używane auta marek Opel i Audi sprowadzane z zagranicy oraz z kraju. Bazujemy w Brzozowie na Podkarpaciu i sprzedajemy klientom z całej Polski - głównie Podkarpacie, Małopolska i województwa ościenne.',
   },
   {
-    q: 'Czy auta sa z gwarancja?',
-    a: 'Gwarantujemy dobra jakosc - bez zadnych usterek, w 100% przygotowane do zakupu. Kazde auto jest wypolerowane, dokladnie umyte i wyglada prawie jak z salonu. Przed sprzedaza przechodzi pelna inspekcje techniczna w naszym warsztacie.',
+    q: 'Czy auta są z gwarancja?',
+    a: 'Gwarantujemy dobrą jakość - bez żadnych usterek, w 100% przygotowane do zakupu. Każde auto jest wypolerowane, dokładnie umyte i wygląda prawie jak z salonu. Przed sprzedażą przechodzi pełną inspekcję techniczną w naszym warsztacie.',
   },
   {
-    q: 'Jakimi miastami obejmujemy obsluga?',
-    a: 'Brzozow, Krosno, Rzeszow, Sanok, Jaslo, Przemysl, Tarnow, Lublin, Mielec, Stalowa Wola, Debica, Nowy Sacz - i caly obszar Podkarpacia oraz Malopolski. Sprzedajemy klientom z calej Polski, ale glownie z Podkarpacia.',
+    q: 'Jakimi miastami obejmujemy obsługa?',
+    a: 'Brzozów, Krosno, Rzeszów, Sanok, Jasło, Przemyśl, Tarnów, Lublin, Mielec, Stalowa Wola, Dębica, Nowy Sącz - i cały obszar Podkarpacia oraz Małopolski. Sprzedajemy klientom z całej Polski, ale głównie z Podkarpacia.',
   },
   {
-    q: 'Skad sprowadzane sa auta?',
-    a: 'Glownie z Polski, Niemiec, Belgii i Holandii. Wlasciciel z 25-letnim doswiadczeniem osobiscie sprawdza kazdy egzemplarz przed sprowadzeniem.',
+    q: 'Skąd sprowadzane są auta?',
+    a: 'Głównie z Polski, Niemiec, Belgii i Holandii. Właściciel z 25-letnim doświadczeniem osobiście sprawdza każdy egzemplarz przed sprowadzeniem.',
   },
 ];
 
@@ -82,10 +82,10 @@ export default function HomePage() {
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
               Aktualna oferta
             </span>
-            <h2 className="section-title mt-2">Auta dostepne od reki</h2>
+            <h2 className="section-title mt-2">Auta dostępne od ręki</h2>
           </div>
           <p className="max-w-md text-sm text-text-secondary">
-            Kazde auto przed sprzedaza przechodzi pelna inspekcje techniczna i weryfikacje
+            Każde auto przed sprzedażą przechodzi pełną inspekcję techniczną i weryfikację
             historii. Zero niespodzianek.
           </p>
         </Reveal>
@@ -114,17 +114,17 @@ export default function HomePage() {
           {[
             {
               title: 'Selekcja',
-              text: 'Sprowadzamy i kupujemy wylacznie auta o sprawdzonej historii. Zaden egzemplarz nie trafia do oferty bez naszej osobistej akceptacji.',
+              text: 'Sprowadzamy i kupujemy wyłącznie auta o sprawdzonej historii. Żaden egzemplarz nie trafia do oferty bez naszej osobistej akceptacji.',
               kicker: '01',
             },
             {
               title: 'Przygotowanie',
-              text: 'Kazde auto przygotowujemy tak, by bylo bezpieczne i gotowe do jazdy. Czyscimy, polerujemy lakier, naprawiamy odpryski i drobne defekty. Jak nowe.',
+              text: 'Każde auto przygotowujemy tak, by było bezpieczne i gotowe do jazdy. Czyścimy, polerujemy lakier, naprawiamy odpryski i drobne defekty. Jak nowe.',
               kicker: '02',
             },
             {
               title: 'Wsparcie',
-              text: 'Pomagamy wybrac auto dopasowane do Twoich potrzeb. Doradzamy szczerze - wskazujemy plusy i minusy. Po zakupie zostajemy w kontakcie.',
+              text: 'Pomagamy wybrać auto dopasowane do Twoich potrzeb. Doradzamy szczerze - wskazujemy plusy i minusy. Po zakupie zostajemy w kontakcie.',
               kicker: '03',
             },
           ].map((f, i) => {
@@ -164,9 +164,9 @@ export default function HomePage() {
               Auta sprowadzone <span className="text-accent">przez fachowca</span>
             </h2>
             <p className="mt-5 text-text-secondary">
-              Nie jestesmy posrednikami. Sami sprowadzamy auta z zagranicy,
+              Nie jesteśmy pośrednikami. Sami sprowadzamy auta z zagranicy,
               przygotowujemy je w naszym warsztacie i dopiero potem wystawiamy
-              na sprzedaz. Dostajesz samochod gotowy do jazdy - bez zadnych
+              na sprzedaż. Dostajesz samochód gotowy do jazdy - bez żadnych
               niespodzianek.
             </p>
 
@@ -201,12 +201,12 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          {/* Wlasciciel / fachowiec */}
+          {/* Właściciel / fachowiec */}
           <Reveal variant="slide-left" delay={150} duration={900} className="card overflow-hidden">
             <div className="relative h-48 w-full overflow-hidden border-b border-bg-border bg-bg-elevated md:h-56">
               <Image
                 src="/images/key-handover.webp"
-                alt="Wlasciciel wreczajacy klucze"
+                alt="Właściciel wreczajacy klucze"
                 fill
                 sizes="(max-width: 1024px) 100vw, 700px"
                 className="object-cover object-center"
@@ -225,13 +225,13 @@ export default function HomePage() {
               Kto za tym stoi
             </span>
             <h3 className="mt-2 font-display text-3xl uppercase tracking-tight md:text-4xl">
-              25 lat doswiadczenia. <span className="text-accent">250+ aut.</span>
+              25 lat doświadczenia. <span className="text-accent">250+ aut.</span>
             </h3>
             <p className="mt-4 text-text-secondary">
-              Wlasciciel firmy to wykwalifikowany <strong className="text-text-primary">mechanik i lakiernik</strong> z
-              25-letnim doswiadczeniem. W ciagu kariery sprowadzil i przygotowal
-              ponad 250 samochodow. Wie dokladnie gdzie szukac wad, co sprawdzic
-              i jak ocenic czy auto jest warte uwagi - i czy uda sie kupic je
+              Właściciel firmy to wykwalifikowany <strong className="text-text-primary">mechanik i lakiernik</strong> z
+              25-letnim doświadczeniem. W ciagu kariery sprowadzil i przygotowal
+              ponad 250 samochodów. Wie dokładnie gdzie szukac wad, co sprawdzic
+              i jak ocenic czy auto jest warte uwagi - i czy uda się kupic je
               taniej.
             </p>
 
@@ -260,10 +260,10 @@ export default function HomePage() {
 
             <ul className="mt-8 space-y-3 text-sm">
               {[
-                'Auta sprowadzane bezposrednio z zagranicy',
-                'Pelne przygotowanie mechaniczne i lakiernicze',
-                'Kazde auto sprawdzone osobiscie - bez wyjatkow',
-                'Cena nizsza niz w salonach krajowych',
+                'Auta sprowadzane bezpośrednio z zagranicy',
+                'Pełne przygotowanie mechaniczne i lakiernicze',
+                'Każde auto sprawdzone osobiście - bez wyjatkow',
+                'Cena niższa niż w salonach krajowych',
               ].map((point) => (
                 <li key={point} className="flex items-start gap-3 text-text-primary">
                   <span className="mt-1 grid h-4 w-4 shrink-0 place-items-center bg-accent text-[9px] font-bold text-white">
@@ -279,18 +279,18 @@ export default function HomePage() {
       </section>
 
       {/* Obslugiwane miasta — local SEO */}
-      <section id="obslugujemy" className="border-y border-bg-border bg-bg-elevated py-16">
+      <section id="obsługujemy" className="border-y border-bg-border bg-bg-elevated py-16">
         <div className="container-x">
           <div className="max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
-              Obslugujemy
+              Obsługujemy
             </span>
             <h2 className="section-title mt-2">
-              Tanie uzywane auta na Podkarpaciu i okolicach
+              Tanie używane auta na Podkarpaciu i okolicach
             </h2>
             <p className="mt-4 text-text-secondary">
-              Bazujemy w Brzozowie i sprzedajemy klientom z calej Polski -
-              glownie Podkarpacie, Malopolska i wojewodztwa oscienne.
+              Bazujemy w Brzozowie i sprzedajemy klientom z całej Polski -
+              głównie Podkarpacie, Małopolska i województwa ościenne.
             </p>
           </div>
 
@@ -304,7 +304,7 @@ export default function HomePage() {
                 className="shrink-0 border border-bg-border bg-bg-card px-4 py-2 text-sm font-medium text-text-primary"
                 aria-hidden={i >= company.servicedCities.length ? 'true' : undefined}
               >
-                Auta uzywane {c}
+                Auta używane {c}
               </li>
             ))}
           </ul>
@@ -313,7 +313,7 @@ export default function HomePage() {
         <div className="container-x">
 
           <p className="mt-8 max-w-3xl text-sm text-text-muted">
-            Szukasz <strong className="text-text-secondary">tanich uzywanych aut na sprzedaz</strong> w Twojej okolicy? Sprawdz nasza oferte sprawdzonych Opli i Audi - kazde auto przygotowane w warsztacie i gotowe do jazdy.
+            Szukasz <strong className="text-text-secondary">tanich używanych aut na sprzedaż</strong> w Twojej okolicy? Sprawdź nasza ofertę sprawdzonych Opli i Audi - każde auto przygotowane w warsztacie i gotowe do jazdy.
           </p>
         </div>
       </section>
@@ -349,9 +349,9 @@ export default function HomePage() {
         <div className="container-x relative z-10 max-w-3xl">
           <Reveal variant="fade-up" duration={700}>
             <span className="text-xs font-semibold uppercase tracking-widest text-accent">
-              Czesto zadawane pytania
+              Często zadawane pytania
             </span>
-            <h2 className="section-title mt-2">FAQ - uzywane auta na sprzedaz</h2>
+            <h2 className="section-title mt-2">FAQ - używane auta na sprzedaż</h2>
           </Reveal>
 
           <div className="mt-8 space-y-3">
@@ -427,10 +427,10 @@ export default function HomePage() {
               Skup aut
             </span>
             <h2 className="mt-2 font-display text-3xl uppercase tracking-tight md:text-5xl">
-              Masz auto na sprzedaz?
+              Masz auto na sprzedaż?
             </h2>
             <p className="mt-4 max-w-xl text-text-secondary md:text-lg">
-              Zglos swoje auto, a my zweryfikujemy zgloszenie i wystawimy je w naszej
+              Zgłoś swoje auto, a my zweryfikujemy zgłoszenie i wystawimy je w naszej
               ofercie. Reszta jest po naszej stronie.
             </p>
           </div>

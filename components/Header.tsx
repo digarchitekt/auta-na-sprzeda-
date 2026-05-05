@@ -17,7 +17,7 @@ export default function Header() {
           className="flex items-center gap-2 font-display text-lg tracking-wider md:text-2xl"
         >
           <span className="text-accent">/</span>
-          <span className="hidden sm:inline">AUTA NA SPRZEDAZ</span>
+          <span className="hidden sm:inline">AUTA NA SPRZEDAŻ</span>
           <span className="sm:hidden">ANS</span>
         </Link>
 

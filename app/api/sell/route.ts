@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       `Paliwo: ${fuel || '-'}`,
       `VIN: ${vin || '-'}`,
       '',
-      `Imie: ${name}`,
+      `Imię: ${name}`,
       `Telefon: ${phone}`,
       `E-mail: ${email || '-'}`,
       '',
@@ -29,11 +29,11 @@ export async function POST(req: Request) {
     ].join('\n');
 
     await sendMail({
-      subject: `[Skup] Zgloszenie: ${brandModel} (${year})`,
+      subject: `[Skup] Zgłoszenie: ${brandModel} (${year})`,
       replyTo: email ? String(email) : undefined,
       text,
       html: `
-        <h2>Nowe zgloszenie skupu</h2>
+        <h2>Nowe zgłoszenie skupu</h2>
         <table cellpadding="6" style="border-collapse:collapse">
           <tr><td><strong>Marka / Model</strong></td><td>${escapeHtml(brandModel)}</td></tr>
           <tr><td><strong>Rocznik</strong></td><td>${escapeHtml(year)}</td></tr>

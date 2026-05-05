@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       html: `
         <h2>Nowe zapytanie o pojazd</h2>
         <p><strong>Pojazd:</strong> ${escapeHtml(vehicleLabel)} (<code>${escapeHtml(vehicleSlug)}</code>)</p>
-        <p><strong>Imie:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Imię:</strong> ${escapeHtml(name)}</p>
         <p><strong>Telefon:</strong> ${escapeHtml(phone)}</p>
         <p><strong>E-mail:</strong> ${escapeHtml(email || '-')}</p>
         <hr />

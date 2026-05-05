@@ -8,12 +8,12 @@ export default function Footer() {
       <div className="container-x grid gap-10 py-14 md:grid-cols-5">
         <div className="md:col-span-2">
           <div className="font-display text-2xl tracking-wider">
-            <span className="text-accent">/</span> AUTA NA SPRZEDAZ
+            <span className="text-accent">/</span> AUTA NA SPRZEDAŻ
           </div>
           <p className="mt-4 max-w-md text-sm text-text-secondary">
-            Tanie uzywane auta na sprzedaz - wyselekcjonowane Opel i Audi
+            Tanie używane auta na sprzedaż - wyselekcjonowane Opel i Audi
             sprowadzane z zagranicy oraz z kraju. Komis aut na Podkarpaciu -
-            sprzedaz dla klientow z calej Polski.
+            sprzedaż dla klientów z całej Polski.
           </p>
           <div className="mt-5 flex flex-wrap gap-1.5 text-[11px] text-text-muted">
             {company.servicedCities.slice(0, 8).map((c) => (
@@ -53,7 +53,7 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 text-sm text-text-primary">
             <li><Link href="/" className="hover:text-accent">Start</Link></li>
-            <li><Link href="/auta" className="hover:text-accent">Auta na sprzedaz</Link></li>
+            <li><Link href="/auta" className="hover:text-accent">Auta na sprzedaż</Link></li>
             <li><Link href="/kontakt" className="hover:text-accent">Kontakt</Link></li>
           </ul>
         </div>
@@ -64,8 +64,8 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 text-sm text-text-primary">
             <li>
-              <Link href="/polityka-prywatnosci" className="hover:text-accent">
-                Polityka prywatnosci
+              <Link href="/polityka-prywatności" className="hover:text-accent">
+                Polityka prywatności
               </Link>
             </li>
             <li>

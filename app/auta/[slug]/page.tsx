@@ -112,7 +112,7 @@ export default function VehiclePage({ params }: { params: { slug: string } }) {
           {/* Quick specs grid */}
           <section>
             <h2 className="text-xs font-semibold uppercase tracking-widest text-accent">
-              Najwazniejsze parametry
+              Najważniejsze parametry
             </h2>
             <dl className="mt-3 grid grid-cols-2 gap-3">
               {[
@@ -136,7 +136,7 @@ export default function VehiclePage({ params }: { params: { slug: string } }) {
           {/* Highlights */}
           <section>
             <h2 className="text-xs font-semibold uppercase tracking-widest text-accent">
-              Wyposazenie i atuty
+              Wyposażenie i atuty
             </h2>
             <ul className="mt-3 space-y-2">
               {v.highlights.map((h) => (
@@ -191,7 +191,7 @@ export default function VehiclePage({ params }: { params: { slug: string } }) {
         </div>
       </div>
 
-      {/* Formularz na dole, pelna szerokosc */}
+      {/* Formularz na dole, pełna szerokosc */}
       <section id="zapytaj" className="mt-20 border-t border-bg-border pt-16 scroll-mt-24">
         <div className="mx-auto max-w-3xl">
           <div className="text-center">

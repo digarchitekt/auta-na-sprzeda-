@@ -5,7 +5,7 @@ import { company } from '@/data/company';
 
 export const metadata: Metadata = {
   title: 'Kontakt',
-  description: 'Skontaktuj sie z nami - sprzedaz, skup, finansowanie. Telefon, e-mail, lokalizacja.',
+  description: 'Skontaktuj się z nami - sprzedaż, skup, finansowanie. Telefon, e-mail, lokalizacja.',
 };
 
 export default function ContactPage() {
@@ -38,7 +38,7 @@ export default function ContactPage() {
           Porozmawiajmy
         </h1>
         <p className="mt-4 max-w-2xl text-text-secondary">
-          Zadzwon, napisz lub przyjedz osobiscie. Najlepsze decyzje zakupowe podejmuje sie po
+          Zadzwon, napisz lub przyjedz osobiście. Najlepsze decyzje zakupowe podejmuje się po
           osobistej rozmowie i jezdzie probnej.
         </p>
       </div>

@@ -52,7 +52,7 @@ export default function VehicleInquiryForm({
       </div>
 
       <div>
-        <label className="label" htmlFor="vi-name">Imie i nazwisko</label>
+        <label className="label" htmlFor="vi-name">Imię i nazwisko</label>
         <input id="vi-name" name="name" required className="input" placeholder="Jan Kowalski" />
       </div>
 
@@ -68,33 +68,33 @@ export default function VehicleInquiryForm({
       </div>
 
       <div>
-        <label className="label" htmlFor="vi-msg">Wiadomosc</label>
+        <label className="label" htmlFor="vi-msg">Wiadomość</label>
         <textarea
           id="vi-msg"
           name="message"
           rows={4}
           className="input resize-none"
-          placeholder="Czy auto jest jeszcze dostepne? Chcialbym umowic ogledziny..."
+          placeholder="Czy auto jest jeszcze dostępne? Chcialbym umowic ogledziny..."
           defaultValue={`Dzien dobry, jestem zainteresowany ofertal: ${vehicleLabel}.`}
         />
       </div>
 
       <button type="submit" disabled={status === 'sending'} className="btn-primary w-full">
-        {status === 'sending' ? 'Wysylam...' : 'Wyslij zapytanie'}
+        {status === 'sending' ? 'Wysylam...' : 'Wyślij zapytanie'}
       </button>
 
       {status === 'ok' && (
         <p className="border border-green-700/40 bg-green-900/20 px-4 py-3 text-sm text-green-300">
-          Dziekujemy. Skontaktujemy sie tak szybko jak to mozliwe.
+          Dziekujemy. Skontaktujemy się tak szybko jak to mozliwe.
         </p>
       )}
       {status === 'error' && (
         <p className="border border-red-700/40 bg-red-900/20 px-4 py-3 text-sm text-red-300">
-          Nie udalo sie wyslac wiadomosci. {error}
+          Nie udało się wysłać wiadomości. {error}
         </p>
       )}
       <p className="text-[11px] text-text-muted">
-        Wysylajac formularz wyrazasz zgode na kontakt zwrotny zgodnie z polityka prywatnosci.
+        Wysylajac formularz wyrazasz zgode na kontakt zwrotny zgodnie z polityka prywatności.
       </p>
     </form>
   );
