@@ -19,70 +19,111 @@ export default function Hero() {
             'linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.75) 55%, rgba(10,10,10,1) 100%)',
         }}
       />
-      {/* Subtle accent glow */}
+      {/* Subtle accent glow — moved to bottom-left for editorial weight */}
       <div
         aria-hidden
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-50"
         style={{
           backgroundImage:
-            'radial-gradient(circle at 80% 30%, rgba(225,29,46,0.25), transparent 50%)',
+            'radial-gradient(circle at 15% 90%, rgba(225,29,46,0.30), transparent 55%)',
         }}
       />
 
-      <div className="container-x relative z-10 flex flex-col items-center pb-28 pt-32 text-center md:pb-36 md:pt-40 lg:pb-44 lg:pt-44">
-        <Reveal variant="scale" duration={700}>
-          <span className="inline-flex items-center gap-2 border border-bg-border bg-bg-elevated/80 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-text-secondary backdrop-blur">
-            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-accent" />
-            Gwarantujemy udany zakup
-          </span>
-        </Reveal>
+      {/* Vertical guide line on left edge — editorial detail */}
+      <div
+        aria-hidden
+        className="absolute left-4 top-0 bottom-0 hidden w-px bg-gradient-to-b from-transparent via-bg-border/50 to-transparent md:block"
+      />
 
-        <Reveal variant="blur" delay={150} duration={900}>
-          <h1 className="mt-6 max-w-5xl font-display text-5xl uppercase leading-[0.95] tracking-tight text-text-primary md:text-7xl">
-            Tanie, używane auta na sprzedaż, sprawdzone,{' '}
-            <span className="relative inline-block text-accent">
-              gotowe do jazdy
-              <span
-                aria-hidden
-                className="draw-line absolute -bottom-1 left-0 h-[3px] w-full bg-accent"
-              />
-            </span>
-          </h1>
-        </Reveal>
+      {/* Vertical meta on right edge */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 rotate-180 font-display text-[10px] uppercase tracking-[0.4em] text-text-muted/60 md:block"
+        style={{ writingMode: 'vertical-rl' }}
+      >
+        Podkarpacie · Est. 2001
+      </div>
 
-        <Reveal variant="fade-up" delay={400}>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="#oferta" className="btn-primary btn-shimmer">
-              Zobacz ofertę
-            </Link>
-            <Link href="/kontakt" className="btn-outline">
-              Zapytaj o auto
-            </Link>
-          </div>
-        </Reveal>
+      <div className="container-x relative z-10 grid min-h-[88vh] grid-cols-12 gap-x-4 gap-y-12 pb-12 pt-28 md:gap-x-6 md:pb-16 md:pt-36 lg:min-h-[92vh]">
+        {/* Top row — index marker + badge */}
+        <div className="col-span-12 flex items-center gap-3">
+          <Reveal variant="scale" duration={700}>
+            <div className="flex items-center gap-3">
+              <span className="font-display text-sm tracking-widest text-accent">
+                — 01
+              </span>
+              <span className="inline-flex items-center gap-2 border border-bg-border bg-bg-elevated/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-text-secondary backdrop-blur">
+                <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-accent" />
+                Gwarantujemy udany zakup
+              </span>
+            </div>
+          </Reveal>
+        </div>
 
-        <Reveal variant="fade-up" delay={600} duration={800}>
-          <dl className="mt-14 grid w-full max-w-2xl grid-cols-3 gap-6 border-t border-bg-border/60 pt-8">
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-text-muted">Aktualnie w ofercie</dt>
-              <dd className="mt-1 font-display text-3xl text-text-primary md:text-4xl">
-                <Counter to={vehicleCount} />
-              </dd>
+        {/* H1 + CTAs — left-aligned, anchored to bottom of grid */}
+        <div className="col-span-12 self-end md:col-span-8">
+          <Reveal variant="blur" delay={150} duration={900}>
+            <h1 className="font-display text-[clamp(2.75rem,9vw,9rem)] uppercase leading-[0.88] tracking-tight text-text-primary">
+              Tanie,
+              <br />
+              używane auta
+              <br />
+              na sprzedaż,
+              <br />
+              sprawdzone,{' '}
+              <span className="relative inline-block text-accent">
+                gotowe do&nbsp;jazdy.
+                <span
+                  aria-hidden
+                  className="draw-line absolute -bottom-1 left-0 h-[4px] w-full bg-accent"
+                />
+              </span>
+            </h1>
+          </Reveal>
+
+          <Reveal variant="fade-up" delay={400}>
+            <div className="mt-10 flex flex-wrap items-center gap-3">
+              <Link href="#oferta" className="btn-primary btn-shimmer">
+                Zobacz ofertę
+              </Link>
+              <Link href="/kontakt" className="btn-outline">
+                Zapytaj o auto
+              </Link>
             </div>
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-text-muted">Sprzedanych aut</dt>
-              <dd className="mt-1 font-display text-3xl text-text-primary md:text-4xl">
-                <Counter to={50} suffix="+" />
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-text-muted">Zadowolonych klientów</dt>
-              <dd className="mt-1 font-display text-3xl text-text-primary md:text-4xl">
-                <Counter to={50} suffix="+" />
-              </dd>
-            </div>
-          </dl>
-        </Reveal>
+          </Reveal>
+        </div>
+
+        {/* Stats — vertical stack, right column, anchored to bottom */}
+        <div className="col-span-12 self-end md:col-span-4">
+          <Reveal variant="fade-up" delay={600} duration={800}>
+            <dl className="grid grid-cols-3 gap-4 border-t border-bg-border/60 pt-6 md:grid-cols-1 md:gap-7 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+              <div>
+                <dt className="text-[10px] uppercase tracking-[0.25em] text-text-muted">
+                  W ofercie
+                </dt>
+                <dd className="mt-1 font-display text-4xl leading-none text-text-primary md:text-6xl">
+                  <Counter to={vehicleCount} />
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[10px] uppercase tracking-[0.25em] text-text-muted">
+                  Sprzedanych
+                </dt>
+                <dd className="mt-1 font-display text-4xl leading-none text-text-primary md:text-6xl">
+                  <Counter to={50} suffix="+" />
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[10px] uppercase tracking-[0.25em] text-text-muted">
+                  Klientów
+                </dt>
+                <dd className="mt-1 font-display text-4xl leading-none text-text-primary md:text-6xl">
+                  <Counter to={50} suffix="+" />
+                </dd>
+              </div>
+            </dl>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
