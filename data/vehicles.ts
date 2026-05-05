@@ -79,7 +79,7 @@ export const vehicles: Vehicle[] = [
     model: 'Astra L',
     variant: '1.2 Turbo Edition',
     year: 2022,
-    price: 79999,
+    price: 69999,
     currency: 'PLN',
     mileage: 45000,
     fuel: 'Benzyna',

@@ -47,7 +47,7 @@ export default function RegulaminPage() {
             </li>
             <li>
               Korzystanie z Serwisu oznacza akceptacje niniejszego Regulaminu oraz{' '}
-              <a className="text-accent hover:underline" href="/polityka-prywatności">
+              <a className="text-accent hover:underline" href="/polityka-prywatnosci">
                 Polityki prywatności
               </a>.
             </li>
@@ -121,7 +121,7 @@ export default function RegulaminPage() {
             </li>
             <li>
               Zasady przetwarzania danych osobowych przekazanych przez formularz określa{' '}
-              <a className="text-accent hover:underline" href="/polityka-prywatności">
+              <a className="text-accent hover:underline" href="/polityka-prywatnosci">
                 Polityka prywatności
               </a>.
             </li>

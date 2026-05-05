@@ -64,7 +64,7 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 text-sm text-text-primary">
             <li>
-              <Link href="/polityka-prywatności" className="hover:text-accent">
+              <Link href="/polityka-prywatnosci" className="hover:text-accent">
                 Polityka prywatności
               </Link>
             </li>

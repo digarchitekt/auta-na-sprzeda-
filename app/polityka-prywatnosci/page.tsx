@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Polityka prywatności',
   description:
     'Polityka prywatności serwisu autanasprzedaz.com - zasady przetwarzania danych osobowych zgodnie z RODO.',
-  alternates: { canonical: '/polityka-prywatności' },
+  alternates: { canonical: '/polityka-prywatnosci' },
   robots: { index: true, follow: true },
 };
 
