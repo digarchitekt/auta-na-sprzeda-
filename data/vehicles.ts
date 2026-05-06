@@ -25,6 +25,8 @@ export type Vehicle = {
   specs: VehicleSpec[];
   images: string[];
   featured?: boolean;
+  /** Jezeli true — auto pozostaje w pliku, ale nie jest pokazywane w serwisie. */
+  hidden?: boolean;
 };
 
 const seq = (slug: string, count: number): string[] =>
@@ -32,7 +34,11 @@ const seq = (slug: string, count: number): string[] =>
     `/images/vehicles/${slug}/${String(i + 1).padStart(2, '0')}.webp`,
   );
 
-export const vehicles: Vehicle[] = [
+/**
+ * Pelna lista pojazdow — uwzglednia rowniez te oznaczone jako hidden.
+ * Sluzy jako kopia zapasowa, gdyby ktores auto wrocilo do sprzedazy.
+ */
+export const allVehicles: Vehicle[] = [
   {
     slug: 'opel-astra-k-2022',
     brand: 'Opel',
@@ -231,8 +237,13 @@ export const vehicles: Vehicle[] = [
     ],
     images: seq('audi-a8-2016', 3),
     featured: true,
+    // Tymczasowo ukryte na stronie - dane pozostaja zachowane na wypadek powrotu do sprzedazy.
+    hidden: true,
   },
 ];
+
+/** Pojazdy widoczne publicznie w serwisie (bez ukrytych). */
+export const vehicles: Vehicle[] = allVehicles.filter((v) => !v.hidden);
 
 export const getVehicleBySlug = (slug: string): Vehicle | undefined =>
   vehicles.find((v) => v.slug === slug);
