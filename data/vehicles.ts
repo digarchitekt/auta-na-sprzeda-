@@ -207,6 +207,8 @@ export const allVehicles: Vehicle[] = [
       { label: 'Kraj pochodzenia', value: 'Niemcy' },
     ],
     images: seq('audi-a3-2018', 1),
+    // Tymczasowo ukryte na stronie - dane pozostaja zachowane na wypadek powrotu do sprzedazy.
+    hidden: true,
   },
   {
     slug: 'audi-a8-2016',
