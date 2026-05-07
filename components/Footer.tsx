@@ -35,12 +35,20 @@ export default function Footer() {
               <li>{company.address.city}</li>
               <li>woj. {company.address.region}</li>
               <li>
-                <a href={`tel:${company.phone.replace(/\s/g, '')}`} className="hover:text-accent">
+                <a
+                  href={`tel:${company.phone.replace(/\s/g, '')}`}
+                  aria-label={`Zadzwon: ${company.phone}`}
+                  className="hover:text-accent"
+                >
                   {company.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${company.email}`} className="break-all hover:text-accent">
+                <a
+                  href={`mailto:${company.email}`}
+                  aria-label={`Napisz e-mail: ${company.email}`}
+                  className="break-all hover:text-accent"
+                >
                   {company.email}
                 </a>
               </li>
@@ -91,7 +99,7 @@ export default function Footer() {
           <span>{company.domain}</span>
         </div>
         <div className="container-x pb-4">
-          <p className="text-center text-[9px] leading-none text-text-muted/40 md:text-right">
+          <p className="text-center text-[10px] leading-none text-text-muted md:text-right">
             Strona stworzona przez Gracjana Preisnera
           </p>
         </div>

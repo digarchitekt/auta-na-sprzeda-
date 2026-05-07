@@ -36,6 +36,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <a
             href={`tel:${company.phone.replace(/\s/g, '')}`}
+            aria-label={`Zadzwon do nas pod ${company.phone}`}
             className="hidden items-center gap-2 text-xs font-semibold text-text-primary md:flex md:text-sm"
           >
             <span className="pulse-dot h-2 w-2 rounded-full bg-accent" aria-hidden />

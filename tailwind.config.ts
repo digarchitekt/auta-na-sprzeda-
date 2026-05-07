@@ -22,8 +22,9 @@ const config: Config = {
         },
         text: {
           primary: '#f5f5f5',
-          secondary: '#a3a3a3',
-          muted: '#737373',
+          secondary: '#b8b8b8',
+          // Bumped from #737373 (4.33:1, fails WCAG AA) to #9a9a9a (~5.5:1, passes AA)
+          muted: '#9a9a9a',
         },
       },
       fontFamily: {

@@ -113,8 +113,10 @@ export default function MobileNav() {
           <Link
             key={item.href}
             href={item.href}
+            aria-current={active ? 'page' : undefined}
+            aria-label={item.label}
             className="relative flex flex-col items-center justify-center gap-1 py-2.5 text-[10px] font-semibold uppercase tracking-wider transition-colors"
-            style={{ color: active ? '#e11d2e' : 'rgba(245,245,245,0.65)' }}
+            style={{ color: active ? '#e11d2e' : 'rgba(245,245,245,0.78)' }}
           >
             {/* Top accent bar on active */}
             {active && (

@@ -323,6 +323,7 @@ function CategoryRow({
           checked={checked}
           disabled={disabled}
           onChange={onChange}
+          aria-label={`${title} - przelacznik zgody na pliki cookies`}
           className="peer sr-only"
         />
         <span className="absolute inset-0 rounded-full bg-bg-border transition peer-checked:bg-accent" />
