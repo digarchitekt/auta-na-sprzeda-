@@ -98,14 +98,17 @@ export const allVehicles: Vehicle[] = [
     bodyType: 'Hatchback',
     color: 'Srebrny metalik',
     shortDescription:
-      'Najnowsza generacja Astry L w pakiecie GS Line. Ekonomiczny diesel 1.5 / 136 KM.',
+      'Opel Astra L GS Line - sportowy wygląd, rodzinny komfort. Bezwypadkowy, sprowadzony z Niemiec.',
     description:
-      'Opel Astra L (najnowsza generacja) z 2022 roku w pełnym pakiecie GS Line. Sprawdzony silnik 1.5 Diesel o mocy 136 KM - ekonomiczny i bardzo dynamiczny w trasie. Auto serwisowane, gotowe do drogi.',
+      'Opel Astra L w pakiecie GS Line - najnowsza generacja, która łączy sportowy, drapieżny wygląd z komfortem stworzonym dla rodziny. Auto sprowadzone z Niemiec, w 100% bezwypadkowe, z fabryczną powłoką lakierniczą na całym nadwoziu. Idealny kompromis dla kierowcy, który nie chce rezygnować z emocji za kierownicą i jednocześnie potrzebuje przestrzeni oraz bezpieczeństwa dla najbliższych.\n\nSportowy charakter:\n- Pakiet stylistyczny GS Line - agresywne akcenty, sportowe progi, dedykowane felgi\n- Reflektory Full LED z wyraźną sygnaturą świetlną\n- Skórzana kierownica i sportowo wyprofilowane fotele\n\nRodzinny komfort:\n- Podgrzewane fotele przednie, podgrzewana kierownica, podgrzewana przednia szyba\n- Klimatyzacja automatyczna 2-strefowa\n- System bezkluczykowy (Keyless)\n- Elektrycznie składane i podgrzewane lusterka\n\nTechnologia i bezpieczeństwo:\n- Virtual Cockpit (cyfrowe zegary) + duży ekran dotykowy\n- Apple CarPlay / Android Auto\n- Kamera 360°, czujniki parkowania z przodu i z tyłu\n- Asystent pasa ruchu, rozpoznawanie znaków drogowych, system awaryjnego hamowania\n- Czujniki deszczu i zmierzchu\n\nAuto jest gotowe do drogi - nie wymaga żadnego wkładu finansowego. Można sprawdzić na dowolnej stacji diagnostycznej. Zapraszamy na jazdę próbną do Jasienicy Rosielnej na Podkarpaciu.',
     highlights: [
       'Pakiet GS Line',
-      '1.5 Diesel - 136 KM',
-      'Najnowsza generacja Astry',
-      'Ekonomiczne w eksploatacji',
+      'Bezwypadkowy, sprowadzony z Niemiec',
+      'Sportowy wygląd, rodzinny komfort',
+      'Kamera 360° + asystent pasa ruchu',
+      'Podgrzewane fotele i kierownica',
+      'Virtual Cockpit + Apple CarPlay / Android Auto',
+      'Reflektory Full LED',
     ],
     specs: [
       { label: 'Rok produkcji', value: '2022' },
