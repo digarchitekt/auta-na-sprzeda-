@@ -39,7 +39,8 @@ export default function Hero() {
 
         <Reveal variant="blur" delay={150} duration={900}>
           <h1 className="mt-6 max-w-5xl font-display text-5xl uppercase leading-[0.95] tracking-tight text-text-primary md:text-7xl">
-            Używane auta na sprzedaż,{' '}
+            Używane auta na sprzedaż,
+            <br />
             <span className="relative inline-block text-accent">
               gotowe do jazdy.
               <span
