@@ -53,6 +53,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  verification: {
+    google: 'EtS0yX5F0lFLQviHUW9A9jqhUbnL2T-h7-y-FtRcFYs',
+  },
   openGraph: {
     title: 'Tanie używane auta na sprzedaż - Opel i Audi | Podkarpacie',
     description:
