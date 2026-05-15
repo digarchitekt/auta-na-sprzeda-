@@ -254,22 +254,6 @@ export default function HomePage() {
                 </dd>
               </div>
             </dl>
-
-            <ul className="mt-8 space-y-3 text-sm">
-              {[
-                'Auta sprowadzane bezpośrednio z zagranicy',
-                'Pełne przygotowanie mechaniczne i lakiernicze',
-                'Każde auto sprawdzone osobiście - bez wyjatkow',
-                'Cena niższa niż w salonach krajowych',
-              ].map((point) => (
-                <li key={point} className="flex items-start gap-3 text-text-primary">
-                  <span className="mt-1 grid h-4 w-4 shrink-0 place-items-center bg-accent text-[9px] font-bold text-white">
-                    +
-                  </span>
-                  {point}
-                </li>
-              ))}
-            </ul>
             </div>
           </Reveal>
         </div>

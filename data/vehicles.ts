@@ -55,16 +55,16 @@ export const allVehicles: Vehicle[] = [
     bodyType: 'Hatchback',
     color: 'Czarny Metallic',
     shortDescription:
-      'Opel Astra K GS Line (2021) - skórzane fotele wentylowane z masażem, IntelliLux LED. Bezwypadkowy, sprowadzony z Niemiec.',
+      'Opel Astra K GS Line - skórzane fotele wentylowane z masażem, kamera cofania a to tylko kilka jego zalet.',
     description:
-      'Na sprzedaż wyjątkowo zadbany Opel Astra K w pakiecie GS Line z 2021 roku. To samochód dla kogoś, kto szuka pewnego, nowoczesnego auta na długie lata, bez widma ciągłych wizyt u mechanika. Egzemplarz sprowadzony z Niemiec, w 100% bezwypadkowy, z bardzo niskim, autentycznym przebiegiem.\n\nSilnik 1.2 Turbo o mocy 145 KM to optymalny kompromis - zapewnia świetną dynamikę przy wyprzedzaniu, a jednocześnie spala na tyle mało, że codzienne dojazdy nie bolą portfela. Auto jest zwarte, sztywne i prowadzi się jakby wczoraj wyjechało z salonu.\n\nWyposażenie, które robi różnicę:\nWiększość Astr na rynku to ubogie wersje flotowe. Ten egzemplarz to zupełnie inna półka - pełen pakiet GS Line:\n\n- Komfort klasy Premium: skórzane fotele wentylowane z funkcją masażu - pozycja jezdna i temperatura idealna w każdą podróż. Nawet po 1000 km trasy wysiądziesz z niego bez bólu pleców.\n- Reflektory IntelliLux LED Matrix: aktywne, mocne białe światło które drastycznie poprawia bezpieczeństwo i komfort jazdy po zmroku.\n- Zimowy komfort: dodatkowe elektryczne ogrzewanie nawiewu (ciepło w kabinie natychmiast po starcie) oraz 2-strefowa automatyczna klimatyzacja.\n- Technologia na pokładzie: 7-calowy ekran dotykowy z Apple CarPlay / Android Auto. Twoje mapy, Spotify i asystent głosowy zawsze pod ręką.\n- Systemy bezpieczeństwa: auto samo czyta pasy ruchu (Lane Assist), ostrzega przed kolizją i automatycznie hamuje w razie zagrożenia. Posiada też czujniki parkowania z tyłu.\n- Design GS Line: czarny lakier metallic, 17-calowe felgi aluminiowe, przyciemniane szyby i czarna podsufitka nadają mu agresywnego, bardzo nowoczesnego wyglądu.\n\nSamochód nie wymaga absolutnie żadnego wkładu finansowego, jest czysty i gotowy do drogi. To pewna inwestycja w spokój i bezpieczeństwo Twoje oraz Twojej rodziny na najbliższe lata.',
+      'Wystawiam na sprzedaż Opla – rocznik 2021, z przebiegiem zaledwie 54 500 km. Auto jest w stanie idealnym, w pełni sprawdzone i gotowe do jazdy.\n\nNie chcę się tu sztucznie rozpisywać. Zamiast tego po prostu zapraszam Cię na oględziny i jazdę próbną. Uważam, że jak wsiądziesz za kółko, przejedziesz się kawałek i poczujesz to auto, sam najlepiej ocenisz, czy to sprzęt dla Ciebie.\n\nTo nie jest podstawowa wersja. To konfiguracja stworzona dla kogoś bardziej wymagającego, kto szuka komfortu jazdy i świętego spokoju.\n\nCo robi w nim największą różnicę na co dzień?\n\nWygląd i komfort:\nW środku znajdziesz skórzane fotele, dzięki którym auto prezentuje się świetnie. W chłodniejsze dni docenisz błyskawiczne podgrzewanie foteli oraz kierownicy – wnętrze nagrzewa się momentalnie. Zamiast klasycznego radia masz duży, czytelny ekran multimedialny, na którym bez problemu odpalisz mapy i swoją muzykę. Skórzana, multifunkcyjna, podgrzewana kierownica.\n\nBezpieczeństwo i jazda w nocy:\nAuto wyposażone jest w inteligentne światła, które całkowicie zmieniają komfort jazdy po zmroku. Na trasie kapitalnie sprawdza się tempomat. Dodatkowo masz tu asystenta ruszania pod górkę oraz ogromny pakiet czujników z szerokokątną kamerą Full HD. Cofanie i manewrowanie tym autem to zero stresu – idealne rozwiązanie zarówno dla kogoś, kto chce mieć za kółkiem maksimum spokoju, jak i dla mniej doświadczonego kierowcy. Czujniki poziomu powietrza w kołach, czujnik oleju.\n\nDynamika i ekonomia:\nSamochód jest dynamiczny i zrywny, a przy tym idealny do miasta i na codzienne dojazdy, bo pali naprawdę mało.\n\nWizualnie na żywo auto jest po prostu śliczne i bardzo zadbane. Samochód jest w 100% sprawdzony i gotowy do jazdy.\n\nCena do negocjacji 55 000 zł.\n\nSamochód do obejrzenia w Jasienicy Rosielnej.',
     highlights: [
       'Pakiet GS Line',
-      'Bezwypadkowy, sprowadzony z Niemiec',
-      'Skórzane fotele wentylowane z masażem',
-      'IntelliLux LED Matrix',
+      'Podgrzewane skórzane siedzenia z masażem',
+      'System inteligentnych świateł LED Matrix',
       'Apple CarPlay / Android Auto',
-      'Lane Assist + automatyczne hamowanie',
+      'Asystent trzymania pasa (Lane Assist)',
+      'Najlepsze możliwe wyposażenie',
     ],
     specs: [
       { label: 'Rok produkcji', value: '2021' },
@@ -98,17 +98,16 @@ export const allVehicles: Vehicle[] = [
     bodyType: 'Hatchback',
     color: 'Srebrny metalik',
     shortDescription:
-      'Opel Astra L GS Line - sportowy wygląd, rodzinny komfort. Bezwypadkowy, sprowadzony z Niemiec.',
+      'Opel Astra L GS Line - sportowy wygląd, bardzo wygodne do jazdy, 100km to około 5,5l.',
     description:
-      'Opel Astra L w pakiecie GS Line - najnowsza generacja, która łączy sportowy, drapieżny wygląd z komfortem stworzonym dla rodziny. Auto sprowadzone z Niemiec, w 100% bezwypadkowe, z fabryczną powłoką lakierniczą na całym nadwoziu. Idealny kompromis dla kierowcy, który nie chce rezygnować z emocji za kierownicą i jednocześnie potrzebuje przestrzeni oraz bezpieczeństwa dla najbliższych.\n\nSportowy charakter:\n- Pakiet stylistyczny GS Line - agresywne akcenty, sportowe progi, dedykowane felgi\n- Reflektory Full LED z wyraźną sygnaturą świetlną\n- Skórzana kierownica i sportowo wyprofilowane fotele\n\nRodzinny komfort:\n- Podgrzewane fotele przednie, podgrzewana kierownica, podgrzewana przednia szyba\n- Klimatyzacja automatyczna 2-strefowa\n- System bezkluczykowy (Keyless)\n- Elektrycznie składane i podgrzewane lusterka\n\nTechnologia i bezpieczeństwo:\n- Virtual Cockpit (cyfrowe zegary) + duży ekran dotykowy\n- Apple CarPlay / Android Auto\n- Kamera 360°, czujniki parkowania z przodu i z tyłu\n- Asystent pasa ruchu, rozpoznawanie znaków drogowych, system awaryjnego hamowania\n- Czujniki deszczu i zmierzchu\n\nAuto jest gotowe do drogi - nie wymaga żadnego wkładu finansowego. Można sprawdzić na dowolnej stacji diagnostycznej. Zapraszamy na jazdę próbną do Jasienicy Rosielnej na Podkarpaciu.',
+      'Opel Astra L w pakiecie GS Line – rocznik 2022, najnowsza generacja, która łączy sportowy, drapieżny wygląd z komfortem jazdy. Małe i zgrabne.\n\nNie chcę się tu sztucznie rozpisywać. Zamiast tego po prostu zapraszam Cię na oględziny i jazdę próbną. Uważam, że jak wsiądziesz za kółko, przejedziesz się kawałek i poczujesz to auto, sam najlepiej ocenisz, czy to sprzęt dla Ciebie.\n\nCo robi w nim największą różnicę na co dzień?\n\nTechnologia i bezpieczeństwo:\n- Virtual Cockpit (cyfrowe zegary) + duży ekran dotykowy\n- Apple CarPlay / Android Auto\n- Kamera 360°, czujniki parkowania z przodu i z tyłu\n- Asystent pasa ruchu, rozpoznawanie znaków drogowych, system awaryjnego hamowania\n- Czujniki deszczu i zmierzchu, jest ich bardzo dużo\n\nKomfort:\n- Podgrzewane fotele przednie, podgrzewana kierownica, podgrzewana przednia szyba\n- Klimatyzacja automatyczna 2-strefowa\n- System bezkluczykowy (Keyless)\n- Elektrycznie składane i podgrzewane lusterka\n- Reflektory Full LED z wyraźną sygnaturą świetlną\n- Skórzana kierownica i sportowo wyprofilowane fotele\n\nAuto jest gotowe do jazdy – nie wymaga żadnego wkładu finansowego. Sprawdź sam jak cudnie prezentuje się na żywo.\n\nCena do negocjacji 65 000 zł.\n\nZapraszamy na jazdę próbną do Jasienicy Rosielnej na Podkarpaciu.',
     highlights: [
       'Pakiet GS Line',
-      'Bezwypadkowy, sprowadzony z Niemiec',
-      'Sportowy wygląd, rodzinny komfort',
-      'Kamera 360° + asystent pasa ruchu',
-      'Podgrzewane fotele i kierownica',
+      'Kamera cofania 360°',
       'Virtual Cockpit + Apple CarPlay / Android Auto',
-      'Reflektory Full LED',
+      'Inteligentne światła LED',
+      'Podgrzewane fotele i kierownica',
+      'Po prostu piękne w środku jak i z zewnątrz',
     ],
     specs: [
       { label: 'Rok produkcji', value: '2022' },

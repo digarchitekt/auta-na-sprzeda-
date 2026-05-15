@@ -151,26 +151,6 @@ export default function VehiclePage({ params }: { params: { slug: string } }) {
             </ul>
           </section>
 
-          {/* Specs table */}
-          <section>
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-accent">
-              Dane techniczne
-            </h2>
-            <dl className="mt-3 overflow-hidden border border-bg-border">
-              {v.specs.map((s, i) => (
-                <div
-                  key={s.label}
-                  className={`flex items-center justify-between gap-4 px-4 py-2.5 text-sm ${
-                    i % 2 === 0 ? 'bg-bg-elevated' : 'bg-bg-card'
-                  }`}
-                >
-                  <dt className="text-text-muted">{s.label}</dt>
-                  <dd className="text-right font-medium text-text-primary">{s.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-
           {/* Description */}
           <section>
             <h2 className="text-xs font-semibold uppercase tracking-widest text-accent">
