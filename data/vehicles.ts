@@ -47,7 +47,7 @@ export const allVehicles: Vehicle[] = [
     year: 2016,
     price: 39000,
     currency: 'PLN',
-    mileage: 47000,
+    mileage: 149000,
     fuel: 'Diesel',
     transmission: 'Manualna',
     power: 136,
@@ -55,12 +55,12 @@ export const allVehicles: Vehicle[] = [
     bodyType: 'Hatchback',
     color: 'Niebieski',
     shortDescription:
-      'Opel Astra K Limited Edition - moje prywatne auto, zaledwie 47 000 km, pali tylko 5,5 l/100 km.',
+      'Opel Astra K Limited Edition - moje prywatne auto, przebieg 149 000 km, pali tylko 5,5 l/100 km.',
     description:
-      'Wystawiam na sprzedaż mojego prywatnego Opla Astrę K w wersji Limited Edition – rocznik 2016, silnik 1.6 diesel z Turbo o mocy 136 KM. Jeździłem nim przez 4 lata i dosłownie nic się w nim nie zepsuło. Auto ma zaledwie 47 000 km przebiegu i jest naprawdę zadbane, bez żadnych usterek.\n\nTo auto cudownie się prowadzi – zarówno na co dzień po mieście, jak i na dłuższych trasach. Byłem nim w Holandii i jeździło się nim bardzo wygodnie. Jest też bardzo oszczędne – pali tylko 5,5 litra na 100 km.\n\nCo robi największą różnicę na co dzień?\n\nŚwiatła i bezpieczeństwo:\n- Zajebiste światła LUX LED – komfort jazdy po zmroku na zupełnie innym poziomie\n- Tempomat\n\nKomfort:\n- Podgrzewane siedzenia\n- Ekran multimedialny z nawigacją – wszystko pod ręką\n- Całkiem pojemny bagażnik\n\nAuto marzenie do codziennej jazdy. W pełni sprawne, gotowe do jazdy, bez żadnego wkładu finansowego.\n\nCena do negocjacji 39 000 zł.\n\nSamochód do obejrzenia w Jasienicy Rosielnej na Podkarpaciu.',
+      'Wystawiam na sprzedaż mojego prywatnego Opla Astrę K w wersji Limited Edition – rocznik 2016, silnik 1.6 diesel z Turbo o mocy 136 KM. Jeździłem nim przez 4 lata i dosłownie nic się w nim nie zepsuło. Auto ma 149 000 km przebiegu i jest naprawdę zadbane, bez żadnych usterek.\n\nTo auto cudownie się prowadzi – zarówno na co dzień po mieście, jak i na dłuższych trasach. Byłem nim w Holandii i jeździło się nim bardzo wygodnie. Jest też bardzo oszczędne – pali tylko 5,5 litra na 100 km.\n\nCo robi największą różnicę na co dzień?\n\nŚwiatła i bezpieczeństwo:\n- Zajebiste światła LUX LED – komfort jazdy po zmroku na zupełnie innym poziomie\n- Tempomat\n\nKomfort:\n- Podgrzewane siedzenia\n- Ekran multimedialny z nawigacją – wszystko pod ręką\n- Całkiem pojemny bagażnik\n\nAuto marzenie do codziennej jazdy. W pełni sprawne, gotowe do jazdy, bez żadnego wkładu finansowego.\n\nCena do negocjacji 39 000 zł.\n\nSamochód do obejrzenia w Jasienicy Rosielnej na Podkarpaciu.',
     highlights: [
       'Wersja Limited Edition',
-      'Zaledwie 47 000 km przebiegu',
+      'Przebieg 149 000 km',
       'Światła LUX LED',
       'Spalanie tylko 5,5 l/100 km',
       'Tempomat, podgrzewane siedzenia, nawigacja',
@@ -68,7 +68,7 @@ export const allVehicles: Vehicle[] = [
     ],
     specs: [
       { label: 'Rok produkcji', value: '2016' },
-      { label: 'Przebieg', value: '47 000 km' },
+      { label: 'Przebieg', value: '149 000 km' },
       { label: 'Silnik', value: '1.6 CDTI Turbo' },
       { label: 'Moc', value: '136 KM' },
       { label: 'Rodzaj paliwa', value: 'Diesel' },
