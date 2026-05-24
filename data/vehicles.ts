@@ -122,7 +122,7 @@ export const allVehicles: Vehicle[] = [
       { label: 'Stan', value: 'Bezwypadkowy' },
       { label: 'Kraj pochodzenia', value: 'Niemcy' },
     ],
-    images: seq('astra-k-2022', 16),
+    images: seq('astra-k-2022', 15),
     featured: true,
   },
   {
@@ -164,7 +164,7 @@ export const allVehicles: Vehicle[] = [
       { label: 'Kolor', value: 'Srebrny metalik' },
       { label: 'Wyposażenie', value: 'GS Line' },
     ],
-    images: seq('astra-l-2022', 14),
+    images: seq('astra-l-2022', 13),
     featured: true,
   },
   {
@@ -207,7 +207,7 @@ export const allVehicles: Vehicle[] = [
       { label: 'Stan', value: 'Bezwypadkowy' },
       { label: 'Kraj pochodzenia', value: 'Niemcy' },
     ],
-    images: seq('astra-opc-2013', 14),
+    images: seq('astra-opc-2013', 13),
     featured: true,
   },
   {
