@@ -164,7 +164,7 @@ export const allVehicles: Vehicle[] = [
       { label: 'Kolor', value: 'Srebrny metalik' },
       { label: 'Wyposażenie', value: 'GS Line' },
     ],
-    images: seq('astra-l-2022', 13),
+    images: seq('astra-l-2022', 17),
     featured: true,
   },
   {
